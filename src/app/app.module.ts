@@ -16,6 +16,9 @@ import {ButtonModule} from 'primeng/button';
 import {MenubarModule} from 'primeng/menubar';
 import { MenuComponent } from './shared/menu/menu.component';
 import {InputTextModule} from 'primeng/inputtext';
+import {PasswordModule} from 'primeng/password';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +38,8 @@ import {InputTextModule} from 'primeng/inputtext';
     ButtonModule,
     MenubarModule,
     InputTextModule,
-    
+    PasswordModule,
+    ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerImmediately'
