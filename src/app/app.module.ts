@@ -16,6 +16,10 @@ import {ButtonModule} from 'primeng/button';
 import {MenubarModule} from 'primeng/menubar';
 import { MenuComponent } from './shared/menu/menu.component';
 import {InputTextModule} from 'primeng/inputtext';
+import {PasswordModule} from 'primeng/password';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {DividerModule} from 'primeng/divider';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +39,9 @@ import {InputTextModule} from 'primeng/inputtext';
     ButtonModule,
     MenubarModule,
     InputTextModule,
+    PasswordModule,
+    BrowserAnimationsModule,
+    DividerModule,
     
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
