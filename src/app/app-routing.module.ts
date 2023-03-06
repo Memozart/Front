@@ -1,7 +1,26 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CreateCardPageComponent } from './pages/create-card-page/create-card-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { ManageCardPageComponent } from './pages/manage-card-page/manage-card-page.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { ReviewCardPageComponent } from './pages/review-card-page/review-card-page.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path:"" , component:LandingPageComponent},
+  {path:"home" , component:HomePageComponent},
+  {path:"register" , component:RegisterPageComponent},
+  {path:"login" , component:LoginPageComponent},
+  {path:"card" , children: [
+    {path:"create", component:CreateCardPageComponent},
+    {path:"manage", component:ManageCardPageComponent},
+    {path:"review", component:ReviewCardPageComponent}
+  ]},
+  
+  {path:"**" , redirectTo:""},
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
