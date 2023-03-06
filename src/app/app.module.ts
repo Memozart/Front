@@ -14,8 +14,8 @@ import { ManageCardPageComponent } from './pages/manage-card-page/manage-card-pa
 import { ReviewCardPageComponent } from './pages/review-card-page/review-card-page.component';
 import {ButtonModule} from 'primeng/button';
 import {MenubarModule} from 'primeng/menubar';
-import {MenuItem} from 'primeng/api';
 import { MenuComponent } from './shared/menu/menu.component';
+import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -34,6 +34,7 @@ import { MenuComponent } from './shared/menu/menu.component';
     AppRoutingModule,
     ButtonModule,
     MenubarModule,
+    InputTextModule,
     
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
