@@ -1,5 +1,6 @@
 import { environment } from './../environments/environment';
 import { Component } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 
 @Component({
@@ -12,4 +13,7 @@ export class AppComponent {
   version = environment.appVersion;
   environmentName = environment.nomEnvironnement;
 
+  
 }
+
+
