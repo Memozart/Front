@@ -1,3 +1,4 @@
+import { BearerInterceptor } from './interceptors/bearer.interceptor';
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -17,8 +18,12 @@ import {MenubarModule} from 'primeng/menubar';
 import { MenuComponent } from './shared/menu/menu.component';
 import {InputTextModule} from 'primeng/inputtext';
 import {PasswordModule} from 'primeng/password';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DividerModule} from 'primeng/divider';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -42,13 +47,20 @@ import {DividerModule} from 'primeng/divider';
     PasswordModule,
     BrowserAnimationsModule,
     DividerModule,
-    
+    ReactiveFormsModule,
+    HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerImmediately'
     })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BearerInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
