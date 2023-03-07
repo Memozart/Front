@@ -21,7 +21,8 @@ export class HttpService {
   * @returns {Observable<any>} - Un observable pour la réponse HTTP.
   */
   get(path: string) {
-    this.http.get(`${this.baseUrl}${path}`);
+    return this.http.get(`${this.baseUrl}${path}`);
+    
   }
 
   /**
@@ -42,7 +43,7 @@ export class HttpService {
  * @returns {Observable<any>} - Un observable pour la réponse HTTP.
  */
   post(path: string, body: any) {
-    this.http.post(`${this.baseUrl}${path}`, body);
+    return this.http.post(`${this.baseUrl}${path}`, body);
   }
 
   /**
@@ -52,7 +53,7 @@ export class HttpService {
  * @returns {Observable<any>} - Un observable pour la réponse HTTP.
  */
   update(path: string, body: any) {
-    this.http.put(`${this.baseUrl}${path}`, body);
+    return this.http.put(`${this.baseUrl}${path}`, body);
   }
 
   /**
@@ -62,6 +63,6 @@ export class HttpService {
  * @returns {Observable<any>} - Un observable pour la réponse HTTP.
  */
   delete(path: string, id: number) {
-    this.http.delete(`${this.baseUrl}${path}/${id}`);
+    return this.http.delete(`${this.baseUrl}${path}/${id}`);
   }
 }
