@@ -13,15 +13,16 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { CreateCardPageComponent } from './pages/create-card-page/create-card-page.component';
 import { ManageCardPageComponent } from './pages/manage-card-page/manage-card-page.component';
 import { ReviewCardPageComponent } from './pages/review-card-page/review-card-page.component';
-import {ButtonModule} from 'primeng/button';
-import {MenubarModule} from 'primeng/menubar';
+import { ButtonModule } from 'primeng/button';
+import { MenubarModule } from 'primeng/menubar';
 import { MenuComponent } from './shared/menu/menu.component';
-import {InputTextModule} from 'primeng/inputtext';
-import {PasswordModule} from 'primeng/password';
+import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
-
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     PasswordModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    ToastModule,
+    BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerImmediately'
@@ -53,7 +57,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
       provide: HTTP_INTERCEPTORS,
       useClass: BearerInterceptor,
       multi: true,
-    }
+    },
+    MessageService 
   ],
   bootstrap: [AppComponent]
 })

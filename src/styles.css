@@ -3,3 +3,14 @@ html, body{
   margin: 0;
   padding: 0;
 }
+
+.blink-error-color {
+  color: var(--primary-color) !important;
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
