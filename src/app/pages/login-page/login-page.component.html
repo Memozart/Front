@@ -1,13 +1,16 @@
 <h1>Connexion</h1>
+<form class="flex flex-column gap-5" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <span class="p-float-label">
+    <input id="float-input-email" type="text" pInputText formControlName="email">
+    <label for="email" class="block font-medium mb-2"
+    [ngClass]="{ 'blink-error-color' : loginForm.get('email')?.valid == false && loginForm.get('email')?.touched }">email</label>
+  </span>
 
-<span class="p-float-label">
-  <input id="float-input" type="text" pInputText > 
-  <label for="float-input">Email</label>
-</span>
+  <span class="p-float-label">
+    <input id="float-input" type="text" pInputText formControlName="password">
+    <label for="email" class="block font-medium mb-2"
+    [ngClass]="{ 'blink-error-color' : loginForm.get('password')?.valid == false && loginForm.get('password')?.touched }">mots de passe</label>
+  </span>
 
-<span class="p-float-label">
-  <input id="float-input" type="text" pInputText > 
-  <label for="float-input">Mots de passe</label>
-</span>
-
-<button pButton pRipple type="button" label="Connexion" class="p-button-outlined"></button>
+  <button pButton pRipple type="submit" label="Connexion" class="p-button-outlined"></button>
+</form>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -11,6 +12,8 @@ export class MenuComponent {
    * Nom des composants du menu.
    */
   items!: MenuItem[];
+
+  constructor(private router: Router){}
 
   ngOnInit() {
     this.items = [
@@ -48,6 +51,14 @@ export class MenuComponent {
         label: 'revision',
         icon: 'pi pi-fw pi-pencil',
         routerLink: "card/review"
+      },
+      {
+        label: 'logout',
+        icon: 'pi pi-fw pi-power-off',
+        command : ()=>{
+          localStorage.removeItem("token");
+          this.router.navigate(['login'])
+        }
       }
     ];
   }
