@@ -1,16 +1,16 @@
 
 <h1>Inscription</h1>
-
+<form class="flex flex-column gap-5" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 <span class="p-float-label">
-    <input id="float-input" type="text" pInputText> 
+    <input id="float-input" type="text" pInputText formControlName="nameUser"> 
     <label for="float-input">Nom</label>
 </span>
 <span class="p-float-label">
-    <input id="float-input" type="text" pInputText> 
+    <input id="float-input" type="text" pInputText formControlName="firstName"> 
     <label for="float-input">Prenom</label>
 </span>
 <span class="p-float-label">
-    <input id="float-input" type="text" pInputText> 
+    <input id="float-input" type="text" pInputText formControlName="email"> 
     <label for="float-input">Mail</label>
 </span>
 <span class="p-float-label">
@@ -38,3 +38,4 @@
 
 
 <button pButton type="button" label="Click" ></button>
+</form>
