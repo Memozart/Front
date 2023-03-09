@@ -23,6 +23,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DividerModule } from "primeng/divider";
 
 @NgModule({
   declarations: [
@@ -43,8 +44,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MenubarModule,
     InputTextModule,
     PasswordModule,
-    BrowserAnimationsModule,
     DividerModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
     ReactiveFormsModule,
