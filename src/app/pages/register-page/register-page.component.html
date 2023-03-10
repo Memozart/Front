@@ -1,8 +1,41 @@
 
-<h5>Float Label</h5>
+<h1>Inscription</h1>
+<form class="flex flex-column gap-5" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 <span class="p-float-label">
-    <input id="float-input" type="text" pInputText> 
-    <label for="float-input">Username</label>
+    <input id="float-input" type="text" pInputText formControlName="lastName"> 
+    <label for="float-input">Nom</label>
+</span>
+<span class="p-float-label">
+    <input id="float-input" type="text" pInputText formControlName="firstName"> 
+    <label for="float-input">Prenom</label>
+</span>
+<span class="p-float-label">
+    <input id="float-input" type="text" pInputText formControlName="email"> 
+    <label for="float-input">Mail</label>
+</span>
+<span class="p-float-label">
+    <p-password [toggleMask]="true" formControlName="password">
+        <ng-template pTemplate="header">
+            <h6>Pick a password</h6>
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <p-divider></p-divider>
+            <p class="mt-2">Suggestions</p>
+            <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                <li>Au moins une majuscule</li>
+                <li>Au moins une minuscule</li>
+                <li>Au moins un chiffre</li>
+                <li>Minimum 8 caractères</li>
+            </ul>
+        </ng-template>
+    </p-password>
+    <label for="float-input">Mot de passe</label>
+</span>
+<span class="p-float-label">
+    <p-password  [feedback]="false" formControlName="confirmPassword"></p-password>
+    <label for="float-input">Confirmation de mot de passe</label>
 </span>
 
-<button pButton type="button" label="Click" ></button>
+
+<button pButton type="submit" label="Inscription" ></button>
+</form>

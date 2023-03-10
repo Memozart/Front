@@ -22,6 +22,7 @@ export class HttpService {
   */
   get(path: string) {
     return this.http.get(`${this.baseUrl}${path}`);
+    
   }
 
   /**
