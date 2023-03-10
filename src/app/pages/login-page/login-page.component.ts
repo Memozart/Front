@@ -33,7 +33,7 @@ export class LoginPageComponent {
     if(this.loginForm.invalid)
       return;
     const loginData = this.loginForm.value;
-    this.http.post("auth/login", loginData).subscribe({
+    this.http.post("/auth/login", loginData).subscribe({
       next : (res : any)=>{
         this.response.successF("Connection OK", res.message);
         localStorage.setItem("token", res.body);
