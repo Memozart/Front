@@ -23,11 +23,11 @@ export class RegisterPageComponent {
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
-      nameUser : ['', [Validators.required]],
+      lastName : ['', [Validators.required]],
       firstName : ['',[Validators.required]],
       email : ['', [Validators.required, Validators.email]],
       password: ['',[Validators.required]],
-      passwordConfirm : ['',[Validators.required]]
+      confirmPassword : ['',[Validators.required]]
     }) 
   }
 
@@ -35,13 +35,14 @@ export class RegisterPageComponent {
     if(this.registerForm.invalid)
     return;
     const registerData = this.registerForm.value;
-    this.http.post("auth/register", registerData).subscribe({
+    console.log(registerData);
+    this.http.post("/auth/register", registerData).subscribe({
       next : (res : any)=>{
         this.response.successF("Connection OK", res.message);
         //pas sur que j'en ai besoin
-        localStorage.setItem("token", res.body);
+        //localStorage.setItem("token", res.body);
         //pas sur de rediriger sur home mais plus sur connexion
-        //this.route.navigate(['/login'])
+        this.route.navigate(['/login'])
       },
       error : (err : any)=>{
         this.response.errorF(err,"Erreur d/inscription");

@@ -2,7 +2,7 @@
 <h1>Inscription</h1>
 <form class="flex flex-column gap-5" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 <span class="p-float-label">
-    <input id="float-input" type="text" pInputText formControlName="nameUser"> 
+    <input id="float-input" type="text" pInputText formControlName="lastName"> 
     <label for="float-input">Nom</label>
 </span>
 <span class="p-float-label">
@@ -14,7 +14,7 @@
     <label for="float-input">Mail</label>
 </span>
 <span class="p-float-label">
-    <p-password [toggleMask]="true" >
+    <p-password [toggleMask]="true" formControlName="password">
         <ng-template pTemplate="header">
             <h6>Pick a password</h6>
         </ng-template>
@@ -32,10 +32,10 @@
     <label for="float-input">Mot de passe</label>
 </span>
 <span class="p-float-label">
-    <p-password  [feedback]="false"></p-password>
+    <p-password  [feedback]="false" formControlName="confirmPassword"></p-password>
     <label for="float-input">Confirmation de mot de passe</label>
 </span>
 
 
-<button pButton type="button" label="Click" ></button>
+<button pButton type="submit" label="Inscription" ></button>
 </form>
