@@ -1,1 +1,29 @@
-<h1 class="flex justify-content-center align-items-center w-100 text-center min-h-full vertical-align-middle" style="text-align: center;">CRÉATION DE CARTE</h1>
+
+<p-autoComplete   field="name" [dropdown]="true">
+    <ng-template let-country pTemplate="item">
+        
+            
+            <div>{{country.name}}</div>
+        
+    </ng-template>
+</p-autoComplete>
+
+
+<span class="p-float-label">
+    <input id="float-input" type="text" pInputText > 
+    <label for="float-input">Question</label>
+</span>
+<span class="p-float-label">
+    <input id="float-input" type="text" pInputText> 
+    <label for="float-input">Réponse</label>
+</span>
+<span class="p-float-label">
+    <input id="float-input" type="text" pInputText > 
+    <label for="float-input">Aide</label>
+</span>
+
+<span class="p-float-label">
+    <p-calendar id="float-input" inputId="basic" dateFormat="mm.dd.yy"></p-calendar>
+    <label for="float-input">Date de la premiere leçon</label>
+</span>
+        

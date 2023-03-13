@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class CreateCardPageComponent {
 
-}
+  date1!: Date;
+
+  ngOnInit(){
+
+        
+    }
+  }
+
+
