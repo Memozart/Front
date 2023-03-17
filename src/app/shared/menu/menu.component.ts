@@ -5,7 +5,7 @@ import { MenuItem } from 'primeng/api';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent {
   /**
@@ -13,54 +13,59 @@ export class MenuComponent {
    */
   items!: MenuItem[];
 
-  constructor(private router: Router){}
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.items = [
       {
-        label: 'landing page',
+        label: 'Landing Page',
         icon: 'pi pi-check',
-        routerLink: ""
+        routerLink: '',
       },
       {
-        label: 'home ',
+        label: 'Accueil',
+        icon: 'pi pi-fw pi-home',
+        routerLink: 'home',
+      },
+      {
+        label: 'Ajouter',
+        icon: 'pi pi-fw pi-plus',
+        routerLink: 'card/create',
+      },
+      {
+        label: 'Leçons',
+        icon: 'pi pi-fw pi-book',
+        routerLink: 'card/manage',
+      },
+      {
+        label: 'Révision',
         icon: 'pi pi-fw pi-pencil',
-        routerLink: "home"
+        routerLink: 'card/review',
       },
       {
-        label: 'inscription ',
-        icon: 'pi pi-spin pi-apple',
-        routerLink: "register"
+        label: 'Compte',
+        icon: 'pi pi-user',
+        items: [
+          {
+            label: 'Connexion',
+            icon: 'pi pi-fw pi-sign-in',
+            routerLink: 'login',
+          },
+          {
+            label: 'Inscription',
+            icon: 'pi pi-fw pi-key',
+            routerLink: 'register',
+          },
+          {
+            label: 'Déconnexion',
+            icon: 'pi pi-fw pi-power-off',
+            command: () => {
+              localStorage.removeItem('token');
+              this.router.navigate(['login']);
+            },
+          },
+        ],
       },
-      {
-        label: 'connexion',
-        icon: 'pi pi-fw pi-lock',
-        routerLink: "login"
-      },
-      {
-        label: 'creation cartes',
-        icon: 'pi pi-fw pi-pencil',
-        routerLink: "card/create"
-      },
-      {
-        label: 'Gestion des cartes',
-        icon: 'pi pi-fw pi-pencil',
-        routerLink: "card/manage"
-      },
-      {
-        label: 'revision',
-        icon: 'pi pi-fw pi-pencil',
-        routerLink: "card/review"
-      },
-      {
-        label: 'logout',
-        icon: 'pi pi-fw pi-power-off',
-        command : ()=>{
-          localStorage.removeItem("token");
-          this.router.navigate(['login'])
-        }
-      }
     ];
   }
-
 }
