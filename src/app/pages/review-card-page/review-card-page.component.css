@@ -1,0 +1,63 @@
+.category {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    border: 1rem solid #47afff;
+    background-color: var(--dark-bg-color);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+::ng-deep section {
+    margin-top: 5rem;
+    padding-top: 6rem;
+    text-align: center;
+    position: relative;
+}
+
+textarea {
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 2rem;
+  padding: 1rem 1.5rem;
+  box-shadow: inset 5px 5px 5px var(--dark-shadow),
+	inset -2px -2px 5px var(--light-shadow) ;
+}
+
+.p-float-label textarea ~ label {
+    top: 2rem;
+    left: 1.5rem;
+}
+
+.p-inputtext {
+    font-family: 'Quicksand';
+}
+
+.p-float-label input:focus ~ label, .p-float-label input.p-filled ~ label, .p-float-label textarea:focus ~ label, .p-float-label textarea.p-filled ~ label, .p-float-label .p-inputwrapper-focus ~ label, .p-float-label .p-inputwrapper-filled ~ label {
+    top: -.75rem;
+}
+
+.p-inputtext:enabled:focus {
+    box-shadow: inset 5px 5px 5px var(--dark-shadow),
+	inset -2px -2px 5px var(--light-shadow);
+    border-color: none;
+}
+
+::ng-deep .customButton {
+    background-color: #47afff;
+    border: none;
+    box-shadow: 5px 5px 15px var(--dark-shadow),
+	-5px -5px 15px var(--light-shadow);
+    font-family: 'Quicksand';
+    font-weight: bold;
+    padding: 0.75rem 2rem;
+}
+
+::ng-deep .customButton:enabled:hover {
+    background-color: #47afff;
+    box-shadow: inset 3px 3px 4px #245a84,
+	inset -2px -2px 4px #9ad2fa;
+}
