@@ -18,17 +18,8 @@ html, body {
   padding: 0;
 }
 
-.p-menubar, html {
+html {
   background-color: var(--light-bg-color) !important;
-}
-
-.p-menubar {
-  justify-content: space-between;
-  padding: 1rem 3rem !important;
-}
-
-.p-menubar-end {
-    margin-left: inherit !important;
 }
 
 section {
