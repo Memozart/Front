@@ -1,5 +1,5 @@
 
-<section>
+<section *ngIf="review">
     <div>
         <p>Apprentissage n°2</p>
         <p-progressBar [value]="value" [showValue]="false" color="#47afff" styleClass="m-auto" [style]="{'border-radius':'1rem', 'height':'0.6rem', 'width':'10rem'}"></p-progressBar>
@@ -9,16 +9,19 @@
     
     <div class="category"></div>
 
-    <div class="p-fluid grid justify-content-center mt-5">
-        <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
-            <span class="p-float-label">
-                <textarea inputId="yourAnwser" rows="3" [autoResize]="true" cols="30"
-                    pInputTextarea></textarea>
-                <label for="yourAnwser">Ta réponse</label>
-            </span>
+    <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
+        <div class="p-fluid grid justify-content-center mt-5">
+            <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
+                <span class="p-float-label">
+                    <textarea inputId="yourAnwser" rows="3" [autoResize]="true" cols="30" pInputTextarea formControlName="answer"></textarea>
+                    <label for="yourAnwser">Ta réponse</label>
+                </span>
+            </div>
         </div>
-    </div>
 
-    <button pButton type="submit" label="Valider réponse" class="mt-5 text-white p-button-rounded"></button>
+        <button pButton type="submit" label="Valider réponse" class="mt-5 text-white p-button-rounded"></button>
+    </form>
+
+    
     
 </section>
