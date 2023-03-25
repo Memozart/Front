@@ -1,20 +1,23 @@
-.category {
-    width: 10rem;
-    height: 10rem;
-    border-radius: 50%;
-    border: 1rem solid #47afff;
-    background-color: var(--dark-bg-color);
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-::ng-deep section {
+section {
     margin-top: 5rem;
     padding-top: 6rem;
     text-align: center;
     position: relative;
+}
+
+.category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50em;
+    border: 1rem solid transparent;
 }
 
 textarea {
@@ -47,7 +50,6 @@ textarea {
 }
 
 :host ::ng-deep .p-button {
-    background-color: #47afff;
     border: none;
     box-shadow: 5px 5px 15px var(--dark-shadow),
 	-5px -5px 15px var(--light-shadow);
@@ -57,7 +59,88 @@ textarea {
 }
 
 :host ::ng-deep .p-button:enabled:hover {
-    background-color: #47afff;
-    box-shadow: inset 3px 3px 4px #245a84,
-	inset -2px -2px 4px #9ad2fa;
+    box-shadow: inset 3px 3px 4px #763353,
+	inset -2px -2px 4px #f98399;
+}
+
+:host ::ng-deep .bg-true {
+    background-color: #03A55A;
+}
+
+:host ::ng-deep .bg-false {
+    background-color: #DC3055;
+}
+
+:host ::ng-deep .p-dialog {
+    font-family: 'Quicksand';
+    border-radius: 2rem;
+    border: 0;
+    text-align: left;
+}
+
+:host ::ng-deep .p-dialog .p-dialog-header,
+:host ::ng-deep .p-dialog .p-dialog-content {
+    background-color: transparent;
+}
+
+:host ::ng-deep .p-dialog .p-dialog-header {
+    padding-bottom: 0.5rem;
+    padding-top: 2.5rem;
+}
+
+:host ::ng-deep .p-dialog .p-dialog-header .p-dialog-title {
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+.feedback_icon {
+    position: absolute;
+    top: -2rem;
+}
+
+.feedback_text {
+    font-size: 1.25rem;
+}
+
+.container_theme_icon {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 2rem;
+}
+
+.theme_icon {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 20vh;
+    z-index: -1;
+}
+
+
+:host ::ng-deep .btn-modal-true {
+    background-color: #03A55A;
+    box-shadow: 3px 3px 10px #01572F,
+	-3px -3px 10px #37D48B;
+}
+
+:host ::ng-deep .btn-modal-true:enabled:hover {
+    background-color: #03A55A;
+    box-shadow: inset 3px 3px 4px #01572F,
+	inset -2px -2px 4px #37D48B;
+}
+
+:host ::ng-deep .btn-modal-false {
+    background-color: #DC3055;
+    box-shadow: 3px 3px 10px #951934,
+	-3px -3px 10px #EC718B;
+}
+
+:host ::ng-deep .btn-modal-false:enabled:hover {
+    background-color: #DC3055;
+    box-shadow: inset 3px 3px 4px #951934,
+	inset -2px -2px 4px #EC718B;
 }

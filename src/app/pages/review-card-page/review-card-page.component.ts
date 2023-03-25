@@ -13,6 +13,13 @@ export class ReviewCardPageComponent {
   value: number = 20;
   review!: any;
   reviewForm!: FormGroup;
+  visible!: boolean;
+  modalStyle!: string;
+  btnModalStyle!: string;
+  reviewFeedBack: any;
+  feedBackTitle!: string;
+  borderLinearGradient!: string;
+  bgLinearGradient!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -34,22 +41,53 @@ export class ReviewCardPageComponent {
     this.http.get('reviews/' + theme_id).subscribe({
       next: (res: any) => {
         this.review = res.body.review;
+        this.borderLinearGradient =
+          'linear-gradient(var(--dark-bg-color), var(--dark-bg-color)) padding-box, linear-gradient(to bottom, ' +
+          this.review.theme.color1 +
+          ', ' +
+          this.review.theme.color2 +
+          ') border-box';
+
+        this.bgLinearGradient =
+          'linear-gradient(' +
+          this.review.theme.color1 +
+          ', ' +
+          this.review.theme.color2 +
+          ')';
+
         console.log(this.review);
       },
     });
   };
 
+  showDialog() {
+    this.visible = true;
+  }
+
+  reloadPage() {
+    window.location.reload();
+  }
+
   submitReview() {
     this.reviewForm.controls['idReview'].setValue(this.review._id);
     const answerData = this.reviewForm.value;
-    console.log(answerData);
 
     if (this.reviewForm.invalid) return;
 
     this.http.post('reviews', answerData).subscribe({
       next: (res: any) => {
-        console.log(res);
-        // display modal response
+        this.reviewFeedBack = res.body.statusResponse;
+
+        this.modalStyle = 'bg-' + this.reviewFeedBack.success;
+        this.btnModalStyle = 'btn-modal-' + this.reviewFeedBack.success;
+
+        if (this.reviewFeedBack.success) {
+          this.feedBackTitle = 'Yhaaaaa !';
+        } else {
+          this.feedBackTitle = 'Oh noooon !';
+        }
+
+        this.showDialog();
       },
       error: (err: any) => {
         this.response.errorF(err, 'Erreur');
