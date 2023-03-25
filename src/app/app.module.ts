@@ -22,6 +22,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { PasswordModule } from 'primeng/password';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { DialogModule } from 'primeng/dialog';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastModule } from 'primeng/toast';
@@ -62,6 +63,7 @@ import { DividerModule } from 'primeng/divider';
     }),
     ProgressBarModule,
     InputTextareaModule,
+    DialogModule,
   ],
   providers: [
     {
