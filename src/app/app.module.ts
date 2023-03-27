@@ -29,6 +29,7 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 
 import { DividerModule } from 'primeng/divider';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 @NgModule({
   declarations: [
@@ -51,12 +52,9 @@ import { DividerModule } from 'primeng/divider';
     PasswordModule,
     DividerModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     ToastModule,
-    DividerModule,
-    BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerImmediately',
@@ -64,6 +62,7 @@ import { DividerModule } from 'primeng/divider';
     ProgressBarModule,
     InputTextareaModule,
     DialogModule,
+    OverlayPanelModule,
   ],
   providers: [
     {
