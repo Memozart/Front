@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+  --light-bg-color: #304562;
+  --dark-bg-color: #1F2D40;
+  --primary-color: #FFD469;
+  --light-shadow: #304562;
+  --dark-shadow: #17212F;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('/assets/Quicksand-VariableFont_wght.ttf');
+}
+
+html, body {
+  font-family: 'Quicksand';
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--light-bg-color) !important;
+}
+
+section {
+  background-color: var(--dark-bg-color);
+  min-height: 82vh;
+  border-top-left-radius: 5rem;
+  border-top-right-radius: 5rem;
+  padding: 2rem 3rem;
+}
+
+.blink-error-color {
+  color: var(--primary-color) !important;
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
