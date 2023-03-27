@@ -36,7 +36,7 @@ export class LoginPageComponent {
     this.http.post("/auth/login", loginData).subscribe({
       next : (res : any)=>{
         this.response.successF("Connection OK", res.message);
-        localStorage.setItem("token", res.body);
+        localStorage.setItem("token", res.body.token);
         this.route.navigate(['/home'])
       },
       error : (err :any)=>{

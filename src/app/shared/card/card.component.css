@@ -1,0 +1,16 @@
+:host{
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+}
+
+:host ::ng-deep .p-card-body{
+  display: flex;
+}
+:host ::ng-deep .p-card-content{
+  padding: 0;
+}
+
+:host ::ng-deep .p-card-footer{
+  margin-left: 20px;
+}

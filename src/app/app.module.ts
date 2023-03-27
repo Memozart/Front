@@ -27,7 +27,9 @@ import { MessageService } from 'primeng/api';
 
 
 import { DividerModule } from "primeng/divider";
-
+import { CardComponent } from './shared/card/card.component';
+import { CardModule } from 'primeng/card';
+import { PanelModule } from 'primeng/panel';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,8 @@ import { DividerModule } from "primeng/divider";
     CreateCardPageComponent,
     ManageCardPageComponent,
     ReviewCardPageComponent,
-    MenuComponent
+    MenuComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +58,8 @@ import { DividerModule } from "primeng/divider";
     ToastModule,
     DividerModule,
     BrowserAnimationsModule,
+    CardModule,
+    PanelModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerImmediately'
