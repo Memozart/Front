@@ -12,7 +12,7 @@ export class ManageCardPageComponent implements OnInit{
   constructor(private http: HttpService){}
 
   ngOnInit(){
-    this.http.get("/cards").subscribe( {
+    this.http.get("cards").subscribe( {
       next : (res : any) =>{
         this.cards = res.body as Card[];
       },
