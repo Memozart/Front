@@ -63,7 +63,7 @@ export class BearerInterceptor implements HttpInterceptor {
 
     return new Observable((observer) => {
       this.httpService
-        .post('refresh-token', {
+        .post('auth/refresh-token', {
           refresh_token: refreshToken,
         })
         .pipe(
