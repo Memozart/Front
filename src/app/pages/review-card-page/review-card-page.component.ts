@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./review-card-page.component.css'],
 })
 export class ReviewCardPageComponent {
-  value: number = 20;
   review!: any;
   reviewForm!: FormGroup;
   visible!: boolean;
@@ -60,12 +59,15 @@ export class ReviewCardPageComponent {
     });
   };
 
-  showDialog() {
-    this.visible = true;
+  showDialog(show: boolean) {
+    this.visible = show;
   }
 
-  reloadPage() {
-    window.location.reload();
+  refreshPage() {
+    this.review = false;
+    this.getReviewByTheme('640b15c689e35929e7675db2');
+    this.showDialog(false);
+    this.reviewForm.reset();
   }
 
   submitReview() {
@@ -87,7 +89,7 @@ export class ReviewCardPageComponent {
           this.feedBackTitle = 'Oh noooon !';
         }
 
-        this.showDialog();
+        this.showDialog(true);
       },
       error: (err: any) => {
         this.response.errorF(err, 'Erreur');
