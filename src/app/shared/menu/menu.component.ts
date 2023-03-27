@@ -38,11 +38,6 @@ export class MenuComponent {
         routerLink: 'card/manage',
       },
       {
-        label: 'Révision',
-        icon: 'pi pi-fw pi-pencil',
-        routerLink: 'card/review',
-      },
-      {
         label: 'Compte',
         icon: 'pi pi-user',
         items: [

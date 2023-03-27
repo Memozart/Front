@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpService } from './../../services/http.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResponseService } from 'src/app/services/response.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-review-card-page',
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./review-card-page.component.css'],
 })
 export class ReviewCardPageComponent {
+  theme_id: any;
   review!: any;
   reviewForm!: FormGroup;
   visible!: boolean;
@@ -24,11 +25,12 @@ export class ReviewCardPageComponent {
     private fb: FormBuilder,
     private http: HttpService,
     private response: ResponseService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.getReviewByTheme('640b15c689e35929e7675db2');
+    this.getParamsOrRedirect();
 
     this.reviewForm = this.fb.group({
       answer: ['', [Validators.required]],
@@ -36,10 +38,23 @@ export class ReviewCardPageComponent {
     });
   }
 
+  getParamsOrRedirect() {
+    this.route.queryParams.subscribe((params) => {
+      this.theme_id = params['theme'];
+    });
+
+    if (!this.theme_id) {
+      this.router.navigate(['./']);
+    } else {
+      this.getReviewByTheme(this.theme_id);
+    }
+  }
+
   getReviewByTheme = (theme_id: any) => {
     this.http.get('reviews/' + theme_id).subscribe({
       next: (res: any) => {
         this.review = res.body.review;
+
         this.borderLinearGradient =
           'linear-gradient(var(--dark-bg-color), var(--dark-bg-color)) padding-box, linear-gradient(to bottom, ' +
           this.review.theme.color1 +
@@ -56,6 +71,9 @@ export class ReviewCardPageComponent {
 
         console.log(this.review);
       },
+      error: () => {
+        this.router.navigate(['./']);
+      },
     });
   };
 
@@ -65,7 +83,7 @@ export class ReviewCardPageComponent {
 
   refreshPage() {
     this.review = false;
-    this.getReviewByTheme('640b15c689e35929e7675db2');
+    this.getReviewByTheme(this.theme_id);
     this.showDialog(false);
     this.reviewForm.reset();
   }
