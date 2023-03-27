@@ -36,7 +36,7 @@ export class LoginPageComponent {
   onSubmit() {
     if (this.loginForm.invalid) return;
     const loginData = this.loginForm.value;
-    this.http.post('auth/login', loginData).subscribe({
+    this.http.post('api/auth/login', loginData).subscribe({
       next: (res: any) => {
         this.response.successF('Connection OK', res.message);
         localStorage.setItem('access_token', res.body.accessToken);
