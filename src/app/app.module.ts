@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
@@ -19,17 +19,21 @@ import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuComponent } from './shared/menu/menu.component';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 import { PasswordModule } from 'primeng/password';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { DialogModule } from 'primeng/dialog';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 
-
-import { DividerModule } from "primeng/divider";
+import { DividerModule } from 'primeng/divider';
 import { CardComponent } from './shared/card/card.component';
 import { CardModule } from 'primeng/card';
 import { PanelModule } from 'primeng/panel';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +45,7 @@ import { PanelModule } from 'primeng/panel';
     ManageCardPageComponent,
     ReviewCardPageComponent,
     MenuComponent,
-    CardComponent
+    CardComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,18 +56,19 @@ import { PanelModule } from 'primeng/panel';
     PasswordModule,
     DividerModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     ToastModule,
-    DividerModule,
-    BrowserAnimationsModule,
     CardModule,
     PanelModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
-      registrationStrategy: 'registerImmediately'
-    })
+      registrationStrategy: 'registerImmediately',
+    }),
+    ProgressBarModule,
+    InputTextareaModule,
+    DialogModule,
+    OverlayPanelModule,
   ],
   providers: [
     {
@@ -71,8 +76,8 @@ import { PanelModule } from 'primeng/panel';
       useClass: BearerInterceptor,
       multi: true,
     },
-    MessageService 
+    MessageService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
