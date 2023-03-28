@@ -1,16 +1,13 @@
-<p-card class="flex-card" [style]="{ width: '90vw' }">
-  <ng-template pTemplate="content">
-    <p>title card</p>
-    <small>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed
-      consequuntur error repudiandae numquam deserunt quisquam repellat libero
-      asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate
-      neque quas!
-    </small>
+<p-card [style]="{ background: 'linear-gradient('+ card.theme.color1 +', '+ card.theme.color2 + ')', borderRadius: '1.5rem'}">
+  <ng-template pTemplate="content" styleClass="p-0">
+    <p class="mt-0 mb-1 font-bold">{{card.theme.name}}</p>
+    <small>{{card.question}}</small>
+    <img src="assets/themes_icons/{{card.theme.name}}_white.svg" height="100">
   </ng-template>
   <ng-template pTemplate="footer">
-    <p-button icon="pi pi-pencil"
-      styleClass="p-button-rounded p-button-success p-button-text p-button-raised"></p-button>
-    <p-button icon="pi pi-trash" styleClass="p-button-rounded p-button-danger p-button-text p-button-raised"></p-button>
+    <button pButton type="button" icon="pi pi-pencil" class="text-white p-button-rounded p-button-raised"
+      [style]="{ background: '#3781BB', border : '0', boxShadow: '2px 2px 10px #184D71, -2px -2px 10px #88CEFF' }"></button>
+    <button pButton type="button" icon="pi pi-trash" class="text-white p-button-rounded p-button-raised"
+      [style]="{ background: '#3781BB', border : '0', boxShadow: '2px 2px 10px #184D71, -2px -2px 10px #88CEFF' }"></button>
   </ng-template>
 </p-card>

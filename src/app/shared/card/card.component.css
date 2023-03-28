@@ -1,16 +1,35 @@
-:host{
+:host ::ng-deep .p-card-body {
   display: flex;
-  margin: 10px;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
 }
 
-:host ::ng-deep .p-card-body{
-  display: flex;
+:host ::ng-deep .p-card-footer {
+  padding-left: 1rem;
+  padding-top: 0;
+  text-align: right;
 }
-:host ::ng-deep .p-card-content{
+
+:host ::ng-deep .p-card-content {
   padding: 0;
+  width: 12rem;
 }
 
-:host ::ng-deep .p-card-footer{
-  margin-left: 20px;
+:host ::ng-deep .p-card-content img {
+  position: absolute;
+  opacity: 0.1;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  left: 1rem;
+}
+
+:host ::ng-deep .p-button {
+  margin: 0.25rem;
+}
+
+:host ::ng-deep .p-button:enabled:hover {
+  box-shadow: inset 2px 2px 4px #184D71, inset -1px -1px 4px #88CEFF !important;
 }
