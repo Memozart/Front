@@ -12,8 +12,11 @@
   src: url('/assets/Quicksand-VariableFont_wght.ttf');
 }
 
-html, body {
+* {
   font-family: 'Quicksand';
+}
+
+html, body {
   margin: 0;
   padding: 0;
 }
