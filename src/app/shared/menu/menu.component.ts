@@ -18,24 +18,19 @@ export class MenuComponent {
   ngOnInit() {
     this.items = [
       {
-        label: 'Landing Page',
-        icon: 'pi pi-check',
-        routerLink: '',
-      },
-      {
         label: 'Accueil',
         icon: 'pi pi-fw pi-home',
         routerLink: 'home',
       },
       {
-        label: 'Ajouter',
-        icon: 'pi pi-fw pi-plus',
-        routerLink: 'card/create',
-      },
-      {
         label: 'Leçons',
         icon: 'pi pi-fw pi-book',
         routerLink: 'card/manage',
+      },
+      {
+        label: 'Ajouter',
+        icon: 'pi pi-fw pi-plus',
+        routerLink: 'card/create',
       },
       {
         label: 'Compte',
