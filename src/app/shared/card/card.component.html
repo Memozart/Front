@@ -6,8 +6,16 @@
   </ng-template>
   <ng-template pTemplate="footer">
     <button pButton type="button" icon="pi pi-pencil" class="text-white p-button-rounded p-button-raised"
-      [style]="{ background: '#3781BB', border : '0', boxShadow: '2px 2px 10px #184D71, -2px -2px 10px #88CEFF' }"></button>
+      [style]="{ background: ''+ card.theme.darkColor +'', border : '0', boxShadow: hoverEdit ? 'inset 3px 3px 4px ' + card.theme.darkShadow + ', inset -2px -2px 4px ' + card.theme.lightShadow + '' : '2px 2px 4px '+ card.theme.darkShadow +', -1px -1px 4px '+ card.theme.lightShadow +'' }"
+      (mouseover)="hoverEdit = true"
+      (mouseleave)="hoverEdit = false">
+    </button>
     <button pButton type="button" icon="pi pi-trash" class="text-white p-button-rounded p-button-raised"
-      [style]="{ background: '#3781BB', border : '0', boxShadow: '2px 2px 10px #184D71, -2px -2px 10px #88CEFF' }"></button>
+      [style]="{ background: ''+ card.theme.darkColor +'', border : '0', boxShadow: hoverDel ? 'inset 3px 3px 4px ' + card.theme.darkShadow + ', inset -2px -2px 4px ' + card.theme.lightShadow + '' : '2px 2px 4px '+ card.theme.darkShadow +', -1px -1px 4px '+ card.theme.lightShadow +'' }"
+      (click)="openConfirmDialog()"
+      (mouseover)="hoverDel = true"
+      (mouseleave)="hoverDel = false"
+      >
+    </button>
   </ng-template>
 </p-card>

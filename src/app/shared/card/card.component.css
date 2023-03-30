@@ -29,7 +29,3 @@
 :host ::ng-deep .p-button {
   margin: 0.25rem;
 }
-
-:host ::ng-deep .p-button:enabled:hover {
-  box-shadow: inset 2px 2px 4px #184D71, inset -1px -1px 4px #88CEFF !important;
-}

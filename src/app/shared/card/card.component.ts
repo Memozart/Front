@@ -8,4 +8,8 @@ import { Card } from './../../models/card';
 })
 export class CardComponent {
   @Input() card!: Card;
+  @Input() openConfirmDialog!: () => void;
+  boxShadow!: string;
+  hoverEdit: boolean = false;
+  hoverDel: boolean = false;
 }
