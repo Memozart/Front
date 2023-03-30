@@ -4,4 +4,7 @@ export interface Theme {
   icon: string;
   color1: string;
   color2: string;
+  darkColor: string;
+  darkShadow: string;
+  lightShadow: string;
 }
