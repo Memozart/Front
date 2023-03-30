@@ -1,1 +1,54 @@
-<h1 class="flex justify-content-center align-items-center w-100 text-center min-h-full vertical-align-middle" style="text-align: center;">REVISIONS</h1>
+<section *ngIf="review">
+    <div>
+        <p>Apprentissage n°{{ review.step.step }}</p>
+        <p-progressBar [value]="review.step.step * 10" [showValue]="false" color="{{ review.theme.color1 }}"
+            styleClass="m-auto" [style]="{'border-radius':'1rem', 'height':'0.6rem', 'width':'10rem'}"></p-progressBar>
+    </div>
+
+    <h1 class="pb-5">{{ review.card.question }}</h1>
+
+    <div class="category" [style.background]="borderLinearGradient">
+        <img src="assets/themes_icons/langue_color.svg" width="75">
+    </div>
+
+    <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
+        <div class="p-fluid grid justify-content-center mt-5">
+            <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
+                <span class="p-float-label">
+                    <textarea inputId="yourAnwser" rows="3" [autoResize]="true" cols="30" pInputTextarea
+                        formControlName="answer"></textarea>
+                    <label for="yourAnwser">Ta réponse</label>
+                </span>
+            </div>
+        </div>
+
+        <div class="my-5">
+            <p-overlayPanel #op my="middle" at="middle">
+                <ng-template pTemplate="content">
+                    <p>{{ review.card.help }}</p>
+                </ng-template>
+            </p-overlayPanel>
+            <button pButton (click)="op.toggle($event)" label="?" class="text-white helpButton"
+                [style.background]="bgLinearGradient"></button>
+        </div>
+
+        <button pButton type="submit" label="Valider réponse" class="mt-5 text-white p-button-rounded"
+            [style.background]="bgLinearGradient"></button>
+    </form>
+
+    <p-dialog header="{{ feedBackTitle }}" [(visible)]="visible" [modal]="true" [style]="{ width: '40vw' }"
+        [draggable]="false" [resizable]="false" [closable]="false" [styleClass]="modalStyle" *ngIf="reviewFeedBack">
+        <img src="assets/themes_icons/{{ reviewFeedBack.success }}.svg" class="feedback_icon">
+        <p class="m-0 feedback_text">
+            Cette question te sera reposée dans {{ reviewFeedBack.feedback.dayNextPresentation }} jour(s)
+        </p>
+        <p *ngIf="!reviewFeedBack.success" class="mt-2 mb-1 fw-bold">La bonne réponse était : {{
+            reviewFeedBack.feedback.goodAnswer }}</p>
+        <div class="container_theme_icon">
+            <img src="assets/themes_icons/{{ review.theme.name }}_{{ reviewFeedBack.success }}.svg" class="theme_icon">
+        </div>
+
+        <button pButton type="button" label="Suivant" class="mt-4 text-white p-button-rounded {{btnModalStyle}}"
+            (click)="refreshPage()"></button>
+    </p-dialog>
+</section>

@@ -1,0 +1,10 @@
+:host ::ng-deep .p-menubar {
+  background-color: transparent;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  border: 0px;
+}
+
+:host ::ng-deep .p-menubar-end {
+    margin-left: inherit !important;
+}
