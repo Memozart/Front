@@ -1,10 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-:root{
+:root {
   --light-bg-color: #304562;
   --dark-bg-color: #1F2D40;
   --primary-color: #FFD469;
   --light-shadow: #304562;
   --dark-shadow: #17212F;
+  --custom-bg-color: #304562;
 }
 
 @font-face {
@@ -22,7 +23,7 @@ html, body {
 }
 
 html {
-  background-color: var(--light-bg-color) !important;
+  background: var(--custom-bg-color) !important;
 }
 
 section {

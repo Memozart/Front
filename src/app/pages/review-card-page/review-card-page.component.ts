@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { HttpService } from './../../services/http.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResponseService } from 'src/app/services/response.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DesignService } from 'src/app/services/design.service';
 
 @Component({
   selector: 'app-review-card-page',
   templateUrl: './review-card-page.component.html',
   styleUrls: ['./review-card-page.component.css'],
 })
-export class ReviewCardPageComponent {
+export class ReviewCardPageComponent implements OnDestroy {
   theme_id: any;
   review!: any;
   reviewForm!: FormGroup;
@@ -26,9 +27,14 @@ export class ReviewCardPageComponent {
     private http: HttpService,
     private response: ResponseService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private designService : DesignService
   ) {}
 
+  ngOnDestroy(){
+
+    this.designService.resetCustomBgColor();
+  }
   ngOnInit() {
     this.getParamsOrRedirect();
 
@@ -36,6 +42,7 @@ export class ReviewCardPageComponent {
       answer: ['', [Validators.required]],
       idReview: ['', [Validators.required]],
     });
+    this.designService.changeCustomBgColor("white");
   }
 
   getParamsOrRedirect() {
@@ -68,8 +75,7 @@ export class ReviewCardPageComponent {
           ', ' +
           this.review.theme.color2 +
           ')';
-
-        console.log(this.review);
+        this.designService.changeCustomBgColor(this.bgLinearGradient);
       },
       error: () => {
         this.router.navigate(['./']);
@@ -114,4 +120,5 @@ export class ReviewCardPageComponent {
       },
     });
   }
+
 }

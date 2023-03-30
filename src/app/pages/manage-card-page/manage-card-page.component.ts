@@ -28,18 +28,23 @@ export class ManageCardPageComponent implements OnInit {
     });
   }
 
+
   openConfirmDialog = (): void => {
     this.confirmationService.confirm({
       message: 'Es-tu sûr de vouloir supprimer cette carte ?',
       icon: 'pi pi-exclamation-triangle',
-      accept: () => this.acceptFunc(),
+      accept: () =>{
+        
+      },
     });
   };
 
-  acceptFunc() {
+  deleteCard(cd :any) {
+
     this.response.successF(
       'Suppression effectuée',
       'La carte a bien été suprimée'
     );
+    cd.close();
   }
 }
