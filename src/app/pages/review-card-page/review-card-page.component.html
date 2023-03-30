@@ -1,8 +1,8 @@
 <section *ngIf="review">
     <div>
         <p>Apprentissage n°{{ review.step.step }}</p>
-        <p-progressBar [value]="10" [showValue]="false" color="{{ review.theme.color1 }}" styleClass="m-auto"
-            [style]="{'border-radius':'1rem', 'height':'0.6rem', 'width':'10rem'}"></p-progressBar>
+        <p-progressBar [value]="review.step.step * 10" [showValue]="false" color="{{ review.theme.color1 }}"
+            styleClass="m-auto" [style]="{'border-radius':'1rem', 'height':'0.6rem', 'width':'10rem'}"></p-progressBar>
     </div>
 
     <h1 class="pb-5">{{ review.card.question }}</h1>
@@ -51,5 +51,4 @@
         <button pButton type="button" label="Suivant" class="mt-4 text-white p-button-rounded {{btnModalStyle}}"
             (click)="refreshPage()"></button>
     </p-dialog>
-
 </section>
