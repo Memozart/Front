@@ -23,10 +23,12 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { PasswordModule } from 'primeng/password';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
 
 import { DividerModule } from 'primeng/divider';
 import { CardComponent } from './shared/card/card.component';
@@ -68,6 +70,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     ProgressBarModule,
     InputTextareaModule,
     DialogModule,
+    ConfirmDialogModule,
     OverlayPanelModule,
   ],
   providers: [
@@ -77,6 +80,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
       multi: true,
     },
     MessageService,
+    ConfirmationService,
   ],
   bootstrap: [AppComponent],
 })

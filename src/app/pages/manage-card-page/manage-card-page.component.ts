@@ -1,6 +1,8 @@
 import { Card } from './../../models/card';
 import { HttpService } from './../../services/http.service';
 import { Component, OnInit } from '@angular/core';
+import { ConfirmationService } from 'primeng/api';
+import { ResponseService } from 'src/app/services/response.service';
 
 @Component({
   selector: 'app-manage-card-page',
@@ -9,7 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageCardPageComponent implements OnInit {
   cards: Card[] = [];
-  constructor(private http: HttpService) {}
+  constructor(
+    private http: HttpService,
+    private confirmationService: ConfirmationService,
+    private response: ResponseService
+  ) {}
 
   ngOnInit() {
     this.http.get('cards').subscribe({
@@ -20,5 +26,20 @@ export class ManageCardPageComponent implements OnInit {
         console.error(err);
       },
     });
+  }
+
+  openConfirmDialog = (): void => {
+    this.confirmationService.confirm({
+      message: 'Es-tu sûr de vouloir supprimer cette carte ?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => this.acceptFunc(),
+    });
+  };
+
+  acceptFunc() {
+    this.response.successF(
+      'Suppression effectuée',
+      'La carte a bien été suprimée'
+    );
   }
 }
