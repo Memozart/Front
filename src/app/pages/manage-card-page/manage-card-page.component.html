@@ -1,7 +1,21 @@
 <section>
     <h1 class="text-center">GESTION DES CARTES</h1>
     <div class="grid">
-        <app-card class="col-12 sm:col-6 xl:col-3" *ngFor="let card of cards" [card]="card" [openConfirmDialog]="openConfirmDialog"></app-card>
+        <app-card class="col-12 sm:col-6 xl:col-3" *ngFor="let card of cards" [card]="card" >
+
+            <button pButton type="button" icon="pi pi-pencil" class="text-white p-button-rounded p-button-raised"
+                [style]="{background: card.theme.darkColor, border: 0, boxShadow :'2px 2px 4px ' + card.theme.darkShadow +', -1px -1px 4px ' + card.theme.lightShadow + ''}"
+                (mouseover)="changeBtnStyle($event, card, true)"
+                (mouseleave)="changeBtnStyle($event, card)">
+            </button>
+            <button pButton type="button" icon="pi pi-trash" class="text-white p-button-rounded p-button-raised"
+                [style]="{background: card.theme.darkColor, border: 0, boxShadow :'2px 2px 4px ' + card.theme.darkShadow +', -1px -1px 4px ' + card.theme.lightShadow + ''}"
+                (mouseover)="changeBtnStyle($event, card, true)"
+                (mouseleave)="changeBtnStyle($event, card)"
+                (click)="openConfirmDialog()">
+            </button>
+
+        </app-card>
     </div>
 
     <p-toast></p-toast>

@@ -5,17 +5,7 @@
     <img src="assets/themes_icons/{{card.theme.name}}_white.svg" height="100">
   </ng-template>
   <ng-template pTemplate="footer">
-    <button pButton type="button" icon="pi pi-pencil" class="text-white p-button-rounded p-button-raised"
-      [style]="func(hoverEdit)"
-      (mouseover)="hoverEdit = true"
-      (mouseleave)="hoverEdit = false">
-    </button>
-    <button pButton type="button" icon="pi pi-trash" class="text-white p-button-rounded p-button-raised"
-      [style]="func(hoverDel)"
-      (click)="openConfirmDialog()"
-      (mouseover)="hoverDel = true"
-      (mouseleave)="hoverDel = false"
-      >
-    </button>
+    <ng-content></ng-content>
+    
   </ng-template>
 </p-card>
