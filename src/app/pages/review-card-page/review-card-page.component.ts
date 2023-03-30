@@ -76,7 +76,6 @@ export class ReviewCardPageComponent implements OnDestroy {
           this.review.theme.color2 +
           ')';
         this.designService.changeCustomBgColor(this.bgLinearGradient);
-        // console.log(this.review);
       },
       error: () => {
         this.router.navigate(['./']);
