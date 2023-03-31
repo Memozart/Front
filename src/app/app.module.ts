@@ -27,9 +27,13 @@ import { DialogModule } from 'primeng/dialog';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import {CalendarModule} from 'primeng/calendar';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 import { DividerModule } from 'primeng/divider';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
+import {DropdownModule} from 'primeng/dropdown';
+
 
 @NgModule({
   declarations: [
@@ -55,6 +59,11 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     HttpClientModule,
     ReactiveFormsModule,
     ToastModule,
+    DividerModule,
+    CalendarModule,
+    AutoCompleteModule,
+    BrowserAnimationsModule,
+    DropdownModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerImmediately',
