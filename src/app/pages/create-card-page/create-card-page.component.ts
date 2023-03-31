@@ -13,7 +13,7 @@ import { formatDate } from '@angular/common';
 })
 export class CreateCardPageComponent {
 
-  title!: string;
+  
   themes!: any[];
   selectedTheme!: any;
  
@@ -54,10 +54,7 @@ export class CreateCardPageComponent {
   if(this.createCardForm.invalid)
     return;
   const createCardData = this.createCardForm.value;
-  
   createCardData.datePresentation = new Intl.DateTimeFormat(['fr', 'fr']).format(createCardData.datePresentation);
-  console.log(createCardData.datePresentation);
-  console.log(createCardData);
   this.http.post("/cards", createCardData).subscribe({
         next : (res : any)=> {
           this.response.successF("Creation OK", res.message);
