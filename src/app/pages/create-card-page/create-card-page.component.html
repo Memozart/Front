@@ -1,1 +1,26 @@
-<h1 class="flex justify-content-center align-items-center w-100 text-center min-h-full vertical-align-middle" style="text-align: center;">CRÉATION DE CARTE</h1>
+<form class="flex flex-column gap-5" [formGroup]="createCardForm" (ngSubmit)="onSubmit()">
+
+<p-dropdown  [options]="themes" formControlName="theme" placeholder="Selectionnez un Theme" optionLabel="name" optionValue="_id"  >
+     
+</p-dropdown>
+
+<span class="p-float-label">
+    <input id="float-input" type="text" pInputText formControlName="question"> 
+    <label for="float-input">Question</label>
+</span>
+<span class="p-float-label">
+    <input id="float-input" type="text" pInputText formControlName="answer"> 
+    <label for="float-input">Réponse</label>
+</span>
+<span class="p-float-label">
+    <input id="float-input" type="text" pInputText formControlName="help" > 
+    <label for="float-input">Aide</label>
+</span>
+
+<span class="p-float-label">
+    <p-calendar id="float-input" inputId="basic" dateFormat="dd/mm/yy"  formControlName="datePresentation"></p-calendar>
+    <label for="float-input">Date de la premiere leçon</label>
+</span>
+<button pButton type="submit" label="Création" ></button>
+        
+</form>
