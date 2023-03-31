@@ -35,6 +35,7 @@ import { CardComponent } from './shared/card/card.component';
 import { CardModule } from 'primeng/card';
 import { PanelModule } from 'primeng/panel';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { SvgComponent } from './shared/svg/svg.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     ReviewCardPageComponent,
     MenuComponent,
     CardComponent,
+    SvgComponent,
   ],
   imports: [
     BrowserModule,
