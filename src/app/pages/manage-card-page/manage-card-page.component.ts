@@ -3,6 +3,7 @@ import { HttpService } from './../../services/http.service';
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
 import { ResponseService } from 'src/app/services/response.service';
+import { DesignService } from 'src/app/services/design.service';
 
 @Component({
   selector: 'app-manage-card-page',
@@ -17,7 +18,8 @@ export class ManageCardPageComponent implements OnInit {
   constructor(
     private http: HttpService,
     private confirmationService: ConfirmationService,
-    private response: ResponseService
+    private response: ResponseService,
+    public designService: DesignService
   ) {}
 
   ngOnInit() {
@@ -44,19 +46,5 @@ export class ManageCardPageComponent implements OnInit {
       'Suppression effectuée',
       'La carte a bien été suprimée'
     );
-  }
-
-  changeBtnStyle(e: any, card: Card, hovered: boolean = false) {
-    e.currentTarget.style.boxShadow = hovered
-      ? 'inset 3px 3px 4px ' +
-        card.theme.darkShadow +
-        ', inset -2px -2px 4px ' +
-        card.theme.lightShadow +
-        ''
-      : '2px 2px 4px ' +
-        card.theme.darkShadow +
-        ', -1px -1px 4px ' +
-        card.theme.lightShadow +
-        '';
   }
 }
