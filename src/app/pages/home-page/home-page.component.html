@@ -1,10 +1,15 @@
-<section class="text-center" *ngIf="themes">
-    <h1>THIS IS HOME PAGE</h1>
+<section *ngIf="themes">
+    <h1 class="text-center">THIS IS HOME PAGE</h1>
+
     <div class="grid">
+        <div class="col-12">
+            <h2>Tes leçons du jour</h2>
+        </div>
         <app-card class="col-12 sm:col-6 xl:col-3" *ngFor="let theme of themes" [theme]="theme">
             <app-svg image icon="{{theme.icon}}" class="mr-2"></app-svg>
             <small text> {{theme.nbReviews}} leçon(s) </small>
-            <button pButton type="button" icon="pi pi-play" class="text-white p-button-rounded p-button-raised"
+            <button *ngIf="theme.nbReviews" pButton type="button" icon="pi pi-play"
+                class="text-white p-button-rounded p-button-raised"
                 [style]="{background: theme.darkColor, border: 0, boxShadow :'2px 2px 4px ' + theme.darkShadow +', -1px -1px 4px ' + theme.lightShadow + ''}"
                 routerLink="/card/review" [queryParams]="{ theme: theme._id }"
                 (mouseover)="designService.changeBtnStyle($event, theme, true)"
