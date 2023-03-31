@@ -8,7 +8,7 @@
             <button pButton type="button" icon="pi pi-pencil" class="text-white p-button-rounded p-button-raised"
                 [style]="{background: card.theme.darkColor, border: 0, boxShadow :'2px 2px 4px ' + card.theme.darkShadow +', -1px -1px 4px ' + card.theme.lightShadow + ''}"
                 (mouseover)="designService.changeBtnStyle($event, card.theme, true)"
-                (mouseleave)="designService.changeBtnStyle($event, card.theme)">
+                (mouseleave)="designService.changeBtnStyle($event, card.theme)" (click)="showDialog(card)">
             </button>
             <button pButton type="button" icon="pi pi-trash" class="text-white p-button-rounded p-button-raised"
                 [style]="{background: card.theme.darkColor, border: 0, boxShadow :'2px 2px 4px ' + card.theme.darkShadow +', -1px -1px 4px ' + card.theme.lightShadow + ''}"

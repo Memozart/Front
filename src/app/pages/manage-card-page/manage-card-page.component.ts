@@ -57,7 +57,6 @@ export class ManageCardPageComponent implements OnInit {
 
   showDialog(card: Card, isModalUpdate : boolean = true){
     this.selectedCard = card;
-
     if(!isModalUpdate){ // c'est la modal de suppression
       this.selectedCard = card;
       this.showdeleteDialog = true;

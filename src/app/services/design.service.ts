@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 export class DesignService {
   constructor() {}
 
+  public currentOrganisation : any | undefined = "";
+
   /**
    * Changement la couleur de fond appelé --custom-bg-color en la couleur en paramètre
    * @param value la couleur voulut
