@@ -1,6 +1,15 @@
-<div class="text-center">
+<section class="text-center" *ngIf="themes">
     <h1>THIS IS HOME PAGE</h1>
-
-    <button pButton pRipple type="submit" label="Commencer révisions langues" routerLink="/card/review"
-        [queryParams]="{ theme: '640b15c689e35929e7675db2' }" class="text-center"></button>
-</div>
+    <div class="grid">
+        <app-card class="col-12 sm:col-6 xl:col-3" *ngFor="let theme of themes" [theme]="theme">
+            <app-svg image icon="{{theme.icon}}" class="mr-2"></app-svg>
+            <small text> {{theme.nbReviews}} leçon(s) </small>
+            <button pButton type="button" icon="pi pi-play" class="text-white p-button-rounded p-button-raised"
+                [style]="{background: theme.darkColor, border: 0, boxShadow :'2px 2px 4px ' + theme.darkShadow +', -1px -1px 4px ' + theme.lightShadow + ''}"
+                routerLink="/card/review" [queryParams]="{ theme: theme._id }"
+                (mouseover)="designService.changeBtnStyle($event, theme, true)"
+                (mouseleave)="designService.changeBtnStyle($event, theme)">
+            </button>
+        </app-card>
+    </div>
+</section>
