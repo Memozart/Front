@@ -1,11 +1,19 @@
-<p-card [style]="{ background: 'linear-gradient('+ card.theme.color1 +', '+ card.theme.color2 + ')', borderRadius: '1.5rem'}">
+<p-card [style]="{ background: 'linear-gradient('+ theme.color1 +', '+ theme.color2 + ')', borderRadius: '1.5rem'}">
   <ng-template pTemplate="content" styleClass="p-0">
-    <p class="mt-0 mb-1 font-bold">{{card.theme.name}}</p>
-    <small>{{card.question}}</small>
-    <img src="assets/themes_icons/{{card.theme.name}}_white.svg" height="100">
+    <div class="flex align-items-center">
+      <ng-content select="[image]"></ng-content>
+      <div>
+        <p class="mt-0 mb-1 font-bold">{{theme.name}}</p>
+        <ng-content select="[text]"></ng-content>
+      </div>
+    </div>
+
+
+    <!-- <img src="assets/themes_icons/{{theme.name}}_white.svg" height="100"> -->
+    <app-svg icon="{{theme.icon}}" class="icon-theme"></app-svg>
   </ng-template>
   <ng-template pTemplate="footer">
     <ng-content></ng-content>
-    
+
   </ng-template>
 </p-card>
