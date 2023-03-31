@@ -11,6 +11,9 @@ import { ResponseService } from 'src/app/services/response.service';
 })
 export class ManageCardPageComponent implements OnInit {
   cards: Card[] = [];
+  hoverEdit: boolean = false;
+  hoverDel: boolean = false;
+
   constructor(
     private http: HttpService,
     private confirmationService: ConfirmationService,
@@ -46,5 +49,19 @@ export class ManageCardPageComponent implements OnInit {
       'La carte a bien été suprimée'
     );
     cd.close();
+  }
+
+  changeBtnStyle(e: any, card: Card, hovered: boolean = false) {
+    e.currentTarget.style.boxShadow = hovered
+      ? 'inset 3px 3px 4px ' +
+        card.theme.darkShadow +
+        ', inset -2px -2px 4px ' +
+        card.theme.lightShadow +
+        ''
+      : '2px 2px 4px ' +
+        card.theme.darkShadow +
+        ', -1px -1px 4px ' +
+        card.theme.lightShadow +
+        '';
   }
 }
