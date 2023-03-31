@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Theme } from 'src/app/models/theme';
 import { Card } from './../../models/card';
 
 @Component({
@@ -7,5 +8,5 @@ import { Card } from './../../models/card';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent {
-  @Input() card!: Card;
+  @Input() theme!: Theme;
 }

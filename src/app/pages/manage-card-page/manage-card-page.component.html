@@ -1,18 +1,19 @@
 <section>
     <h1 class="text-center">GESTION DES CARTES</h1>
     <div class="grid">
-        <app-card class="col-12 sm:col-6 xl:col-3" *ngFor="let card of cards" [card]="card" >
+        <app-card class="col-12 sm:col-6 xl:col-3" *ngFor="let card of cards" [theme]="card.theme">
+
+            <small text>{{card.question}}</small>
 
             <button pButton type="button" icon="pi pi-pencil" class="text-white p-button-rounded p-button-raised"
                 [style]="{background: card.theme.darkColor, border: 0, boxShadow :'2px 2px 4px ' + card.theme.darkShadow +', -1px -1px 4px ' + card.theme.lightShadow + ''}"
-                (mouseover)="changeBtnStyle($event, card, true)"
-                (mouseleave)="changeBtnStyle($event, card)">
+                (mouseover)="designService.changeBtnStyle($event, card.theme, true)"
+                (mouseleave)="designService.changeBtnStyle($event, card.theme)">
             </button>
             <button pButton type="button" icon="pi pi-trash" class="text-white p-button-rounded p-button-raised"
                 [style]="{background: card.theme.darkColor, border: 0, boxShadow :'2px 2px 4px ' + card.theme.darkShadow +', -1px -1px 4px ' + card.theme.lightShadow + ''}"
-                (mouseover)="changeBtnStyle($event, card, true)"
-                (mouseleave)="changeBtnStyle($event, card)"
-                (click)="openConfirmDialog()">
+                (mouseover)="designService.changeBtnStyle($event, card.theme, true)"
+                (mouseleave)="designService.changeBtnStyle($event, card.theme)" (click)="openConfirmDialog()">
             </button>
 
         </app-card>
@@ -24,8 +25,11 @@
         <ng-template pTemplate="header"></ng-template>
 
         <ng-template pTemplate="footer">
-            <button type="button" pButton class="p-button-rounded text-white" [style]="{ background: 'var(--light-bg-color)' }" icon="pi pi-times" label="Non" (click)="cd.reject()"></button>
-            <button type="button" pButton class="p-button-rounded text-white mr-0" icon="pi pi-check" label="Oui" (click)="cd.accept()"></button>
+            <button type="button" pButton class="p-button-rounded text-white"
+                [style]="{ background: 'var(--light-bg-color)' }" icon="pi pi-times" label="Non"
+                (click)="cd.reject()"></button>
+            <button type="button" pButton class="p-button-rounded text-white mr-0" icon="pi pi-check" label="Oui"
+                (click)="cd.accept()"></button>
         </ng-template>
 
     </p-confirmDialog>
