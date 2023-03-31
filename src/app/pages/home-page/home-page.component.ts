@@ -9,7 +9,6 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class HomePageComponent {
   themes!: any;
-
   constructor(private http: HttpService, public designService: DesignService) {}
 
   ngOnInit() {

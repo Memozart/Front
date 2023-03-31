@@ -1,3 +1,4 @@
+import { DesignService } from 'src/app/services/design.service';
 import { Router } from '@angular/router';
 import { HttpService } from './../../services/http.service';
 import { Component } from '@angular/core';
@@ -23,7 +24,8 @@ export class LoginPageComponent {
     private http: HttpService,
     private messageService: MessageService,
     private route: Router,
-    private response: ResponseService
+    private response: ResponseService,
+    private designService: DesignService
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class LoginPageComponent {
         this.response.successF('Connection OK', res.message);
         localStorage.setItem('access_token', res.body.accessToken);
         localStorage.setItem('refresh_token', res.body.refreshToken);
+        this.designService.currentOrganisation = res.body.currentOrganisation;
         this.route.navigate(['/home']);
       },
       error: (err: any) => {
