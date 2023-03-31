@@ -35,7 +35,7 @@ import { CardComponent } from './shared/card/card.component';
 import { CardModule } from 'primeng/card';
 import { PanelModule } from 'primeng/panel';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
-
+import {DropdownModule} from 'primeng/dropdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +47,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     ManageCardPageComponent,
     ReviewCardPageComponent,
     MenuComponent,
-    CardComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +63,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     ToastModule,
     CardModule,
     PanelModule,
+    DropdownModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerImmediately',
