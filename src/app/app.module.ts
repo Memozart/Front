@@ -23,14 +23,19 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { PasswordModule } from 'primeng/password';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import {CalendarModule} from 'primeng/calendar';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { ConfirmationService } from 'primeng/api';
 
 import { DividerModule } from 'primeng/divider';
+import { CardComponent } from './shared/card/card.component';
+import { CardModule } from 'primeng/card';
+import { PanelModule } from 'primeng/panel';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import {DropdownModule} from 'primeng/dropdown';
 
@@ -46,6 +51,7 @@ import {DropdownModule} from 'primeng/dropdown';
     ManageCardPageComponent,
     ReviewCardPageComponent,
     MenuComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +70,8 @@ import {DropdownModule} from 'primeng/dropdown';
     AutoCompleteModule,
     BrowserAnimationsModule,
     DropdownModule,
+    CardModule,
+    PanelModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerImmediately',
@@ -71,6 +79,7 @@ import {DropdownModule} from 'primeng/dropdown';
     ProgressBarModule,
     InputTextareaModule,
     DialogModule,
+    ConfirmDialogModule,
     OverlayPanelModule,
   ],
   providers: [
@@ -80,6 +89,7 @@ import {DropdownModule} from 'primeng/dropdown';
       multi: true,
     },
     MessageService,
+    ConfirmationService,
   ],
   bootstrap: [AppComponent],
 })

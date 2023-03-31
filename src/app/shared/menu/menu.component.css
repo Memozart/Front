@@ -7,4 +7,42 @@
 
 :host ::ng-deep .p-menubar-end {
     margin-left: inherit !important;
+    text-align: right;
+}
+
+:host ::ng-deep .p-menubar-start, :host ::ng-deep .p-menubar-end {
+  width: 10rem;
+}
+
+:host ::ng-deep .p-menuitem-link {
+  display: block !important;
+}
+
+:host ::ng-deep .p-menuitem-link .p-menuitem-icon {
+    margin: auto !important;
+    background: var(--dark-bg-color);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+:host ::ng-deep .p-menuitem-link .p-menuitem-text {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+:host ::ng-deep .p-submenu-icon { 
+  display: none !important;
+}
+
+:host ::ng-deep .p-submenu-list span {
+  display: inline !important;
+}
+
+:host ::ng-deep .p-submenu-list .p-menuitem-icon {
+  padding-right: 1rem;
+  background-color: transparent;
 }
