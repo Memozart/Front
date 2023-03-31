@@ -1,18 +1,19 @@
 <section *ngIf="cards">
     <h1 class="text-center">GESTION DES CARTES</h1>
     <div class="grid">
-        <app-card class="col-12 sm:col-6 xl:col-3" *ngFor="let card of cards" [card]="card">
+        <app-card class="col-12 sm:col-6 xl:col-3" *ngFor="let card of cards" [theme]="card.theme">
+
+            <small text>{{card.question}}</small>
 
             <button pButton type="button" icon="pi pi-pencil" class="text-white p-button-rounded p-button-raised"
                 [style]="{background: card.theme.darkColor, border: 0, boxShadow :'2px 2px 4px ' + card.theme.darkShadow +', -1px -1px 4px ' + card.theme.lightShadow + ''}"
-                (click)="showDialog(card)" (mouseover)="changeBtnStyle($event, card, true)"
-                (mouseleave)="changeBtnStyle($event, card)">
-
+                (mouseover)="designService.changeBtnStyle($event, card.theme, true)"
+                (mouseleave)="designService.changeBtnStyle($event, card.theme)">
             </button>
             <button pButton type="button" icon="pi pi-trash" class="text-white p-button-rounded p-button-raised"
                 [style]="{background: card.theme.darkColor, border: 0, boxShadow :'2px 2px 4px ' + card.theme.darkShadow +', -1px -1px 4px ' + card.theme.lightShadow + ''}"
-                (mouseover)="changeBtnStyle($event, card, true)" (mouseleave)="changeBtnStyle($event, card)"
-                (click)="showDialog(card,false)">
+                (mouseover)="designService.changeBtnStyle($event, card.theme, true)"
+                (mouseleave)="designService.changeBtnStyle($event, card.theme)" (click)="showDialog(card,false)">
             </button>
 
         </app-card>

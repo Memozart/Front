@@ -15,9 +15,10 @@
 :host ::ng-deep .p-card-content {
   padding: 0;
   width: 12rem;
+  text-align: left;
 }
 
-:host ::ng-deep .p-card-content img {
+:host ::ng-deep .icon-theme {
   position: absolute;
   opacity: 0.1;
   top: 0;

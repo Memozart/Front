@@ -4,6 +4,8 @@ import { HttpService } from './../../services/http.service';
 import { Component, OnInit } from '@angular/core';
 import { ResponseService } from 'src/app/services/response.service';
 import { Theme } from 'src/app/models/theme';
+import { DesignService } from 'src/app/services/design.service';
+
 
 @Component({
   selector: 'app-manage-card-page',
@@ -21,8 +23,9 @@ export class ManageCardPageComponent implements OnInit {
   
   constructor(
     private http: HttpService,
+    private fb: FormBuilder,
     private response: ResponseService,
-    private fb: FormBuilder
+    public designService: DesignService
   ) { }
 
   ngOnInit() {
