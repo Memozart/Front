@@ -1,0 +1,11 @@
+<p-card [style]="{ background: 'linear-gradient('+ card.theme.color1 +', '+ card.theme.color2 + ')', borderRadius: '1.5rem'}">
+  <ng-template pTemplate="content" styleClass="p-0">
+    <p class="mt-0 mb-1 font-bold">{{card.theme.name}}</p>
+    <small>{{card.question}}</small>
+    <img src="assets/themes_icons/{{card.theme.name}}_white.svg" height="100">
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <ng-content></ng-content>
+    
+  </ng-template>
+</p-card>
