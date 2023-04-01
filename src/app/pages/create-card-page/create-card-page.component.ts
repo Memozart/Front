@@ -4,72 +4,82 @@ import { HttpService } from 'src/app/services/http.service';
 import { ResponseService } from 'src/app/services/response.service';
 import { Router } from '@angular/router';
 import { formatDate } from '@angular/common';
-
+import { Theme } from 'src/app/models/theme';
+import { DesignService } from 'src/app/services/design.service';
 
 @Component({
   selector: 'app-create-card-page',
   templateUrl: './create-card-page.component.html',
-  styleUrls: ['./create-card-page.component.css']
+  styleUrls: ['./create-card-page.component.css'],
 })
 export class CreateCardPageComponent {
-
-  
   themes!: any[];
+  theme!: Theme;
   selectedTheme!: any;
- 
-  createCardForm! : FormGroup;
+  bgLinearGradient!: string;
+
+  createCardForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private http: HttpService,
     private route: Router,
-    private response:  ResponseService
+    private response: ResponseService,
+    private designService: DesignService
+  ) {}
 
-  ){}
+  ngOnDestroy() {
+    this.designService.resetCustomBgColor();
+  }
 
-  ngOnInit(){
+  ngOnInit() {
     this.createCardForm = this.fb.group({
-        question: ['',[Validators.required]],
-        answer: ['',[Validators.required]],
-        help:[''],
-        theme:['',[Validators.required]],
-        datePresentation:[''],
-        
-    })
-  
+      question: ['', [Validators.required]],
+      answer: ['', [Validators.required]],
+      help: [''],
+      theme: ['', [Validators.required]],
+      datePresentation: [''],
+    });
 
-    this.http.get("themes").subscribe({
-      next: (data: any)=>{
-         this.themes = data.body;
+    this.http.get('themes').subscribe({
+      next: (data: any) => {
+        this.themes = data.body;
       },
-      error:(error:any)=>{}
-    })
+    });
 
-        
-    }
-
-
-  onSubmit(){
-  
-  if(this.createCardForm.invalid)
-    return;
-  const createCardData = this.createCardForm.value;
-  createCardData.datePresentation = new Intl.DateTimeFormat(['fr', 'fr']).format(createCardData.datePresentation);
-  this.http.post("/cards", createCardData).subscribe({
-        next : (res : any)=> {
-          this.response.successF("Creation OK", res.message);
-          this.createCardForm.reset();
-        },
-        error : (err : any)=>{
-          this.response.errorF(err,"Erreur");
-        }
-  })
+    this.getSelectedTheme('640b15c689e35929e7675db1');
   }
 
- 
-  
-
-  
+  onSubmit() {
+    if (this.createCardForm.invalid) return;
+    const createCardData = this.createCardForm.value;
+    createCardData.datePresentation = new Intl.DateTimeFormat([
+      'fr',
+      'fr',
+    ]).format(createCardData.datePresentation);
+    this.http.post('/cards', createCardData).subscribe({
+      next: (res: any) => {
+        this.response.successF('Creation OK', res.message);
+        this.createCardForm.reset();
+      },
+      error: (err: any) => {
+        this.response.errorF(err, 'Erreur');
+      },
+    });
   }
 
-
+  getSelectedTheme(id: string) {
+    this.http.get('themes/' + id).subscribe({
+      next: (data: any) => {
+        this.theme = data.body;
+        this.bgLinearGradient =
+          'linear-gradient(' +
+          this.theme.color1 +
+          ', ' +
+          this.theme.color2 +
+          ')';
+        this.designService.changeCustomBgColor(this.bgLinearGradient);
+      },
+    });
+  }
+}
