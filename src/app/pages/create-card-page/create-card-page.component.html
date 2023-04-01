@@ -1,26 +1,61 @@
-<form class="flex flex-column gap-5" [formGroup]="createCardForm" (ngSubmit)="onSubmit()">
+<section>
 
-<p-dropdown  [options]="themes" formControlName="theme" placeholder="Selectionnez un Theme" optionLabel="name" optionValue="_id"  >
-     
-</p-dropdown>
+    <div class="category"
+        [style]="{ background: 'linear-gradient(var(--dark-bg-color), var(--dark-bg-color)) padding-box, linear-gradient(to bottom, red, blue) border-box' }">
+        <app-svg image icon="langue"></app-svg>
+    </div>
 
-<span class="p-float-label">
-    <input id="float-input" type="text" pInputText formControlName="question"> 
-    <label for="float-input">Question</label>
-</span>
-<span class="p-float-label">
-    <input id="float-input" type="text" pInputText formControlName="answer"> 
-    <label for="float-input">Réponse</label>
-</span>
-<span class="p-float-label">
-    <input id="float-input" type="text" pInputText formControlName="help" > 
-    <label for="float-input">Aide</label>
-</span>
+    <form [formGroup]="createCardForm" (ngSubmit)="onSubmit()">
 
-<span class="p-float-label">
-    <p-calendar id="float-input" inputId="basic" dateFormat="dd/mm/yy"  formControlName="datePresentation"></p-calendar>
-    <label for="float-input">Date de la premiere leçon</label>
-</span>
-<button pButton type="submit" label="Création" ></button>
-        
-</form>
+        <div class="p-fluid grid justify-content-center mt-2">
+            <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
+                <p-dropdown [options]="themes" formControlName="theme" placeholder="Selectionne un thème"
+                    optionLabel="name" optionValue="_id">
+                </p-dropdown>
+            </div>
+        </div>
+
+        <div class="p-fluid grid justify-content-center mt-2">
+            <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
+                <span class="p-float-label">
+                    <textarea rows="3" [autoResize]="true" cols="30" pInputTextarea
+                        formControlName="question"></textarea>
+                    <label for="float-input">Question</label>
+                </span>
+            </div>
+        </div>
+
+        <div class="p-fluid grid justify-content-center mt-2">
+            <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
+                <span class="p-float-label">
+                    <textarea rows="3" [autoResize]="true" cols="30" pInputTextarea formControlName="answer"></textarea>
+                    <label for="float-input">Réponse</label>
+                </span>
+            </div>
+        </div>
+
+        <div class="p-fluid grid justify-content-center mt-2">
+            <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
+                <span class="p-float-label">
+                    <input id="float-input" type="text" pInputText formControlName="help">
+                    <label for="float-input">Aide</label>
+                </span>
+            </div>
+        </div>
+
+        <div class="p-fluid grid justify-content-center mt-2">
+            <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
+                <span class="p-float-label">
+                    <p-calendar id="float-input" inputId="basic" dateFormat="dd/mm/yy"
+                        formControlName="datePresentation"></p-calendar>
+                    <label for="float-input">Date de la premiere leçon</label>
+                </span>
+            </div>
+        </div>
+
+
+        <button pButton type="submit" label="Créer" class="mt-5 text-white p-button-rounded"></button>
+
+    </form>
+
+</section>
