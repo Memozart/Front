@@ -34,17 +34,34 @@ export class DesignService {
   /**
    * Permet de changer la couleur des boutons en fonction d'un événement
    */
-  public changeBtnStyle(e: any, theme: any, hovered: boolean = false) {
-    e.currentTarget.style.boxShadow = hovered
-      ? 'inset 3px 3px 4px ' +
-        theme.darkShadow +
-        ', inset -2px -2px 4px ' +
-        theme.lightShadow +
-        ''
-      : '2px 2px 4px ' +
-        theme.darkShadow +
-        ', -1px -1px 4px ' +
-        theme.lightShadow +
-        '';
+  public changeBtnStyle(
+    e: any,
+    theme: any,
+    option: number,
+    hovered: boolean = false
+  ) {
+    if (option == 1) {
+      e.currentTarget.style.boxShadow = hovered
+        ? 'inset 3px 3px 4px ' +
+          theme.darkShadow +
+          ', inset -2px -2px 4px ' +
+          theme.lightShadow +
+          ''
+        : '2px 2px 4px ' +
+          theme.darkShadow +
+          ', -1px -1px 4px ' +
+          theme.lightShadow +
+          '';
+    }
+
+    if (option == 2) {
+      e.currentTarget.style.boxShadow = hovered
+        ? 'inset 3px 3px 4px ' +
+          theme.darkShadow +
+          ', inset -2px -2px 4px ' +
+          theme.lightShadow +
+          ''
+        : '5px 5px 15px var(--dark-shadow), -5px -5px 15px var(--light-shadow)';
+    }
   }
 }
