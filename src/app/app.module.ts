@@ -19,6 +19,7 @@ import { ReviewCardPageComponent } from './pages/review-card-page/review-card-pa
 import { CardComponent } from './shared/card/card.component';
 import { SvgComponent } from './shared/svg/svg.component';
 import { MenuComponent } from './shared/menu/menu.component';
+import { ThemeComponent } from './shared/theme/theme.component';
 
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
@@ -50,6 +51,7 @@ import { MessageService, ConfirmationService } from 'primeng/api';
     MenuComponent,
     CardComponent,
     SvgComponent,
+    ThemeComponent,
   ],
   imports: [
     BrowserModule,
