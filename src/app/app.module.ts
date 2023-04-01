@@ -36,11 +36,8 @@ import { DividerModule } from 'primeng/divider';
 import { CardModule } from 'primeng/card';
 import { PanelModule } from 'primeng/panel';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
-import { DropdownModule } from 'primeng/dropdown';
-
-import { ConfirmationService } from 'primeng/api';
-import { MessageService } from 'primeng/api';
-
+import {DropdownModule} from 'primeng/dropdown';
+import { MessageService, ConfirmationService } from 'primeng/api';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,6 +72,7 @@ import { MessageService } from 'primeng/api';
     DropdownModule,
     CardModule,
     PanelModule,
+    DropdownModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerImmediately',

@@ -1,3 +1,4 @@
+import { DesignService } from 'src/app/services/design.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
@@ -13,7 +14,7 @@ export class MenuComponent {
    */
   items!: MenuItem[];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public designService: DesignService) {}
 
   ngOnInit() {
     this.items = [
@@ -50,7 +51,8 @@ export class MenuComponent {
             label: 'Déconnexion',
             icon: 'pi pi-fw pi-power-off',
             command: () => {
-              localStorage.removeItem('token');
+              localStorage.removeItem('access_token');
+              localStorage.removeItem('refresh_token');
               this.router.navigate(['login']);
             },
           },
