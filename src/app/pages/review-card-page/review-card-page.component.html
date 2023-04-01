@@ -7,9 +7,7 @@
 
     <h1 class="pb-5">{{ review.card.question }}</h1>
 
-    <div class="category" [style.background]="borderLinearGradient">
-        <img src="assets/themes_icons/langue_color.svg" width="75">
-    </div>
+    <app-theme [theme]="review.theme"></app-theme>
 
     <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
         <div class="p-fluid grid justify-content-center mt-5">
