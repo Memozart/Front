@@ -2,6 +2,10 @@ import { DesignService } from 'src/app/services/design.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { AppState } from 'src/app/stores';
+import { Store } from '@ngrx/store';
+import { User } from 'src/app/models/user';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-menu',
@@ -13,8 +17,12 @@ export class MenuComponent {
    * Nom des composants du menu.
    */
   items!: MenuItem[];
-
-  constructor(private router: Router, public designService: DesignService) {}
+  user!: Observable<User>;
+  constructor(
+    private router: Router,
+    public designService: DesignService,
+    public store: Store<AppState>
+  ) { }
 
   ngOnInit() {
     this.items = [
@@ -59,5 +67,7 @@ export class MenuComponent {
         ],
       },
     ];
+
+    this.user = this.store.select(state => state.user.data);
   }
 }

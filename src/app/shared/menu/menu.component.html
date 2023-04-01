@@ -4,6 +4,6 @@
     </ng-template>
 
     <ng-template pTemplate="end" class="m-auto">
-        <p>{{ designService.currentOrganisation?.name }}</p>
+        <p>{{ (user | async)?.currentOrganisation?.name }}</p>
     </ng-template>
 </p-menubar>
