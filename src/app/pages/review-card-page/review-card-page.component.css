@@ -92,6 +92,7 @@ textarea {
 .feedback_icon {
   position: absolute;
   top: -2rem;
+  width: 3.75rem;
 }
 
 .feedback_text {
@@ -106,6 +107,15 @@ textarea {
   top: 0;
   bottom: 0;
   border-radius: 2rem;
+  z-index: -1;
+}
+
+.container_theme_icon.true {
+  color: #039d57;
+}
+
+.container_theme_icon.false {
+  color: #D42E52;
 }
 
 .theme_icon {

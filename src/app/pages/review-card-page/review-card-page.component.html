@@ -26,7 +26,7 @@
                     <p>{{ review.card.help }}</p>
                 </ng-template>
             </p-overlayPanel>
-            <button pButton (click)="op.toggle($event)" label="?" class="text-white helpButton"
+            <button pButton type="button" (click)="op.toggle($event)" label="?" class="text-white helpButton"
                 [style.background]="bgLinearGradient"></button>
         </div>
 
@@ -36,14 +36,14 @@
 
     <p-dialog header="{{ feedBackTitle }}" [(visible)]="visible" [modal]="true" [style]="{ width: '40vw' }"
         [draggable]="false" [resizable]="false" [closable]="false" [styleClass]="modalStyle" *ngIf="reviewFeedBack">
-        <img src="assets/themes_icons/{{ reviewFeedBack.success }}.svg" class="feedback_icon">
+        <app-svg icon="{{ reviewFeedBack.success }}" class="feedback_icon"></app-svg>
         <p class="m-0 feedback_text">
             Cette question te sera reposée dans {{ reviewFeedBack.feedback.dayNextPresentation }} jour(s)
         </p>
         <p *ngIf="!reviewFeedBack.success" class="mt-2 mb-1 fw-bold">La bonne réponse était : {{
             reviewFeedBack.feedback.goodAnswer }}</p>
-        <div class="container_theme_icon">
-            <img src="assets/themes_icons/{{ review.theme.name }}_{{ reviewFeedBack.success }}.svg" class="theme_icon">
+        <div class="container_theme_icon {{ reviewFeedBack.success }}">
+            <app-svg icon="{{review.theme.icon}}" class="theme_icon"></app-svg>
         </div>
 
         <button pButton type="button" label="Suivant" class="mt-4 text-white p-button-rounded {{btnModalStyle}}"

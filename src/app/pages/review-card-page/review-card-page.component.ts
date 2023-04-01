@@ -28,11 +28,10 @@ export class ReviewCardPageComponent implements OnDestroy {
     private response: ResponseService,
     private router: Router,
     private route: ActivatedRoute,
-    private designService : DesignService
+    private designService: DesignService
   ) {}
 
-  ngOnDestroy(){
-
+  ngOnDestroy() {
     this.designService.resetCustomBgColor();
   }
   ngOnInit() {
@@ -42,7 +41,7 @@ export class ReviewCardPageComponent implements OnDestroy {
       answer: ['', [Validators.required]],
       idReview: ['', [Validators.required]],
     });
-    this.designService.changeCustomBgColor("white");
+    this.designService.changeCustomBgColor('white');
   }
 
   getParamsOrRedirect() {
@@ -60,6 +59,10 @@ export class ReviewCardPageComponent implements OnDestroy {
   getReviewByTheme = (theme_id: any) => {
     this.http.get('reviews/' + theme_id).subscribe({
       next: (res: any) => {
+        if (!res.body) {
+          this.router.navigate(['./']);
+        }
+
         this.review = res.body.review;
 
         this.borderLinearGradient =
@@ -109,8 +112,14 @@ export class ReviewCardPageComponent implements OnDestroy {
 
         if (this.reviewFeedBack.success) {
           this.feedBackTitle = 'Yhaaaaa !';
+          this.designService.changeCustomBgColor('#03a55a');
+          this.borderLinearGradient = '#03a55a';
+          this.bgLinearGradient = '#03a55a';
         } else {
           this.feedBackTitle = 'Oh noooon !';
+          this.designService.changeCustomBgColor('#dc3055');
+          this.borderLinearGradient = '#dc3055';
+          this.bgLinearGradient = '#dc3055';
         }
 
         this.showDialog(true);
@@ -120,5 +129,4 @@ export class ReviewCardPageComponent implements OnDestroy {
       },
     });
   }
-
 }
