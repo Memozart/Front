@@ -39,6 +39,7 @@ import { DropdownModule } from 'primeng/dropdown';
 
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
+import { ThemeComponent } from './shared/theme/theme.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { MessageService } from 'primeng/api';
     MenuComponent,
     CardComponent,
     SvgComponent,
+    ThemeComponent,
   ],
   imports: [
     BrowserModule,
