@@ -23,7 +23,6 @@ input,
   outline: none;
   border-radius: 2rem;
   padding: 0.5rem 1.5rem;
-
   box-shadow: inset 5px 5px 5px var(--dark-shadow),
     inset -2px -2px 5px var(--light-shadow);
 }
@@ -56,8 +55,8 @@ input,
   top: -0.75rem;
 }
 
-.p-inputtext {
-  font-family: "Quicksand";
+::ng-deep .p-inputtext {
+  font-family: 'Quicksand';
 }
 
 .p-inputtext:enabled:focus {
@@ -66,67 +65,10 @@ input,
   border-color: none;
 }
 
-:host ::ng-deep .helpButton {
-  width: 2rem;
-  height: 2rem;
-  padding: 0 !important;
-  border-radius: 50%;
-}
-
 :host ::ng-deep .p-button {
   border: none;
   box-shadow: 5px 5px 15px var(--dark-shadow),
     -5px -5px 15px var(--light-shadow);
-  font-family: "Quicksand";
   font-weight: bold;
   padding: 0.75rem 2rem;
-}
-
-:host ::ng-deep .p-dialog {
-  font-family: "Quicksand";
-  border-radius: 2rem;
-  border: 0;
-  text-align: left;
-}
-
-:host ::ng-deep .p-dialog .p-dialog-header,
-:host ::ng-deep .p-dialog .p-dialog-content {
-  background-color: transparent;
-}
-
-:host ::ng-deep .p-dialog .p-dialog-header {
-  padding-bottom: 0.5rem;
-  padding-top: 2.5rem;
-}
-
-:host ::ng-deep .p-dialog .p-dialog-header .p-dialog-title {
-  font-size: 1.75rem;
-  font-weight: bold;
-}
-
-.feedback_icon {
-  position: absolute;
-  top: -2rem;
-}
-
-.feedback_text {
-  font-size: 1.25rem;
-}
-
-.container_theme_icon {
-  overflow: hidden;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  border-radius: 2rem;
-}
-
-.theme_icon {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 20vh;
-  z-index: -1;
 }

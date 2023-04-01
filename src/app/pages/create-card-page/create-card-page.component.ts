@@ -25,7 +25,7 @@ export class CreateCardPageComponent {
     private http: HttpService,
     private route: Router,
     private response: ResponseService,
-    private designService: DesignService
+    public designService: DesignService
   ) {}
 
   ngOnDestroy() {
