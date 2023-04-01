@@ -12,8 +12,8 @@
                 class="text-white p-button-rounded p-button-raised"
                 [style]="{background: theme.darkColor, border: 0, boxShadow :'2px 2px 4px ' + theme.darkShadow +', -1px -1px 4px ' + theme.lightShadow + ''}"
                 routerLink="/card/review" [queryParams]="{ theme: theme._id }"
-                (mouseover)="designService.changeBtnStyle($event, theme, true)"
-                (mouseleave)="designService.changeBtnStyle($event, theme)">
+                (mouseover)="designService.changeBtnStyle($event, theme, 1, true)"
+                (mouseleave)="designService.changeBtnStyle($event, 1, theme)">
             </button>
         </app-card>
     </div>
