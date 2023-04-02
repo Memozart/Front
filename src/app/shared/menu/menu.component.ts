@@ -23,7 +23,7 @@ export class MenuComponent {
     private router: Router,
     public designService: DesignService,
     public store: Store<AppState>
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.items = [
@@ -69,15 +69,13 @@ export class MenuComponent {
       },
     ];
 
-    this.user = this.store.select(state => state.user.data);
+    this.user = this.store.select((state) => state.user.data);
   }
 
-  concatNameUser(prenom :string | undefined, nom :string |undefined){
-    if(!prenom || !nom)
-      return "";
-      const premiereLettre1 = prenom.charAt(0).toUpperCase(); 
-      const premiereLettre2 = nom.charAt(0).toUpperCase(); 
-    
-      return premiereLettre1 + premiereLettre2;
+  concatNameUser(firstname: string | undefined, lastname: string | undefined) {
+    if (!firstname || !lastname) return '';
+    const firstNameletter = firstname.charAt(0).toUpperCase();
+    const lastNameNameletter = lastname.charAt(0).toUpperCase();
+    return firstNameletter + lastNameNameletter;
   }
 }
