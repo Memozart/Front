@@ -1,26 +1,58 @@
-<form class="flex flex-column gap-5" [formGroup]="createCardForm" (ngSubmit)="onSubmit()">
+<section *ngIf="theme">
 
-<p-dropdown  [options]="themes" formControlName="theme" placeholder="Selectionnez un Theme" optionLabel="name" optionValue="_id"  >
-     
-</p-dropdown>
+    <app-theme [theme]="theme"></app-theme>
 
-<span class="p-float-label">
-    <input id="float-input" type="text" pInputText formControlName="question"> 
-    <label for="float-input">Question</label>
-</span>
-<span class="p-float-label">
-    <input id="float-input" type="text" pInputText formControlName="answer"> 
-    <label for="float-input">Réponse</label>
-</span>
-<span class="p-float-label">
-    <input id="float-input" type="text" pInputText formControlName="help" > 
-    <label for="float-input">Aide</label>
-</span>
+    <form [formGroup]="createCardForm" (ngSubmit)="onSubmit()">
 
-<span class="p-float-label">
-    <p-calendar id="float-input" inputId="basic" dateFormat="dd/mm/yy"  formControlName="datePresentation"></p-calendar>
-    <label for="float-input">Date de la premiere leçon</label>
-</span>
-<button pButton type="submit" label="Création" ></button>
-        
-</form>
+        <div class="p-fluid grid justify-content-center mt-2">
+            <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
+                <p-dropdown [options]="themes" [(ngModel)]="selectedTheme" formControlName="theme"
+                    optionLabel="name" optionValue="_id" (onChange)="getSelectedTheme(selectedTheme)">
+                </p-dropdown>
+            </div>
+        </div>
+
+        <div class="p-fluid grid justify-content-center mt-2">
+            <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
+                <span class="p-float-label">
+                    <textarea inputId="question-input" rows="2" [autoResize]="true" cols="30" pInputTextarea
+                        formControlName="question"></textarea>
+                    <label for="question-input">Question</label>
+                </span>
+            </div>
+        </div>
+
+        <div class="p-fluid grid justify-content-center mt-2">
+            <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
+                <span class="p-float-label">
+                    <textarea inputId="answer-input" rows="2" [autoResize]="true" cols="30" pInputTextarea formControlName="answer"></textarea>
+                    <label for="answer-input">Réponse</label>
+                </span>
+            </div>
+        </div>
+
+        <div class="p-fluid grid justify-content-center mt-2">
+            <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
+                <span class="p-float-label">
+                    <input id="help-input" type="text" pInputText formControlName="help">
+                    <label for="help-input">Aide</label>
+                </span>
+            </div>
+        </div>
+
+        <div class="p-fluid grid justify-content-center mt-2">
+            <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
+                <span class="p-float-label">
+                    <p-calendar id="date-input" inputId="basic" dateFormat="dd/mm/yy"
+                        formControlName="datePresentation"></p-calendar>
+                    <label for="date-input">Date première leçon</label>
+                </span>
+            </div>
+        </div>
+
+        <button pButton type="submit" label="Créer" class="mt-5 text-white p-button-rounded" [style.background]="bgLinearGradient" (mouseover)="designService.changeBtnStyle($event, theme, 1, true)"
+                (mouseleave)="designService.changeBtnStyle($event, theme, 2)"></button>
+
+    </form>
+
+</section>
