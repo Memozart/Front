@@ -1,3 +1,4 @@
+import { signOutAction } from './../../stores/user.actions';
 import { DesignService } from 'src/app/services/design.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -59,8 +60,8 @@ export class MenuComponent {
             label: 'Déconnexion',
             icon: 'pi pi-fw pi-power-off',
             command: () => {
-              localStorage.removeItem('access_token');
-              localStorage.removeItem('refresh_token');
+              localStorage.clear();
+              this.store.dispatch(signOutAction());
               this.router.navigate(['login']);
             },
           },
@@ -69,5 +70,14 @@ export class MenuComponent {
     ];
 
     this.user = this.store.select(state => state.user.data);
+  }
+
+  concatNameUser(prenom :string | undefined, nom :string |undefined){
+    if(!prenom || !nom)
+      return "";
+      const premiereLettre1 = prenom.charAt(0).toUpperCase(); 
+      const premiereLettre2 = nom.charAt(0).toUpperCase(); 
+    
+      return premiereLettre1 + premiereLettre2;
   }
 }

@@ -13,16 +13,7 @@ export interface UserState {
  * déclaration de la valeur de base de l'état de notre utilisateur
  */
 export const USER_INITIAL_STATE = {
-  data: {
-    _id: 'user id',
-    email: 'N/A',
-    firstName: 'N/A',
-    lastName: 'N/A',
-    currentOrganisation: {
-      _id: 'organisation id',
-      name: 'N/A',
-    },
-  } as User,
+  data: {} as User,
 };
 
 /**
@@ -45,6 +36,15 @@ export const userReducer = createReducer(
       return {
         ...state,
         data: user,
+      };
+    }
+  ),
+  on(
+    UserAction.signOutAction,
+    (state: UserState): UserState => {
+      return {
+        ...state,
+        data: {} as User,
       };
     }
   ),

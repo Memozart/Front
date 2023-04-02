@@ -1,4 +1,5 @@
-import { Action, ActionReducerMap } from "@ngrx/store"
+import { Action, ActionReducerMap, MetaReducer } from "@ngrx/store"
+import { hydrationMetaReducer } from "./hydratation.reducer";
 import { userReducer, UserState } from './user.reducer';
 
 
@@ -27,3 +28,4 @@ export const ROOT_REDUCER: ActionReducerMap<AppState, Action> = {
   user: userReducer
 };
 
+export const metaReducers: MetaReducer[] = [hydrationMetaReducer];

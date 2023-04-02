@@ -10,3 +10,8 @@ export const switchUserOrganisationAction = createAction(
   '[ user ] switch user organisation',
   props<{ organisation: Organisation }>()
 );
+
+export const signOutAction = createAction(
+  '[ user ] signout user'
+);
+
