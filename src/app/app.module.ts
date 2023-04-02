@@ -38,6 +38,11 @@ import { PanelModule } from 'primeng/panel';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import {DropdownModule} from 'primeng/dropdown';
 import { MessageService, ConfirmationService } from 'primeng/api';
+import { StoreModule } from '@ngrx/store';
+import { metaReducers, ROOT_REDUCER } from './stores';
+import { AvatarModule } from 'primeng/avatar';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,6 +87,8 @@ import { MessageService, ConfirmationService } from 'primeng/api';
     DialogModule,
     ConfirmDialogModule,
     OverlayPanelModule,
+    StoreModule.forRoot(ROOT_REDUCER, {metaReducers}), //reducers et metareducers
+    AvatarModule
   ],
   providers: [
     {

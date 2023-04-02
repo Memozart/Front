@@ -1,15 +1,16 @@
-import { DesignService } from 'src/app/services/design.service';
 import { Router } from '@angular/router';
 import { HttpService } from './../../services/http.service';
 import { Component } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { MessageService } from 'primeng/api';
 import { ResponseService } from 'src/app/services/response.service';
+import { User } from 'src/app/models/user';
+import { AppState } from 'src/app/stores';
+import { Store } from '@ngrx/store';
+import { updateUserAction } from 'src/app/stores/user.actions';
 
 @Component({
   selector: 'app-login-page',
@@ -18,15 +19,14 @@ import { ResponseService } from 'src/app/services/response.service';
 })
 export class LoginPageComponent {
   loginForm!: FormGroup;
-
+  user!: User;
   constructor(
     private fb: FormBuilder,
     private http: HttpService,
-    private messageService: MessageService,
     private route: Router,
     private response: ResponseService,
-    private designService: DesignService
-  ) {}
+    public store: Store<AppState>
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -43,8 +43,8 @@ export class LoginPageComponent {
         this.response.successF('Connection OK', res.message);
         localStorage.setItem('access_token', res.body.accessToken);
         localStorage.setItem('refresh_token', res.body.refreshToken);
-        this.designService.currentOrganisation = res.body.currentOrganisation;
         this.route.navigate(['/home']);
+        this.store.dispatch(updateUserAction({user : res.body.user}));
       },
       error: (err: any) => {
         this.response.errorF(err, 'Erreur lors de la connexion');
