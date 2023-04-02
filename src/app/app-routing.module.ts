@@ -10,7 +10,7 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { ReviewCardPageComponent } from './pages/review-card-page/review-card-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: "login" , pathMatch:'full'},
+  { path: '', component: LandingPageComponent},
   { path: 'home', component: HomePageComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterPageComponent },
   { path: 'login', component: LoginPageComponent },

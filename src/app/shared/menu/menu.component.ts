@@ -18,15 +18,40 @@ export class MenuComponent {
    * Nom des composants du menu.
    */
   items!: MenuItem[];
-  user!: Observable<User>;
+  user?: User;
   constructor(
     private router: Router,
     public designService: DesignService,
     public store: Store<AppState>
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.items = [
+    this.store.select(state => state.user?.data).subscribe({
+      next: (res:any) => {
+        if(!res){
+          this.items = this.MenuNotConnected();
+          this.user = undefined;
+          return;
+        }
+        this.items = this.MenuConnected();
+        this.user = res;
+      },
+      error: (err :any) => {
+        console.error(err);
+      },
+    })
+  }
+
+  concatNameUser(firstname: string | undefined, lastname: string | undefined) {
+    if (!firstname || !lastname) return '';
+    const firstNameletter = firstname.charAt(0).toUpperCase();
+    const lastNameNameletter = lastname.charAt(0).toUpperCase();
+    return firstNameletter + lastNameNameletter;
+  }
+
+
+  MenuConnected(){
+    return [
       {
         label: 'Accueil',
         icon: 'pi pi-fw pi-home',
@@ -47,16 +72,6 @@ export class MenuComponent {
         icon: 'pi pi-user',
         items: [
           {
-            label: 'Connexion',
-            icon: 'pi pi-fw pi-sign-in',
-            routerLink: 'login',
-          },
-          {
-            label: 'Inscription',
-            icon: 'pi pi-fw pi-key',
-            routerLink: 'register',
-          },
-          {
             label: 'Déconnexion',
             icon: 'pi pi-fw pi-power-off',
             command: () => {
@@ -68,14 +83,20 @@ export class MenuComponent {
         ],
       },
     ];
-
-    this.user = this.store.select((state) => state.user.data);
   }
 
-  concatNameUser(firstname: string | undefined, lastname: string | undefined) {
-    if (!firstname || !lastname) return '';
-    const firstNameletter = firstname.charAt(0).toUpperCase();
-    const lastNameNameletter = lastname.charAt(0).toUpperCase();
-    return firstNameletter + lastNameNameletter;
+  MenuNotConnected(){
+    return [
+      {
+        label: 'Connexion',
+        icon: 'pi pi-fw pi-sign-in',
+        routerLink: 'login',
+      },
+      {
+        label: 'Inscription',
+        icon: 'pi pi-fw pi-key',
+        routerLink: 'register',
+      },
+    ];
   }
 }

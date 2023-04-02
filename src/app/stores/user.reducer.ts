@@ -6,15 +6,13 @@ import { Organisation } from '../models/organisation';
  * Notre utilisateur peut avoir des datas associés mais aussi d'autres choses
  */
 export interface UserState {
-  data: User;
+  data: User | undefined;
 }
 
 /**
  * déclaration de la valeur de base de l'état de notre utilisateur
  */
-export const USER_INITIAL_STATE = {
-  data: {} as User,
-};
+export let USER_INITIAL_STATE: UserState | undefined;
 
 /**
  * déclaration de la valeur de base au reducer
@@ -23,16 +21,16 @@ export const userReducer = createReducer(
   USER_INITIAL_STATE,
   on(
     UserAction.switchUserOrganisationAction,
-    (state: UserState, { organisation }: { organisation: Organisation }): UserState => {
+    (state: UserState | undefined, { organisation }: { organisation: Organisation }): UserState => {
       return {
         ...state,
-        data: { ...state.data, currentOrganisation : organisation },
+        data: { ...state?.data, currentOrganisation: organisation },
       };
     }
   ),
   on(
     UserAction.updateUserAction,
-    (state: UserState, { user }: { user: User }): UserState => {
+    (state: UserState | undefined, { user }: { user: User }): UserState  => {
       return {
         ...state,
         data: user,
@@ -41,11 +39,8 @@ export const userReducer = createReducer(
   ),
   on(
     UserAction.signOutAction,
-    (state: UserState): UserState => {
-      return {
-        ...state,
-        data: {} as User,
-      };
+    (state: UserState | undefined): undefined => {
+      return undefined;
     }
   ),
 );

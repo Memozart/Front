@@ -18,7 +18,7 @@ import { userReducer, UserState } from './user.reducer';
  * On declare ici tous les éléments présent dans notre store
  */
 export interface AppState {
-  user: UserState // on stocke les informations de l'utilisateur ses datas, ses ...
+  user: UserState | undefined // on stocke les informations de l'utilisateur ses datas, ses ...
 }
 
 /**

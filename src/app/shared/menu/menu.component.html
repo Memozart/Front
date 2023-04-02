@@ -4,9 +4,9 @@
     </ng-template>
 
     <ng-template pTemplate="end">
-        <span class="m-auto flex flex-row"*ngIf="(user |async)?.firstName && (user |async)?.currentOrganisation" >
-            <p class="text-center m-0">{{ (user | async)?.currentOrganisation?.name }}</p>
-            <p-avatar [label]="concatNameUser((user | async)?.firstName,(user | async)?.lastName )" styleClass="mr-2" shape="circle"
+        <span class="m-auto flex flex-row"*ngIf="user?.firstName && user?.currentOrganisation" >
+            <p class="text-center m-0">{{ user?.currentOrganisation?.name }}</p>
+            <p-avatar [label]="concatNameUser(user?.firstName,user?.lastName )" styleClass="mr-2" shape="circle"
                 [style]="{ 'background-color': '#2196F3', color: '#ffffff' }"></p-avatar>
         </span>
     </ng-template>
