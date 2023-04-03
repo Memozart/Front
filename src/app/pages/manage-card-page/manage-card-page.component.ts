@@ -10,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 import { ResponseService } from 'src/app/services/response.service';
 import { Theme } from 'src/app/models/theme';
 import { DesignService } from 'src/app/services/design.service';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/stores';
 
 @Component({
   selector: 'app-manage-card-page',
@@ -26,12 +28,13 @@ export class ManageCardPageComponent implements OnInit {
   theme!: Theme;
   bgLinearGradient!: string;
   selectedTheme!: string;
-
+  organisationId? : string ;
   constructor(
     private http: HttpService,
     private fb: FormBuilder,
     private response: ResponseService,
-    public designService: DesignService
+    public designService: DesignService,
+    private store : Store<AppState>
   ) {}
 
   ngOnDestroy() {
@@ -54,10 +57,14 @@ export class ManageCardPageComponent implements OnInit {
         console.error(err);
       },
     });
-
-    this.http.get('cards').subscribe({
+    this.store.select(state =>state.user?.data).subscribe({
+      next: (res :any) => {
+        this.organisationId = res?.currentOrganisation?._id;
+      }
+    });
+    this.http.get(`organisations/${this.organisationId}/cards`).subscribe({
       next: (res: any) => {
-        this.cards = res.body as Card[];
+        this.cards = res.body.cards as Card[];
       },
       error: (err) => {
         console.error(err);

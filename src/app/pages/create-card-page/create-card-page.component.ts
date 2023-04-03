@@ -17,9 +17,8 @@ export class CreateCardPageComponent {
   theme!: Theme;
   selectedTheme!: any;
   bgLinearGradient!: string;
-
   createCardForm!: FormGroup;
-
+  dateMini = new Date();
   constructor(
     private fb: FormBuilder,
     private http: HttpService,
@@ -38,7 +37,7 @@ export class CreateCardPageComponent {
       answer: ['', [Validators.required]],
       help: [''],
       theme: ['', [Validators.required]],
-      datePresentation: [''],
+      datePresentation: [this.dateMini],
     });
 
     this.http.get('themes').subscribe({
@@ -57,7 +56,7 @@ export class CreateCardPageComponent {
       'fr',
       'fr',
     ]).format(createCardData.datePresentation);
-    this.http.post('/cards', createCardData).subscribe({
+    this.http.post('cards', createCardData).subscribe({
       next: (res: any) => {
         this.response.successF('Creation OK', res.message);
         this.createCardForm.reset();
