@@ -1,4 +1,5 @@
-import { signOutAction } from './../../stores/user.actions';
+import { HttpService } from './../../services/http.service';
+import { signOutAction, updateUserAction } from './../../stores/user.actions';
 import { DesignService } from 'src/app/services/design.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -6,7 +7,8 @@ import { MenuItem } from 'primeng/api';
 import { AppState } from 'src/app/stores';
 import { Store } from '@ngrx/store';
 import { User } from 'src/app/models/user';
-import { Observable } from 'rxjs';
+import { Organisation } from 'src/app/models/organisation';
+import { ResponseService } from 'src/app/services/response.service';
 
 @Component({
   selector: 'app-menu',
@@ -19,16 +21,21 @@ export class MenuComponent {
    */
   items!: MenuItem[];
   user?: User;
+  organisations?: Organisation[];
+  organisationsSelected?: any;
+  showConfirm = false;
   constructor(
     private router: Router,
     public designService: DesignService,
-    public store: Store<AppState>
+    public store: Store<AppState>,
+    private http: HttpService,
+    private response: ResponseService,
   ) { }
 
   ngOnInit() {
     this.store.select(state => state.user?.data).subscribe({
-      next: (res:any) => {
-        if(!res){
+      next: (res: any) => {
+        if (!res) {
           this.items = this.MenuNotConnected();
           this.user = undefined;
           return;
@@ -36,7 +43,7 @@ export class MenuComponent {
         this.items = this.MenuConnected();
         this.user = res;
       },
-      error: (err :any) => {
+      error: (err: any) => {
         console.error(err);
       },
     })
@@ -49,8 +56,16 @@ export class MenuComponent {
     return firstNameletter + lastNameNameletter;
   }
 
-
-  MenuConnected(){
+  MenuConnected() {
+    this.http.get('organisations').subscribe({
+      next: (res: any) => {
+        this.organisations = res.body;
+        this.organisationsSelected = this.user?.currentOrganisation?._id;
+      },
+      error: (err) => {
+        console.error('erreur !!',err);
+      }
+    })
     return [
       {
         label: 'Accueil',
@@ -85,7 +100,7 @@ export class MenuComponent {
     ];
   }
 
-  MenuNotConnected(){
+  MenuNotConnected() {
     return [
       {
         label: 'Connexion',
@@ -98,5 +113,31 @@ export class MenuComponent {
         routerLink: 'register',
       },
     ];
+  }
+
+  cancelChangeOrganisation() {
+    //reset select box + fermeturee confirm
+    this.showConfirm = false;
+    this.organisationsSelected = this.user?.currentOrganisation?._id;
+  }
+
+  confirmChangeOrganisation() {
+    if (this.organisationsSelected === this.user?.currentOrganisation?._id)
+      return;
+    this.http.update('users/change-current-organisation', undefined, { organisationId: this.organisationsSelected }).subscribe({
+      next: (res: any) => {
+        this.store.dispatch(updateUserAction({ user: res.body.user }));
+        this.response.successF('OK', "Vous avez changez d'organisation");
+        this.showConfirm = false;
+        localStorage.setItem('access_token', res.body.accessToken);
+        localStorage.setItem('refresh_token', res.body.refreshToken);
+        this.router.navigate(['./']);
+      },
+      error: (err) => {
+        this.response.successF('Erreur', "Une erreur à eut lieu pendant le changement d'organisation");
+        console.error(err);
+        this.showConfirm = false;
+      },
+    })
   }
 }
