@@ -27,13 +27,13 @@ export class BearerInterceptor implements HttpInterceptor {
           }
 
           this.isRefreshing = true;
-
           return this.refreshToken().pipe(
             switchMap(() => {
               request = this.addToken(request);
               return next.handle(request);
             }),
             catchError((err) => {
+              this.isRefreshing = false;
               return throwError(error);
             }),
             finalize(() => {
@@ -60,7 +60,6 @@ export class BearerInterceptor implements HttpInterceptor {
 
   private refreshToken(): Observable<any> {
     const refreshToken = localStorage.getItem('refresh_token');
-
     return new Observable((observer) => {
       this.httpService
         .post('auth/refresh-token', {
@@ -68,11 +67,12 @@ export class BearerInterceptor implements HttpInterceptor {
         })
         .pipe(
           catchError((error: HttpErrorResponse) => {
+            this.isRefreshing = false;
             return throwError(error);
           })
         )
         .subscribe((response: any) => {
-          localStorage.setItem('access_token', response.accessToken);
+          localStorage.setItem('access_token', response.body.accessToken);
           observer.next();
           observer.complete();
         });

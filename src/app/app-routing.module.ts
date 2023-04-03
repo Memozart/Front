@@ -10,21 +10,36 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { ReviewCardPageComponent } from './pages/review-card-page/review-card-page.component';
 
 const routes: Routes = [
-  {path:"" , component:LandingPageComponent},
-  {path:"home" , component:HomePageComponent, canActivate: [AuthGuard]},
-  {path:"register" , component:RegisterPageComponent},
-  {path:"login" , component:LoginPageComponent},
-  {path:"card" , children: [
-    {path:"create", component:CreateCardPageComponent, canActivate: [AuthGuard]},
-    {path:"manage", component:ManageCardPageComponent, canActivate: [AuthGuard]},
-    {path:"review", component:ReviewCardPageComponent, canActivate: [AuthGuard]}
-  ]},
-  
-  {path:"**" , redirectTo:""},
+  { path: '', component: LandingPageComponent},
+  { path: 'home', component: HomePageComponent, canActivate: [AuthGuard] },
+  { path: 'register', component: RegisterPageComponent },
+  { path: 'login', component: LoginPageComponent },
+  {
+    path: 'card',
+    children: [
+      {
+        path: 'create',
+        component: CreateCardPageComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'manage',
+        component: ManageCardPageComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'review',
+        component: ReviewCardPageComponent,
+        canActivate: [AuthGuard],
+      },
+    ],
+  },
+
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

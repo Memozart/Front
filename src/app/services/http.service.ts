@@ -52,8 +52,8 @@ export class HttpService {
  * @param {any} body - Les nouvelles données à utiliser pour mettre à jour la ressource.
  * @returns {Observable<any>} - Un observable pour la réponse HTTP.
  */
-  update(path: string, body: any) {
-    return this.http.put(`${this.baseUrl}${path}`, body);
+  update(path: string,id: string | undefined, body: any) {
+    return this.http.put(`${this.baseUrl}${path}/${id ? id : ''}`, body);
   }
 
   /**
@@ -62,7 +62,7 @@ export class HttpService {
  * @param {string} id - L'identifiant de la ressource à supprimer.
  * @returns {Observable<any>} - Un observable pour la réponse HTTP.
  */
-  delete(path: string, id: number) {
+  delete(path: string, id: string) {
     return this.http.delete(`${this.baseUrl}${path}/${id}`);
   }
 }
