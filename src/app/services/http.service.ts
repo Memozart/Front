@@ -52,8 +52,8 @@ export class HttpService {
  * @param {any} body - Les nouvelles données à utiliser pour mettre à jour la ressource.
  * @returns {Observable<any>} - Un observable pour la réponse HTTP.
  */
-  update(path: string,id: string, body: any) {
-    return this.http.put(`${this.baseUrl}${path}/${id}`, body);
+  update(path: string,id: string | undefined, body: any) {
+    return this.http.put(`${this.baseUrl}${path}/${id ? id : ''}`, body);
   }
 
   /**

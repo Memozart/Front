@@ -4,10 +4,26 @@
     </ng-template>
 
     <ng-template pTemplate="end">
-        <span class="m-auto flex flex-row"*ngIf="user?.firstName && user?.currentOrganisation" >
-            <p class="text-center m-0">{{ user?.currentOrganisation?.name }}</p>
-            <p-avatar [label]="concatNameUser(user?.firstName,user?.lastName )" styleClass="mr-2" shape="circle"
-                [style]="{ 'background-color': '#2196F3', color: '#ffffff' }"></p-avatar>
-        </span>
+            <p-dropdown  *ngIf="user?.firstName && user?.currentOrganisation && organisations" class="orga-user" [(ngModel)]="organisationsSelected" [options]="organisations!" (onChange)="showConfirm =true"
+                optionLabel="name" optionValue="_id"></p-dropdown>
     </ng-template>
 </p-menubar>
+
+
+<p-dialog header="Header" [(visible)]="showConfirm" [style]="{ width: '50vw' }">
+    <ng-template pTemplate="header">
+        <span class="text-xl font-bold">Changement d'organisation</span>
+    </ng-template>
+    <p>
+        Êtes vous sur de vouloir changer d'organisation ?
+    </p>
+    <p>
+        ℹ Vous serez redirigez vers la page d'accueil après le changement.
+    </p>
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="cancelChangeOrganisation()" label="Annuler"
+            styleClass="p-button-text p-button-danger"></p-button>
+        <p-button icon="pi pi-check" (click)="confirmChangeOrganisation()" label="Ok"
+            styleClass="p-button-text p-button-success"></p-button>
+    </ng-template>
+</p-dialog>

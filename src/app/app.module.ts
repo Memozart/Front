@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -88,7 +88,8 @@ import { AvatarModule } from 'primeng/avatar';
     ConfirmDialogModule,
     OverlayPanelModule,
     StoreModule.forRoot(ROOT_REDUCER, {metaReducers}), //reducers et metareducers
-    AvatarModule
+    AvatarModule,
+    FormsModule
   ],
   providers: [
     {
