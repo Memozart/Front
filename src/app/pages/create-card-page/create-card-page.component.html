@@ -17,7 +17,7 @@
                 <span class="p-float-label">
                     <textarea inputId="question-input" rows="2" [autoResize]="true" cols="30" pInputTextarea
                         formControlName="question"></textarea>
-                    <label for="question-input">Question</label>
+                    <label for="question-input">Question*</label>
                 </span>
             </div>
         </div>
@@ -26,7 +26,7 @@
             <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
                 <span class="p-float-label">
                     <textarea inputId="answer-input" rows="2" [autoResize]="true" cols="30" pInputTextarea formControlName="answer"></textarea>
-                    <label for="answer-input">Réponse</label>
+                    <label for="answer-input">Réponse*</label>
                 </span>
             </div>
         </div>
@@ -43,7 +43,7 @@
         <div class="p-fluid grid justify-content-center mt-2">
             <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
                 <span class="p-float-label">
-                    <p-calendar id="date-input" inputId="basic" dateFormat="dd/mm/yy"
+                    <p-calendar id="date-input" inputId="basic" dateFormat="dd/mm/yy" [minDate]="dateMini"
                         formControlName="datePresentation"></p-calendar>
                     <label for="date-input">Date première leçon</label>
                 </span>
