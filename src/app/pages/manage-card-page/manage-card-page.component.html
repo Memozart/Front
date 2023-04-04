@@ -1,4 +1,4 @@
-<section *ngIf="cards">
+<section *ngIf="cards && cards.length > 0">
     <h1 class="text-center">GESTION DES CARTES</h1>
     <div class="grid">
         <app-card class="col-12 sm:col-6 xl:col-3" *ngFor="let card of cards" [theme]="card.theme">
@@ -71,4 +71,8 @@
 
     </p-dialog>
 
+</section>
+
+<section *ngIf="!cards || cards.length == 0">
+    <h1 class="text-center">VOUS N'AVEZ AUCUNE CARTE DANS VOTRE ORGANISATION</h1>
 </section>
