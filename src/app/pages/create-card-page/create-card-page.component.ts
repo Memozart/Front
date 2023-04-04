@@ -13,7 +13,7 @@ import { DesignService } from 'src/app/services/design.service';
   styleUrls: ['./create-card-page.component.css'],
 })
 export class CreateCardPageComponent {
-  themes!: any[];
+  themes!: Theme[];
   theme!: Theme;
   selectedTheme!: any;
   bgLinearGradient!: string;
@@ -42,11 +42,10 @@ export class CreateCardPageComponent {
 
     this.http.get('themes').subscribe({
       next: (data: any) => {
-        this.themes = data.body;
+        this.themes = data.body as Theme[];
+        this.getSelectedTheme(this.themes[0]?._id);
       },
     });
-
-    this.getSelectedTheme('640b15c689e35929e7675db1');
   }
 
   onSubmit() {
@@ -73,9 +72,9 @@ export class CreateCardPageComponent {
         this.theme = data.body;
         this.bgLinearGradient =
           'linear-gradient(' +
-          this.theme.color1 +
+          this.theme?.color1 +
           ', ' +
-          this.theme.color2 +
+          this.theme?.color2 +
           ')';
         this.designService.changeCustomBgColor(this.bgLinearGradient);
       },
