@@ -41,6 +41,7 @@ import { MessageService, ConfirmationService } from 'primeng/api';
 import { StoreModule } from '@ngrx/store';
 import { metaReducers, ROOT_REDUCER } from './stores';
 import { AvatarModule } from 'primeng/avatar';
+import { OrganisationPageComponent } from './pages/organisation-page/organisation-page.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { AvatarModule } from 'primeng/avatar';
     CardComponent,
     SvgComponent,
     ThemeComponent,
+    OrganisationPageComponent,
   ],
   imports: [
     BrowserModule,

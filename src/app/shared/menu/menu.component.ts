@@ -87,6 +87,11 @@ export class MenuComponent {
         icon: 'pi pi-user',
         items: [
           {
+            label: 'Créer organisation',
+            icon: 'pi pi-fw pi-users',
+            routerLink: 'organisation/create',
+          },
+          {
             label: 'Déconnexion',
             icon: 'pi pi-fw pi-power-off',
             command: () => {

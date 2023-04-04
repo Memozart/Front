@@ -9,8 +9,8 @@ export class ResponseService {
 
   constructor(private messageService: MessageService, private router: Router) { }
 
-  public successF(title: string, message: string) {
-    this.messageService.add({ severity: 'success', summary: title, detail: message });
+  public successF(title: string, message: string, life = 5000) {
+    this.messageService.add({ severity: 'success', summary: title, detail: message ,life});
   }
 
   public errorF(err: any, title: string) {
