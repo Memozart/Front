@@ -36,13 +36,13 @@ import { DividerModule } from 'primeng/divider';
 import { CardModule } from 'primeng/card';
 import { PanelModule } from 'primeng/panel';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
-import {DropdownModule} from 'primeng/dropdown';
+import { DropdownModule } from 'primeng/dropdown';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { StoreModule } from '@ngrx/store';
 import { metaReducers, ROOT_REDUCER } from './stores';
 import { AvatarModule } from 'primeng/avatar';
 import { OrganisationPageComponent } from './pages/organisation-page/organisation-page.component';
-
+import { NgxTranslateModule } from './translate/translate.module';
 
 @NgModule({
   declarations: [
@@ -89,9 +89,10 @@ import { OrganisationPageComponent } from './pages/organisation-page/organisatio
     DialogModule,
     ConfirmDialogModule,
     OverlayPanelModule,
-    StoreModule.forRoot(ROOT_REDUCER, {metaReducers}), //reducers et metareducers
+    StoreModule.forRoot(ROOT_REDUCER, { metaReducers }), //reducers et metareducers
     AvatarModule,
-    FormsModule
+    FormsModule,
+    NgxTranslateModule,
   ],
   providers: [
     {
