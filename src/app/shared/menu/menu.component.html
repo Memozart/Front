@@ -4,8 +4,28 @@
     </ng-template>
 
     <ng-template pTemplate="end">
-            <p-dropdown  *ngIf="user?.firstName && user?.currentOrganisation && organisations" class="orga-user" [(ngModel)]="organisationsSelected" [options]="organisations!" (onChange)="showConfirm =true"
-                optionLabel="name" optionValue="_id"></p-dropdown>
+        <p-dropdown *ngIf="user?.firstName && user?.currentOrganisation && organisations" class="orga-user"
+            [(ngModel)]="organisationsSelected" [options]="organisations!" (onChange)="showConfirm =true"
+            optionLabel="name" optionValue="_id"></p-dropdown>
+
+        <p-dropdown [options]="languagesList" [(ngModel)]="currentLanguage" (onChange)="onLanguageChange($event)"
+            optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a langage">
+            <ng-template pTemplate="selectedItem">
+                <div class="country-item country-item-value" *ngIf="currentLanguage">
+                    <img [src]="
+                    'assets/flag/' + currentLanguage.code.toLowerCase() + '.svg'
+                  " [class]="'flag flag-' + currentLanguage.code" />
+                    <div>{{ currentLanguage?.name }}</div>
+                </div>
+            </ng-template>
+            <ng-template let-langage pTemplate="item">
+                <div class="country-item">
+                    <img [src]="'assets/flag/' + langage.code.toLowerCase() + '.svg'"
+                        [class]="'flag flag-' + langage.code" />
+                    <div>{{ langage.name }}</div>
+                </div>
+            </ng-template>
+        </p-dropdown>
     </ng-template>
 </p-menubar>
 

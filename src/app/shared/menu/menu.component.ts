@@ -9,6 +9,7 @@ import { Store } from '@ngrx/store';
 import { User } from 'src/app/models/user';
 import { Organisation } from 'src/app/models/organisation';
 import { ResponseService } from 'src/app/services/response.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-menu',
@@ -24,29 +25,45 @@ export class MenuComponent {
   organisations?: Organisation[];
   organisationsSelected?: any;
   showConfirm = false;
+  siteLanguage = 'Anglais';
+  Langitems!: MenuItem[];
+  languagesList = [
+    { name: 'Français', code: 'FR' },
+    { name: 'Anglais', code: 'EN' },
+    { name: 'Allemand', code: 'DE' },
+  ];
+  currentLanguage?: any;
+
   constructor(
     private router: Router,
     public designService: DesignService,
     public store: Store<AppState>,
     private http: HttpService,
     private response: ResponseService,
-  ) { }
+    private translate: TranslateService
+  ) {}
 
   ngOnInit() {
-    this.store.select(state => state.user?.data).subscribe({
-      next: (res: any) => {
-        if (!res) {
-          this.items = this.MenuNotConnected();
-          this.user = undefined;
-          return;
-        }
-        this.items = this.MenuConnected();
-        this.user = res;
-      },
-      error: (err: any) => {
-        console.error(err);
-      },
-    })
+    this.currentLanguage = this.languagesList.find(
+      (l) => l.name === this.siteLanguage
+    );
+
+    this.store
+      .select((state) => state.user?.data)
+      .subscribe({
+        next: (res: any) => {
+          if (!res) {
+            this.items = this.MenuNotConnected();
+            this.user = undefined;
+            return;
+          }
+          this.items = this.MenuConnected();
+          this.user = res;
+        },
+        error: (err: any) => {
+          console.error(err);
+        },
+      });
   }
 
   concatNameUser(firstname: string | undefined, lastname: string | undefined) {
@@ -63,9 +80,9 @@ export class MenuComponent {
         this.organisationsSelected = this.user?.currentOrganisation?._id;
       },
       error: (err) => {
-        console.error('erreur !!',err);
-      }
-    })
+        console.error('erreur !!', err);
+      },
+    });
     return [
       {
         label: 'Accueil',
@@ -129,20 +146,37 @@ export class MenuComponent {
   confirmChangeOrganisation() {
     if (this.organisationsSelected === this.user?.currentOrganisation?._id)
       return;
-    this.http.update('users/change-current-organisation', undefined, { organisationId: this.organisationsSelected }).subscribe({
-      next: (res: any) => {
-        this.store.dispatch(updateUserAction({ user: res.body.user }));
-        this.response.successF('OK', "Vous avez changez d'organisation");
-        this.showConfirm = false;
-        localStorage.setItem('access_token', res.body.accessToken);
-        localStorage.setItem('refresh_token', res.body.refreshToken);
-        this.router.navigate(['./']);
-      },
-      error: (err) => {
-        this.response.successF('Erreur', "Une erreur à eut lieu pendant le changement d'organisation");
-        console.error(err);
-        this.showConfirm = false;
-      },
-    })
+    this.http
+      .update('users/change-current-organisation', undefined, {
+        organisationId: this.organisationsSelected,
+      })
+      .subscribe({
+        next: (res: any) => {
+          this.store.dispatch(updateUserAction({ user: res.body.user }));
+          this.response.successF('OK', "Vous avez changez d'organisation");
+          this.showConfirm = false;
+          localStorage.setItem('access_token', res.body.accessToken);
+          localStorage.setItem('refresh_token', res.body.refreshToken);
+          this.router.navigate(['./']);
+        },
+        error: (err) => {
+          this.response.successF(
+            'Erreur',
+            "Une erreur à eut lieu pendant le changement d'organisation"
+          );
+          console.error(err);
+          this.showConfirm = false;
+        },
+      });
+  }
+
+  onLanguageChange(e: any) {
+    const selectLanguage = this.languagesList.find(
+      (l) => l.code === e.value.code
+    );
+
+    if (!selectLanguage) return;
+
+    this.translate.use(selectLanguage.code.toLowerCase());
   }
 }
