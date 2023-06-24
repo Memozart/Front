@@ -1,6 +1,4 @@
-# MemozartFront
-
-Partie frontend
+# Memozart - Partie FrontEnd
 
 ## Le projet:
 
