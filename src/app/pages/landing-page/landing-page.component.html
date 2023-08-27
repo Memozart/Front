@@ -1,21 +1,142 @@
-<h1 class="flex justify-content-center align-items-center w-100 text-center min-h-full vertical-align-middle"
-  style="text-align: center;">LANDING PAGE</h1>
-
-<h2> L'apprentissage espacé ?</h2>
-<p>
-  Basé sur les travaux des chercheurs Edgar Dale et Hermann Ebbinghaus​, ils prouvent à travers la pyramide d'apprentissage que la rétention d'informations diffère en fonction de la méthodologie employée et que la mémorisation sur le long terme dépend de la fréquence de répétition.
-</p>
-
-<img [src]="bucketLandingPage + 'pyramide-apprentissage.webp'" alt="pyramide de l'apprentissage décrivant le taux de rétention en fonction de la méthodologie employée">
-
-<h2> C'est quoi mémozart ?</h2>
-<p>
-  L'application Memozart est un site web basé sur cet apprentissage espacé. Elle permet à toute personne ou entreprise de créer des cartes de révision qui vont être représentées à des délais plus ou moins espacés.
-</p>
-<img [src]="bucketLandingPage + 'etape-apprentissage.webp'" alt="image des étapes d'apprentissage">
-<p>
-  Garantissant une assimilation fluide, adéquate et durable, l'application, grâce à son algorithme, va intensifier les révisions des leçons les moins retenues au profit des leçons déjà maîtrisées. Suivant un processus en 10 étapes, lors de l'arrivée à cette dernière, l'utilisateur pourra alors être certain que la révision sera profondément acquise et ancrée dans ses connaissances.</p>
-
-<h2>Envie d'en savoir plus ?</h2>
-
-<button pButton type="button" [routerLink]="'/register'" label="REJOIGNEZ NOUS!" class="mt-5 text-white p-button-rounded"></button>
+<section class="landing-page">
+  <div class="banner">
+    <h1>Avec Memozart<br>Réinvente ton apprentissage</h1>
+    <p>Que tu sois un professionnel ou un passionné, Memozart est là pour t'accompagner à chaque étape de ton ascension vers le
+    savoir !</p>
+    <button pButton type="submit" label="Je rejoins la communauté !" class="text-white p-button-rounded yellow-btn" routerLink="/register"></button>
+  </div>
+  <div class="services">
+    <div class="container">
+      <div class="grid">
+        <div class="col-12 lg:col-4">
+          <div class="service-card mr-0 lg:mr-3">
+            <p>🤔</p>
+            <p><span class="caveat-font service-keyword">Simplifie</span><br> ton apprentissage</p>
+          </div>
+        </div>
+        <div class="col-12 lg:col-4">
+          <div class="service-card mx-0 lg:mx-2">
+            <p>😵‍💫</p>
+            <p><span class="caveat-font service-keyword">Personnalise</span><br> à l'extrême</p>
+          </div>
+        </div>
+        <div class="col-12 lg:col-4">
+          <div class="service-card ml-0 lg:ml-3">
+            <p>🤝</p>
+            <p><span class="caveat-font service-keyword">Collabore</span><br> et partage</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="concept">
+    <div class="container">
+      <h2>L'apprentissage espacé <br><span class="caveat-font">à votre service</span></h2>
+      <p>L'apprentissage espacé est la pierre angulaire de Memozart. Notre méthode s'appuie sur des intervalles de révision
+      spécifiquement calibrés pour garantir que tu retiennes les connaissances de manière durable. Fini les révisions
+      frustrantes et inefficaces ! Memozart te guide pour réviser au bon moment, ce qui permet de renforcer tes
+      connaissances de façon optimale.</p>
+        <div class="position-relative">
+          <div class="grid steps">
+            <div class="col sm:col-4 xl:col-2 mt-5 xl:mt-0">
+              <p class="brain-xs mb-2">🧠</p>
+              <div class="step-card">
+                <p class="day">JOUR<br><span class="number">1</span></p>
+              </div>
+            </div>
+            <div class="col sm:col-4 xl:col-2 mt-5 xl:mt-0">
+              <p class="brain-s mb-2">🧠</p>
+              <div class="step-card">
+                <p class="day">JOUR<br><span class="number">2</span></p>
+              </div>
+            </div>
+            <div class="col sm:col-4 xl:col-2 mt-5 xl:mt-0">
+              <p class="brain-m mb-2">🧠</p>
+              <div class="step-card">
+                <p class="day">JOUR<br><span class="number">4</span></p>
+              </div>
+            </div>
+            <div class="col sm:col-4 xl:col-2 mt-5 xl:mt-0">
+              <p class="brain-l mb-2">🧠</p>
+              <div class="step-card">
+                <p class="day">JOUR<br><span class="number">7</span></p>
+              </div>
+            </div>
+            <div class="col sm:col-4 xl:col-2 mt-5 xl:mt-0">
+              <p class="brain-xl mb-2">🧠</p>
+              <div class="step-card">
+                <p class="day">JOUR<br><span class="number">15</span></p>
+              </div>
+            </div>
+            <div class="col sm:col-4 xl:col-2 mt-5 xl:mt-0">
+              <p class="brain-xxl mb-2">🧠</p>
+              <div class="step-card">
+                <p class="day">JOUR<br><span class="number">30</span></p>
+              </div>
+            </div>
+          </div>
+          <hr class="line-steps hidden md:block">
+        </div>
+        <p class="mt-5">En suivant ce cycle, tu devras réviser une carte au moins 10 fois avant qu'elle soit considérée comme maitrisée !</p>
+        <button pButton type="submit" label="Je me lance !" class="text-white p-button-rounded pink-btn" routerLink="/register"></button>
+    </div>
+  </div>
+  <div class="themes-choices">
+    <div class="container">
+      <h2>Une expérience <br><span class="caveat-font">sur-mesure</span></h2>
+      <p>Chaque apprenant est unique, c'est pourquoi Memozart s'adapte à toi !
+      Crée des cartes de révision personnalisées selon tes préférences et tes besoins.</p>
+      <div class="theme-card">
+        <p-card [style]="{ background: 'linear-gradient('+ theme.color1 +', '+ theme.color2 + ')', borderRadius: '10rem', margin: '0 0.5rem', boxShadow: 'none'}" *ngFor="let theme of themes">
+          <div class="icon-container" [style]="{ background: 'linear-gradient(var(--dark-bg-color), var(--dark-bg-color)) padding-box, linear-gradient(to bottom, '+ theme.color1 +', '+ theme.color2 +') border-box', color: theme.color1 }">
+            <app-svg icon="{{theme.icon}}" class="theme-icon"></app-svg>
+          </div>
+          <p>{{theme.name}}</p>
+        </p-card>
+      </div>
+      <button pButton type="submit" label="J'y vais !" class="text-white p-button-rounded dark-btn" routerLink="/register"></button>
+    </div>
+  </div>
+  <div class="organisations">
+    <div class="container">
+      <h2>Un monde d'enrichissement <br><span class="caveat-font">collectif</span></h2>
+      <p>L'apprentissage prend une nouvelle dimension lorsqu'il est partagé. En rejoignant une organisation, tu pourras
+        partager
+        tes cartes de révision avec d'autres utilisateurs. Travaillez en équipe, échangez des idées et progressez ensemble
+        vers
+        l'excellence.</p>
+        <div class="grid">
+          <div class="col-12 sm:col-6 lg:col-3">
+            <div class="organisation-card">
+              <p class="organisation-emoji">🏫</p>
+              <p class="organisation-name"><span class="caveat-font organisation-keyword">Micro</span><br>entreprise</p>
+              <p>Jusqu'à<br>10 personnes</p>
+            </div>
+          </div>
+          <div class="col-12 sm:col-6 lg:col-3">
+            <div class="organisation-card">
+              <p class="organisation-emoji">🏫</p>
+              <p class="organisation-name"><span class="caveat-font organisation-keyword">Petite</span><br>entreprise</p>
+              <p>Jusqu'à<br>50 personnes</p>
+            </div>
+          </div>
+          <div class="col-12 sm:col-6 lg:col-3">
+            <div class="organisation-card">
+              <p class="organisation-emoji">🏫</p>
+              <p class="organisation-name"><span class="caveat-font organisation-keyword">Moyenne</span><br>entreprise</p>
+              <p>Jusqu'à<br>250 personnes</p>
+            </div>
+          </div>
+          <div class="col-12 sm:col-6 lg:col-3">
+            <div class="organisation-card">
+              <p class="organisation-emoji">🏫</p>
+              <p class="organisation-name"><span class="caveat-font organisation-keyword">Grande</span><br>entreprise</p>
+              <p>Plus de<br>250 personnes</p>
+            </div>
+          </div>
+        </div>
+        <button pButton type="submit" label="C'est parti !" class="text-white p-button-rounded beige-btn"
+          routerLink="/register"></button>
+    </div>
+  </div>
+</section>
