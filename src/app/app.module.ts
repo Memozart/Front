@@ -19,6 +19,7 @@ import { ReviewCardPageComponent } from './pages/review-card-page/review-card-pa
 import { CardComponent } from './shared/card/card.component';
 import { SvgComponent } from './shared/svg/svg.component';
 import { MenuComponent } from './shared/menu/menu.component';
+import { FooterComponent } from './shared/footer/footer.component';
 import { ThemeComponent } from './shared/theme/theme.component';
 
 import { ButtonModule } from 'primeng/button';
@@ -36,13 +37,12 @@ import { DividerModule } from 'primeng/divider';
 import { CardModule } from 'primeng/card';
 import { PanelModule } from 'primeng/panel';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
-import {DropdownModule} from 'primeng/dropdown';
+import { DropdownModule } from 'primeng/dropdown';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { StoreModule } from '@ngrx/store';
 import { metaReducers, ROOT_REDUCER } from './stores';
 import { AvatarModule } from 'primeng/avatar';
 import { OrganisationPageComponent } from './pages/organisation-page/organisation-page.component';
-
 
 @NgModule({
   declarations: [
@@ -55,6 +55,7 @@ import { OrganisationPageComponent } from './pages/organisation-page/organisatio
     ManageCardPageComponent,
     ReviewCardPageComponent,
     MenuComponent,
+    FooterComponent,
     CardComponent,
     SvgComponent,
     ThemeComponent,
@@ -89,9 +90,9 @@ import { OrganisationPageComponent } from './pages/organisation-page/organisatio
     DialogModule,
     ConfirmDialogModule,
     OverlayPanelModule,
-    StoreModule.forRoot(ROOT_REDUCER, {metaReducers}), //reducers et metareducers
+    StoreModule.forRoot(ROOT_REDUCER, { metaReducers }), //reducers et metareducers
     AvatarModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     {
