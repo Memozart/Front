@@ -1,0 +1,7 @@
+.footer {
+  background-image: url("/assets/background_pattern.svg");
+  padding: 1rem 2rem;
+  border-top: 1px solid var(--light-bg-color);
+  background-color:var(--dark-bg-color);
+  text-align: center;
+}
