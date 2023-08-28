@@ -11,6 +11,7 @@ import { User } from 'src/app/models/user';
 import { AppState } from 'src/app/stores';
 import { Store } from '@ngrx/store';
 import { updateUserAction } from 'src/app/stores/user.actions';
+import { Meta,MetaDefinition } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login-page',
@@ -25,15 +26,29 @@ export class LoginPageComponent {
     private http: HttpService,
     private route: Router,
     private response: ResponseService,
-    public store: Store<AppState>
+    public store: Store<AppState>,
+    private metaService:Meta
   ) { }
 
   ngOnInit(): void {
+    const ogtitle: MetaDefinition =  { name: 'title',property: 'og:title', content: 'Connexion -  Accédez à Votre Outil d’Apprentissage Efficace'};
+    const ogkeywords: MetaDefinition = {name: 'keywords',property: 'og:keywords',  content:'Memozart,memozar,memo,art,mémozart,mémomzat,memozzart,cartes,revisons,apprentissage,mémorisation,répétition,apprentissage espacé,home,accueil,entreprise,login,connexion'};
+    const ogdesc: MetaDefinition = {name: 'description', property: 'og:description', content: 'Prêt à explorer votre monde d’apprentissage ? Connectez-vous à Memozart et ouvrez la porte à une meilleure rétention des connaissances.'};
+    this.metaService.addTag(ogtitle);
+    this.metaService.addTag(ogkeywords);
+    this.metaService.addTag(ogdesc);
+
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     });
   }
+
+  ngOnDestroy() {
+    this.metaService.removeTag("property='og:title'");
+    this.metaService.removeTag("property='og:description'");
+    this.metaService.removeTag("property='og:keywords'");
+   }
 
   onSubmit() {
     if (this.loginForm.invalid) return;

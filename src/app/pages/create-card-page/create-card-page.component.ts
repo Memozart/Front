@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { formatDate } from '@angular/common';
 import { Theme } from 'src/app/models/theme';
 import { DesignService } from 'src/app/services/design.service';
+import { Meta,MetaDefinition } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-create-card-page',
@@ -24,14 +25,26 @@ export class CreateCardPageComponent {
     private http: HttpService,
     private route: Router,
     private response: ResponseService,
-    public designService: DesignService
+    public designService: DesignService,
+    private metaService:Meta
   ) {}
 
   ngOnDestroy() {
+    this.metaService.removeTag("property='og:title'");
+    this.metaService.removeTag("property='og:description'");
+    this.metaService.removeTag("property='og:keywords'");
+
     this.designService.resetCustomBgColor();
   }
 
   ngOnInit() {
+    const ogtitle: MetaDefinition =  { name: 'title',property: 'og:title', content: 'Creation - Creer vos propres cartes de revisions'};
+    const ogkeywords: MetaDefinition = {name: 'keywords',property: 'og:keywords', content:'Memozart,memozar,memo,art,mémozart,mémomzat,memozzart,cartes,revisons,apprentissage,mémorisation,répétition,apprentissage espacé,'};
+    const ogdesc: MetaDefinition = {name: 'description', property: 'og:description', content: 'Memozart  vous permet de creer vos propres cartes de révisions.'};
+    this.metaService.addTag(ogtitle);
+    this.metaService.addTag(ogkeywords);
+    this.metaService.addTag(ogdesc);
+
     this.createCardForm = this.fb.group({
       question: ['', [Validators.required]],
       answer: ['', [Validators.required]],

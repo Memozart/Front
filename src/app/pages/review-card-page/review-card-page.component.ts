@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResponseService } from 'src/app/services/response.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DesignService } from 'src/app/services/design.service';
+import { Meta,MetaDefinition } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-review-card-page',
@@ -28,13 +29,25 @@ export class ReviewCardPageComponent implements OnDestroy {
     private response: ResponseService,
     private router: Router,
     private route: ActivatedRoute,
-    private designService: DesignService
+    private designService: DesignService,
+    private metaService:Meta
   ) {}
 
   ngOnDestroy() {
+    this.metaService.removeTag("property='og:title'");
+    this.metaService.removeTag("property='og:description'");
+    this.metaService.removeTag("property='og:keywords'");
+
     this.designService.resetCustomBgColor();
   }
   ngOnInit() {
+    const ogtitle: MetaDefinition =  { name: 'title',property: 'og:title', content: 'Memomzart - Accédez à Votre Outil d’Apprentissage Efficace'};
+    const ogkeywords: MetaDefinition = {name: 'keywords',property: 'og:keywords',  content:'Memozart,memozar,memo,art,mémozart,mémomzat,memozzart,cartes,revisons,revision,apprentissage,mémorisation,répétition,apprentissage espacé,home,accueil,entreprise,carte'};
+    const ogdesc: MetaDefinition = {name: 'description', property: 'og:description', content: 'L’application Memozart est un site web basé sur cet apprentissage espacé. Elle permet à toute personne ou entreprise de créer des cartes de révision qui vont être représentées à des délais plus ou moins espacés.'};
+    this.metaService.addTag(ogtitle);
+    this.metaService.addTag(ogkeywords);
+    this.metaService.addTag(ogdesc);
+
     this.getParamsOrRedirect();
 
     this.reviewForm = this.fb.group({
