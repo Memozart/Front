@@ -21,6 +21,5 @@ export class LandingPageComponent {
       },
     });
 
-    console.log(this.themes);
   }
 }
