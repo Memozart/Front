@@ -1,41 +1,55 @@
+<section class="register-page">
+  <div class="grid flex justify-content-center">
+    <form
+      class="col-12 sm:col-8 md:col-6 xl:col-4"
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="register-text mb-6">
+        <h1>Bienvenue !</h1>
+        <p>Commençons notre collaboration 🤓</p>
+      </div>
 
-<h1>Inscription</h1>
-<form class="flex flex-column gap-5" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-<span class="p-float-label">
-    <input id="float-input" type="text" pInputText formControlName="lastName"> 
-    <label for="float-input">Nom</label>
-</span>
-<span class="p-float-label">
-    <input id="float-input" type="text" pInputText formControlName="firstName"> 
-    <label for="float-input">Prenom</label>
-</span>
-<span class="p-float-label">
-    <input id="float-input" type="text" pInputText formControlName="email"> 
-    <label for="float-input">Mail</label>
-</span>
-<span class="p-float-label">
-    <p-password [toggleMask]="true" formControlName="password">
-        <ng-template pTemplate="header">
-            <h6>Pick a password</h6>
-        </ng-template>
-        <ng-template pTemplate="footer">
-            <p-divider></p-divider>
-            <p class="mt-2">Suggestions</p>
-            <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
-                <li>Au moins une majuscule</li>
-                <li>Au moins une minuscule</li>
-                <li>Au moins un chiffre</li>
-                <li>Minimum 8 caractères</li>
-            </ul>
-        </ng-template>
-    </p-password>
-    <label for="float-input">Mot de passe</label>
-</span>
-<span class="p-float-label">
-    <p-password  [feedback]="false" formControlName="confirmPassword"></p-password>
-    <label for="float-input">Confirmation de mot de passe</label>
-</span>
+      <app-input-text [formGroup]="registerForm" inputId="lastName" type="text">
+        <label for="lastName">Nom</label>
+      </app-input-text>
 
+      <app-input-text
+        [formGroup]="registerForm"
+        inputId="firstName"
+        type="text"
+      >
+        <label for="firstName">Prénom</label>
+      </app-input-text>
 
-<button pButton type="submit" label="Inscription" ></button>
-</form>
+      <app-input-text [formGroup]="registerForm" inputId="email" type="email">
+        <label for="email">Mail</label>
+      </app-input-text>
+
+      <app-input-text
+        [formGroup]="registerForm"
+        inputId="password"
+        type="password"
+      >
+        <label for="password">Mot de passe</label>
+      </app-input-text>
+
+      <app-input-text
+        [formGroup]="registerForm"
+        inputId="confirmPassword"
+        type="password"
+      >
+        <label for="confirmPassword">Confirmation mot de passe</label>
+      </app-input-text>
+
+      <div class="text-center">
+        <button
+          pButton
+          type="submit"
+          label="Je m'inscris"
+          class="text-white p-button-rounded dark-btn"
+        ></button>
+      </div>
+    </form>
+  </div>
+</section>
