@@ -1,48 +1,14 @@
 <section class="flex align-items-center">
   <div class="grid justify-content-center w-full">
-    <form
-      class="col-12 sm:col-8 md:col-6 xl:col-4"
-      [formGroup]="loginForm"
-      (ngSubmit)="onSubmit()"
-    >
+    <form class="col-12 sm:col-8 md:col-6 xl:col-4" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <h1 class="mb-6">Connexion</h1>
-      <app-input-text [formGroup]="loginForm" inputId="email" type="email">
-        <label
-          for="email"
-          class="block font-medium mb-2"
-          [ngClass]="{
-            'blink-error-color':
-              loginForm.get('email')?.valid == false &&
-              loginForm.get('email')?.touched
-          }"
-          >Email</label
-        >
-      </app-input-text>
 
-      <app-input-text
-        [formGroup]="loginForm"
-        inputId="password"
-        type="password"
-      >
-        <label
-          for="password"
-          class="block font-medium mb-2"
-          [ngClass]="{
-            'blink-error-color':
-              loginForm.get('password')?.valid == false &&
-              loginForm.get('password')?.touched
-          }"
-          >Mot de passe</label
-        >
-      </app-input-text>
+      <app-input-text [formGroup]="loginForm" label="Email" inputId="email" type="email"></app-input-text>
+
+      <app-input-text [formGroup]="loginForm" label="Mot de passe" inputId="password" type="password"></app-input-text>
 
       <div class="text-center">
-        <button
-          pButton
-          type="submit"
-          label="Connexion"
-          class="text-white p-button-rounded dark-btn"
-        ></button>
+        <button pButton type="submit" label="Connexion" class="text-white p-button-rounded dark-btn"></button>
       </div>
     </form>
   </div>

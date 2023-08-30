@@ -1,54 +1,25 @@
 <section class="register-page">
   <div class="grid flex justify-content-center">
-    <form
-      class="col-12 sm:col-8 md:col-6 xl:col-4"
-      [formGroup]="registerForm"
-      (ngSubmit)="onSubmit()"
-    >
+    <form class="col-12 sm:col-8 md:col-6 xl:col-4" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <div class="register-text mb-6">
         <h1>Bienvenue !</h1>
         <p>Commençons notre collaboration 🤓</p>
       </div>
 
-      <app-input-text [formGroup]="registerForm" inputId="lastName" type="text">
-        <label for="lastName">Nom</label>
-      </app-input-text>
+      <app-input-text [formGroup]="registerForm" label="Nom" inputId="lastName"></app-input-text>
 
-      <app-input-text
-        [formGroup]="registerForm"
-        inputId="firstName"
-        type="text"
-      >
-        <label for="firstName">Prénom</label>
-      </app-input-text>
+      <app-input-text [formGroup]="registerForm" label="Prénom" inputId="firstName"></app-input-text>
 
-      <app-input-text [formGroup]="registerForm" inputId="email" type="email">
-        <label for="email">Mail</label>
-      </app-input-text>
+      <app-input-text [formGroup]="registerForm" label="Email" inputId="email" type="email"></app-input-text>
 
-      <app-input-text
-        [formGroup]="registerForm"
-        inputId="password"
-        type="password"
-      >
-        <label for="password">Mot de passe</label>
-      </app-input-text>
+      <app-input-text [formGroup]="registerForm" label="Mot de passe" inputId="password"
+        type="password"></app-input-text>
 
-      <app-input-text
-        [formGroup]="registerForm"
-        inputId="confirmPassword"
-        type="password"
-      >
-        <label for="confirmPassword">Confirmation mot de passe</label>
-      </app-input-text>
+      <app-input-text [formGroup]="registerForm" label="Confirmation mot de passe" inputId="confirmPassword"
+        type="password"></app-input-text>
 
       <div class="text-center">
-        <button
-          pButton
-          type="submit"
-          label="Je m'inscris"
-          class="text-white p-button-rounded dark-btn"
-        ></button>
+        <button pButton type="submit" label="Je m'inscris" class="text-white p-button-rounded dark-btn"></button>
       </div>
     </form>
   </div>
