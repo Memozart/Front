@@ -1,11 +1,52 @@
-:host{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    min-height: 90vh;
-    align-items: center;
-    justify-content: center;
-  }
+.register-page {
+  padding: 5rem 2rem;
+}
 
+.register-page h1 {
+  font-size: 50px;
+  text-align: center;
+  margin: 0;
+}
 
-  
+.register-text p {
+    font-size: 20px;
+    line-height: 40px;
+    margin: auto;
+    text-align: center;
+}
+
+.register-page span {
+  margin-bottom: 2rem;
+}
+
+.form-register {
+  background-color: var(--dark-bg-color);
+  border-radius: 6rem;
+  padding: 2rem 4rem;
+  border: 2px solid var(--light-bg-color);
+}
+
+.register-page .p-button-rounded {
+  font-weight: bold;
+  padding: 1rem 1.5rem;
+  margin-top: 3rem;
+  border: none;
+}
+
+.dark-btn {
+    background-color: #1F2D40;
+    box-shadow: 5px 5px 15px #0C1119, -5px -5px 15px #304562;
+}
+
+.dark-btn:hover {
+  background-color: #1F2D40;
+  box-shadow: inset 4px 4px 4px #0C1119, inset -4px -4px 4px #304562;
+}
+
+::ng-deep .p-password {
+  width: 100%;
+}
+
+::ng-deep .p-password i {
+  padding-right: 1rem;
+}

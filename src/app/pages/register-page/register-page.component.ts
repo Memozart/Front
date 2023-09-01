@@ -52,7 +52,6 @@ export class RegisterPageComponent {
     if (this.registerForm.invalid)
       return;
     const registerData = this.registerForm.value;
-    console.log(registerData);
     this.http.post("/auth/register", registerData).subscribe({
       next: (res: any) => {
         this.response.successF("Connection OK", res.message);

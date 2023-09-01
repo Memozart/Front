@@ -21,6 +21,7 @@ import { SvgComponent } from './shared/svg/svg.component';
 import { MenuComponent } from './shared/menu/menu.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ThemeComponent } from './shared/theme/theme.component';
+import { InputTextComponent } from './shared/input-text/input-text.component';
 
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
@@ -60,6 +61,7 @@ import { OrganisationPageComponent } from './pages/organisation-page/organisatio
     SvgComponent,
     ThemeComponent,
     OrganisationPageComponent,
+    InputTextComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,22 @@
-:host{
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  min-height: 90vh;
-  align-items: center;
-  justify-content: center;
+.p-button-rounded {
+  font-weight: bold;
+  padding: 1rem 1.5rem;
+  margin-top: 3rem;
+  border: none;
+}
+
+.dark-btn {
+    background-color: #1F2D40;
+    box-shadow: 5px 5px 15px #0C1119, -5px -5px 15px #304562;
+}
+
+.dark-btn:hover {
+  background-color: #1F2D40;
+  box-shadow: inset 4px 4px 4px #0C1119, inset -4px -4px 4px #304562;
+}
+
+h1 {
+  font-size: 50px;
+  text-align: center;
+  margin: 0;
 }

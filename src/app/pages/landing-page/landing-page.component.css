@@ -41,7 +41,6 @@ p {
 .yellow-btn {
   background-color: #FFB02E;
   box-shadow: 5px 5px 15px #0C1119, -5px -5px 15px #304562;
-  
 }
 
 .yellow-btn:hover {
@@ -52,7 +51,6 @@ p {
 .pink-btn {
   background-color: #FF6DC6;
   box-shadow: 5px 5px 15px #0C1F39, -5px -5px 15px #4A658A;
-  
 }
 
 .pink-btn:hover {
@@ -62,8 +60,7 @@ p {
 
 .dark-btn {
   background-color: #1F2D40;
-    box-shadow: 5px 5px 15px #0C1119, -5px -5px 15px #304562;
-  
+  box-shadow: 5px 5px 15px #0C1119, -5px -5px 15px #304562;
 }
 
 .dark-btn:hover {
