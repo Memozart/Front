@@ -3,10 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/services/http.service';
 import { ResponseService } from 'src/app/services/response.service';
 import { Router } from '@angular/router';
-import { formatDate } from '@angular/common';
 import { Theme } from 'src/app/models/theme';
 import { DesignService } from 'src/app/services/design.service';
-import { Meta,MetaDefinition } from '@angular/platform-browser';
+import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-create-card-page',
@@ -20,14 +19,16 @@ export class CreateCardPageComponent {
   bgLinearGradient!: string;
   createCardForm!: FormGroup;
   dateMini = new Date();
+
   constructor(
     private fb: FormBuilder,
     private http: HttpService,
     private route: Router,
     private response: ResponseService,
     public designService: DesignService,
-    private metaService:Meta
-  ) {}
+    private metaService: Meta,
+    private titleService: Title,
+  ) { }
 
   ngOnDestroy() {
     this.metaService.removeTag("property='og:title'");
@@ -38,9 +39,13 @@ export class CreateCardPageComponent {
   }
 
   ngOnInit() {
-    const ogtitle: MetaDefinition =  { name: 'title',property: 'og:title', content: 'Creation - Creer vos propres cartes de revisions'};
-    const ogkeywords: MetaDefinition = {name: 'keywords',property: 'og:keywords', content:'Memozart,memozar,memo,art,mémozart,mémomzat,memozzart,cartes,revisons,apprentissage,mémorisation,répétition,apprentissage espacé,'};
-    const ogdesc: MetaDefinition = {name: 'description', property: 'og:description', content: 'Memozart  vous permet de creer vos propres cartes de révisions.'};
+    const ogtitle: MetaDefinition = { name: 'title', property: 'og:title', content: 'Memozart - Crée tes propres cartes de révisions' };
+    const ogkeywords: MetaDefinition = { name: 'keywords', property: 'og:keywords', content: 'Memozart,memozar,memo,art,mémozart,mémomzat,memozzart,cartes,revisons,apprentissage,mémorisation,répétition,apprentissage espacé,' };
+    const ogdesc: MetaDefinition = {
+      name: 'description', property: 'og:description', content: 'Crée facilement tes propres cartes de révision sur Memozart. Personnalise ton apprentissage en concevant des cartes adaptées à tes besoins spécifiques. Prends le contrôle de ton parcours d\'apprentissage avec Memozart dès maintenant !'
+    };
+
+    if (ogtitle.content) this.titleService.setTitle(ogtitle.content);
     this.metaService.addTag(ogtitle);
     this.metaService.addTag(ogkeywords);
     this.metaService.addTag(ogdesc);

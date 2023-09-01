@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResponseService } from 'src/app/services/response.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DesignService } from 'src/app/services/design.service';
-import { Meta,MetaDefinition } from '@angular/platform-browser';
+import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-review-card-page',
@@ -30,8 +30,9 @@ export class ReviewCardPageComponent implements OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private designService: DesignService,
-    private metaService:Meta
-  ) {}
+    private metaService: Meta,
+    private titleService: Title
+  ) { }
 
   ngOnDestroy() {
     this.metaService.removeTag("property='og:title'");
@@ -41,9 +42,13 @@ export class ReviewCardPageComponent implements OnDestroy {
     this.designService.resetCustomBgColor();
   }
   ngOnInit() {
-    const ogtitle: MetaDefinition =  { name: 'title',property: 'og:title', content: 'Memomzart - Accédez à Votre Outil d’Apprentissage Efficace'};
-    const ogkeywords: MetaDefinition = {name: 'keywords',property: 'og:keywords',  content:'Memozart,memozar,memo,art,mémozart,mémomzat,memozzart,cartes,revisons,revision,apprentissage,mémorisation,répétition,apprentissage espacé,home,accueil,entreprise,carte'};
-    const ogdesc: MetaDefinition = {name: 'description', property: 'og:description', content: 'L’application Memozart est un site web basé sur cet apprentissage espacé. Elle permet à toute personne ou entreprise de créer des cartes de révision qui vont être représentées à des délais plus ou moins espacés.'};
+    const ogtitle: MetaDefinition = { name: 'title', property: 'og:title', content: 'Memozart - Révise et progresse - Optimise ton apprentissage' };
+    const ogkeywords: MetaDefinition = { name: 'keywords', property: 'og:keywords', content: 'Memozart,memozar,memo,art,mémozart,mémomzat,memozzart,cartes,revisons,revision,apprentissage,mémorisation,répétition,apprentissage espacé,home,accueil,entreprise,carte' };
+    const ogdesc: MetaDefinition = {
+      name: 'description', property: 'og:description', content: 'Révise et progresse grâce à l\'efficacité de l\'apprentissage espacé sur Memozart. Utilise notre outil convivial pour affiner tes connaissances et atteindre tes objectifs d\'apprentissage. Découvre une nouvelle façon de maîtriser de nouveaux sujets sur Memozart !'
+    };
+
+    if (ogtitle.content) this.titleService.setTitle(ogtitle.content);
     this.metaService.addTag(ogtitle);
     this.metaService.addTag(ogkeywords);
     this.metaService.addTag(ogdesc);

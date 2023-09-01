@@ -19,7 +19,9 @@ export class LandingPageComponent {
 
     const ogtitle: MetaDefinition = { name: 'title', property: 'og:title', content: 'Memozart - L’harmonie parfaite entre l’apprentissage et la mémorisation' };
     const ogkeywords: MetaDefinition = { name: 'keywords', property: 'og:keywords', content: 'Memozart,memozar,memo,art,mémozart,mémomzat,memozzart,cartes,revisons,apprentissage,mémorisation,répétition,apprentissage espacé,landing,' };
-    const ogdesc: MetaDefinition = { name: 'description', property: 'og:description', content: 'L’application Memozart est un site web basé sur cet apprentissage espacé. Elle permet à toute personne ou entreprise de créer des cartes de révision qui vont être représentées à des délais plus ou moins espacés.' };
+    const ogdesc: MetaDefinition = {
+      name: 'description', property: 'og:description', content: 'Découvre Memozart, l\'application qui réinvente l\'apprentissage en ligne. Explore l\'apprentissage espacé, crée des cartes de révision personnalisées et libère ton potentiel de connaissance dès aujourd\'hui !'
+    };
 
     if (ogtitle.content) this.titleService.setTitle(ogtitle.content);
     this.metaService.addTag(ogtitle);
