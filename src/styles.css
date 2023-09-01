@@ -29,6 +29,12 @@ html, body {
 
 html {
   background: var(--custom-bg-color) !important;
+  color: white;
+}
+
+h1 {
+  font-size: 40px;
+  margin-top: 0;
 }
 
 section {
@@ -47,5 +53,23 @@ section {
 @keyframes blinker {
   50% {
     opacity: 0.4;
+  }
+}
+
+@media (max-width: 960px) {
+  section {
+    min-height: calc(100vh - 192px);
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 36px;
   }
 }

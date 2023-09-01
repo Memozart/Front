@@ -16,8 +16,7 @@
 }
 
 :host ::ng-deep .p-dialog .p-dialog-header {
-    justify-content: space-between;
-    
+  justify-content: space-between;  
 }
 
 ::ng-deep .delete-dialog .p-dialog-header {

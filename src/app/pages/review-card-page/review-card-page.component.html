@@ -27,11 +27,15 @@
                 </ng-template>
             </p-overlayPanel>
             <button pButton type="button" (click)="op.toggle($event)" label="?" class="text-white helpButton"
-                [style.background]="bgLinearGradient"></button>
+                [style.background]="bgLinearGradient"
+                (mouseover)="designService.changeBtnStyle($event, review.theme, 1, true)"
+                (mouseleave)="designService.changeBtnStyle($event, review.theme, 2)"></button>
         </div>
 
         <button pButton type="submit" label="Valider réponse" class="mt-5 text-white p-button-rounded"
-            [style.background]="bgLinearGradient"></button>
+            [style.background]="bgLinearGradient"
+            (mouseover)="designService.changeBtnStyle($event, review.theme, 1, true)"
+            (mouseleave)="designService.changeBtnStyle($event, review.theme, 2)"></button>
     </form>
 
     <p-dialog header="{{ feedBackTitle }}" [(visible)]="visible" [modal]="true" [style]="{ width: '40vw' }"
