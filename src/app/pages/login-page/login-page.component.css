@@ -1,3 +1,8 @@
+h1 {
+  text-align: center;
+  margin: 0;
+}
+
 .p-button-rounded {
   font-weight: bold;
   padding: 1rem 1.5rem;
@@ -13,10 +18,4 @@
 .dark-btn:hover {
   background-color: #1F2D40;
   box-shadow: inset 4px 4px 4px #0C1119, inset -4px -4px 4px #304562;
-}
-
-h1 {
-  font-size: 50px;
-  text-align: center;
-  margin: 0;
 }
