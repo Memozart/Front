@@ -131,6 +131,11 @@
   text-align: left;
 }
 
+:host ::ng-deep .p-overlay {
+  right: 0;
+  left: auto !important;
+}
+
 :host ::ng-deep .p-dialog-draggable {
     background-color: var(--dark-bg-color);
     border-radius: 2rem;
