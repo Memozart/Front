@@ -29,7 +29,7 @@ export class ReviewCardPageComponent implements OnDestroy {
     private response: ResponseService,
     private router: Router,
     private route: ActivatedRoute,
-    private designService: DesignService,
+    protected designService: DesignService,
     private metaService: Meta,
     private titleService: Title
   ) { }
@@ -68,7 +68,7 @@ export class ReviewCardPageComponent implements OnDestroy {
     });
 
     if (!this.theme_id) {
-      this.router.navigate(['./']);
+      this.router.navigate(['./home']);
     } else {
       this.getReviewByTheme(this.theme_id);
     }
@@ -78,7 +78,7 @@ export class ReviewCardPageComponent implements OnDestroy {
     this.http.get('reviews/' + theme_id).subscribe({
       next: (res: any) => {
         if (!res.body) {
-          this.router.navigate(['./']);
+          this.router.navigate(['./home']);
         }
 
         this.review = res.body.review;
@@ -99,7 +99,7 @@ export class ReviewCardPageComponent implements OnDestroy {
         this.designService.changeCustomBgColor(this.bgLinearGradient);
       },
       error: () => {
-        this.router.navigate(['./']);
+        this.router.navigate(['./home']);
       },
     });
   };

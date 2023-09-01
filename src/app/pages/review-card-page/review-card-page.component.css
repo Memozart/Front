@@ -55,10 +55,6 @@ textarea {
   padding: 0.75rem 2rem;
 }
 
-:host ::ng-deep .p-button:enabled:hover {
-  box-shadow: inset 3px 3px 4px #763353, inset -2px -2px 4px #f98399;
-}
-
 :host ::ng-deep .bg-true {
   background-color: #03a55a;
 }
