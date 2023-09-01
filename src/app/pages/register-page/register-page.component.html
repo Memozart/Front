@@ -12,8 +12,24 @@
 
       <app-input-text [formGroup]="registerForm" label="Email" inputId="email" type="email"></app-input-text>
 
-      <app-input-text [formGroup]="registerForm" label="Mot de passe" inputId="password"
-        type="password"></app-input-text>
+      <span class="p-float-label">
+        <p-password [toggleMask]="true" formControlName="password" inputId="password" weakLabel="Faible"
+          mediumLabel="Moyen" strongLabel="Fort" promptLabel="Renseigne un mot de passe">
+          <ng-template pTemplate="footer">
+            <p-divider></p-divider>
+            <p class="mt-2">Suggestions</p>
+            <ul class="pl-2 ml-2 mt-0">
+              <li>Au moins une majuscule</li>
+              <li>Au moins une minuscule</li>
+              <li>Au moins un chiffre</li>
+              <li>Minimum 8 caractères</li>
+            </ul>
+          </ng-template>
+        </p-password>
+        <label for="password"
+          [ngClass]="{ 'blink-error-color': registerForm.get('password')?.valid == false && registerForm.get('password')?.touched }">
+          Mot de passe</label>
+      </span>
 
       <app-input-text [formGroup]="registerForm" label="Confirmation mot de passe" inputId="confirmPassword"
         type="password"></app-input-text>

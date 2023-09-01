@@ -33,7 +33,7 @@ html {
 
 section {
   background-color: var(--dark-bg-color);
-  min-height: 73.7vh;
+  min-height: calc(100vh - 244px);
   border-top-left-radius: 5rem;
   border-top-right-radius: 5rem;
   padding: 2rem 3rem;

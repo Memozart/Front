@@ -42,3 +42,11 @@
   background-color: #1F2D40;
   box-shadow: inset 4px 4px 4px #0C1119, inset -4px -4px 4px #304562;
 }
+
+::ng-deep .p-password {
+  width: 100%;
+}
+
+::ng-deep .p-password i {
+  padding-right: 1rem;
+}
