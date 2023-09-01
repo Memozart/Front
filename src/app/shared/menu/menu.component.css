@@ -250,6 +250,12 @@
     padding: 0.6rem 1rem;
   }
 
+  :host ::ng-deep .p-overlay {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%);
+  }
+
 }
 
 @media (max-width: 576px) {
