@@ -23,6 +23,7 @@ export class MenuComponent {
   user?: User;
   organisations?: Organisation[];
   organisationsSelected?: any;
+  showOrganisation: boolean = false;
   showConfirm = false;
   constructor(
     private router: Router,
@@ -60,10 +61,11 @@ export class MenuComponent {
     this.http.get('organisations').subscribe({
       next: (res: any) => {
         this.organisations = res.body;
+        this.showOrganisation = this.organisations!.length > 1 ? true : false;
         this.organisationsSelected = this.user?.currentOrganisation?._id;
       },
       error: (err) => {
-        console.error('erreur !!',err);
+        console.error('erreur !!', err);
       }
     })
     return [
@@ -132,14 +134,14 @@ export class MenuComponent {
     this.http.update('users/change-current-organisation', undefined, { organisationId: this.organisationsSelected }).subscribe({
       next: (res: any) => {
         this.store.dispatch(updateUserAction({ user: res.body.user }));
-        this.response.successF('OK', "Vous avez changez d'organisation");
+        this.response.successF('OK', "Tu as changé d'organisation");
         this.showConfirm = false;
         localStorage.setItem('access_token', res.body.accessToken);
         localStorage.setItem('refresh_token', res.body.refreshToken);
         this.router.navigate(['./']);
       },
       error: (err) => {
-        this.response.successF('Erreur', "Une erreur à eut lieu pendant le changement d'organisation");
+        this.response.successF('Erreur', "Une erreur a eu lieu pendant le changement d'organisation.");
         console.error(err);
         this.showConfirm = false;
       },
