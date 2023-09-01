@@ -12,6 +12,7 @@ import { Theme } from 'src/app/models/theme';
 import { DesignService } from 'src/app/services/design.service';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/stores';
+import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-manage-card-page',
@@ -28,20 +29,35 @@ export class ManageCardPageComponent implements OnInit {
   theme!: Theme;
   bgLinearGradient!: string;
   selectedTheme!: string;
-  organisationId? : string ;
+  organisationId?: string;
   constructor(
     private http: HttpService,
     private fb: FormBuilder,
     private response: ResponseService,
     public designService: DesignService,
-    private store : Store<AppState>
-  ) {}
+    private store: Store<AppState>,
+    private metaService: Meta,
+    private titleService: Title
+  ) { }
 
   ngOnDestroy() {
+    this.metaService.removeTag("property='og:title'");
+    this.metaService.removeTag("property='og:description'");
+    this.metaService.removeTag("property='og:keywords'");
+
     this.designService.resetCustomBgColor();
   }
 
   ngOnInit() {
+    const ogtitle: MetaDefinition = { name: 'title', property: 'og:title', content: 'Memozart - Organise et optimise tes cartes de révision' };
+    const ogkeywords: MetaDefinition = { name: 'keywords', property: 'og:keywords', content: 'Memozart,memozar,memo,art,mémozart,mémomzat,memozzart,cartes,revisons,apprentissage,mémorisation,répétition,apprentissage espacé,home,accueil,entreprise,management,' };
+    const ogdesc: MetaDefinition = { name: 'description', property: 'og:description', content: 'Gère tes cartes de révision avec facilité sur Memozart. Organise, crée et optimise tes cartes pour un apprentissage efficace. Prends le contrôle de ton parcours d\'apprentissage avec notre outil convivial d\'apprentissage espacé.' };
+
+    if (ogtitle.content) this.titleService.setTitle(ogtitle.content);
+    this.metaService.addTag(ogtitle);
+    this.metaService.addTag(ogkeywords);
+    this.metaService.addTag(ogdesc);
+
     this.updateCardFormGroup = this.fb.group({
       question: new FormControl('', [Validators.required]),
       answer: new FormControl('', [Validators.required]),
@@ -57,8 +73,8 @@ export class ManageCardPageComponent implements OnInit {
         console.error(err);
       },
     });
-    this.store.select(state =>state.user?.data).subscribe({
-      next: (res :any) => {
+    this.store.select(state => state.user?.data).subscribe({
+      next: (res: any) => {
         this.organisationId = res?.currentOrganisation?._id;
       }
     });
