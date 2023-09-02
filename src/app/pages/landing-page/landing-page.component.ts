@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
 import { HttpService } from 'src/app/services/http.service';
 import { Theme } from 'src/app/models/theme';
+import { ResponseService } from 'src/app/services/response.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -13,7 +14,7 @@ export class LandingPageComponent {
   bucketLandingPage = environment.bucketAdresse + "landing_page/";
   themes!: Theme[];
 
-  constructor(private metaService: Meta, private titleService: Title, private http: HttpService) { }
+  constructor(private metaService: Meta, private response: ResponseService, private titleService: Title, private http: HttpService) { }
 
   ngOnInit(): void {
 
@@ -31,6 +32,9 @@ export class LandingPageComponent {
     this.http.get('themes').subscribe({
       next: (data: any) => {
         this.themes = data.body as Theme[];
+      },
+      error: (err: any) => {
+        this.response.errorF(err, 'Erreur');
       },
     });
 

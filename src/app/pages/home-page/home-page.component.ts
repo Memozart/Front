@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DesignService } from 'src/app/services/design.service';
 import { HttpService } from 'src/app/services/http.service';
+import { ResponseService } from 'src/app/services/response.service';
 import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
 
 @Component({
@@ -10,7 +11,7 @@ import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
 })
 export class HomePageComponent {
   themes!: any;
-  constructor(private http: HttpService, private titleService: Title, public designService: DesignService, private metaService: Meta) { }
+  constructor(private http: HttpService, private response: ResponseService, private titleService: Title, public designService: DesignService, private metaService: Meta) { }
 
   ngOnInit() {
     const ogtitle: MetaDefinition = { name: 'title', property: 'og:title', content: 'Memozart - Tableau de bord des révisions' };
@@ -37,6 +38,9 @@ export class HomePageComponent {
     this.http.get('stats/reviews-of-all-themes').subscribe({
       next: (res: any) => {
         this.themes = res.body;
+      },
+      error: (err: any) => {
+        this.response.errorF(err, 'Erreur');
       },
     });
   }

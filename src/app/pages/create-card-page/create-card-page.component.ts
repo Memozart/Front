@@ -63,6 +63,9 @@ export class CreateCardPageComponent {
         this.themes = data.body as Theme[];
         this.getSelectedTheme(this.themes[0]?._id);
       },
+      error: (err: any) => {
+        this.response.errorF(err, 'Erreur');
+      },
     });
   }
 
@@ -75,7 +78,7 @@ export class CreateCardPageComponent {
     ]).format(createCardData.datePresentation);
     this.http.post('cards', createCardData).subscribe({
       next: (res: any) => {
-        this.response.successF('Creation OK', res.message);
+        this.response.successF('Carte créée avec succès', 'Tu pourras commencer à la réviser à la date que tu as indiqué ! 😇');
         this.createCardForm.reset();
       },
       error: (err: any) => {
@@ -95,6 +98,9 @@ export class CreateCardPageComponent {
           this.theme?.color2 +
           ')';
         this.designService.changeCustomBgColor(this.bgLinearGradient);
+      },
+      error: (err: any) => {
+        this.response.errorF(err, 'Erreur');
       },
     });
   }
