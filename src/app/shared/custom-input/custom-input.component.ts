@@ -15,8 +15,8 @@ export class CustomInputComponent {
 
   dateMini = new Date();
 
-  getFormControl(): any {
-    if (this.formGroup) return this.formGroup.get(this.inputId) as FormControl;
+  getFormControl(): FormControl {
+    return this.formGroup.get(this.inputId) as FormControl;
   }
 
   isInvalidInput(formGroup: FormGroup, name: string): boolean {
