@@ -64,18 +64,18 @@ export class MenuComponent {
         this.showOrganisation = this.organisations!.length > 1 ? true : false;
         this.organisationsSelected = this.user?.currentOrganisation?._id;
       },
-      error: (err) => {
-        console.error('erreur !!', err);
-      }
+      error: (err: any) => {
+        this.response.errorF(err, 'Erreur');
+      },
     })
     return [
       {
-        label: 'Accueil',
+        label: 'Révisions',
         icon: 'pi pi-fw pi-home',
         routerLink: 'home',
       },
       {
-        label: 'Leçons',
+        label: 'Cartes',
         icon: 'pi pi-fw pi-book',
         routerLink: 'card/manage',
       },
@@ -134,15 +134,14 @@ export class MenuComponent {
     this.http.update('users/change-current-organisation', undefined, { organisationId: this.organisationsSelected }).subscribe({
       next: (res: any) => {
         this.store.dispatch(updateUserAction({ user: res.body.user }));
-        this.response.successF('OK', "Tu as changé d'organisation");
+        this.response.successF('Changement d\'organisation opéré', "Prêt à reprendre où tu t'étais arrêté ? 🤨");
         this.showConfirm = false;
         localStorage.setItem('access_token', res.body.accessToken);
         localStorage.setItem('refresh_token', res.body.refreshToken);
         this.router.navigate(['./']);
       },
-      error: (err) => {
-        this.response.successF('Erreur', "Une erreur a eu lieu pendant le changement d'organisation.");
-        console.error(err);
+      error: (err: any) => {
+        this.response.errorF('Erreur', "Une erreur a eu lieu pendant le changement d'organisation.");
         this.showConfirm = false;
       },
     })
