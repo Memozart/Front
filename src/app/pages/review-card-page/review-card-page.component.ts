@@ -98,7 +98,8 @@ export class ReviewCardPageComponent implements OnDestroy {
           ')';
         this.designService.changeCustomBgColor(this.bgLinearGradient);
       },
-      error: () => {
+      error: (err: any) => {
+        this.response.errorF(err, 'Erreur');
         this.router.navigate(['./home']);
       },
     });

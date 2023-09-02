@@ -58,7 +58,7 @@ export class LoginPageComponent {
     const loginData = this.loginForm.value;
     this.http.post('auth/login', loginData).subscribe({
       next: (res: any) => {
-        this.response.successF('Connection OK', res.message);
+        this.response.successF('Connexion réussie', 'Content de te revoir ! 🫡');
         localStorage.setItem('access_token', res.body.accessToken);
         localStorage.setItem('refresh_token', res.body.refreshToken);
         this.route.navigate(['/home']);

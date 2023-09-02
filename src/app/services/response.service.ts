@@ -10,19 +10,18 @@ export class ResponseService {
   constructor(private messageService: MessageService, private router: Router) { }
 
   public successF(title: string, message: string, life = 5000) {
-    this.messageService.add({ severity: 'success', summary: title, detail: message ,life});
+    this.messageService.add({ severity: 'success', summary: title, detail: message, life });
   }
 
   public errorF(err: any, title: string) {
     if (err.status === 0) {
-      this.messageService.add({ severity: 'error', summary: "connexion nok", detail: "la connexion n'as pas pu être établie" });
+      this.messageService.add({ severity: 'error', summary: "Connexion nok", detail: "La connexion n'a pas pu être établie" });
       return;
-    }
-    if (err.status === 401) {
-      this.messageService.add({ severity: 'error', summary: "Déconnexion", detail: "vous avez été déconnecter veuille vous reconnecter" });
+    } else if (err.status === 401) {
+      this.messageService.add({ severity: 'error', summary: "Déconnexion", detail: "Tu as été déconnecté" });
       this.router.navigate([""]);
+    } else {
+      this.messageService.add({ severity: 'error', summary: title, detail: err.error.message });
     }
-
-    this.messageService.add({ severity: 'error', summary: title, detail: err.error.message });
   }
 }

@@ -1,9 +1,14 @@
+:host ::ng-deep .p-card {
+  height: 100%;
+}
+
 :host ::ng-deep .p-card-body {
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
   overflow: hidden;
+  height: 100%;
 }
 
 :host ::ng-deep .p-card-footer {

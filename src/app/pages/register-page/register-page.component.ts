@@ -54,10 +54,9 @@ export class RegisterPageComponent {
     const registerData = this.registerForm.value;
     this.http.post("/auth/register", registerData).subscribe({
       next: (res: any) => {
-        this.response.successF("Connection OK", res.message);
+        this.response.successF("Inscription réussie", 'Bienvenue ! Tu peux maintenant te connecter sur Memozart et commencer ton aventure ! 🤓');
         //pas sur que j'en ai besoin
         //localStorage.setItem("token", res.body);
-        //pas sur de rediriger sur home mais plus sur connexion
         this.route.navigate(['/login'])
       },
       error: (err: any) => {

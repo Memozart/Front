@@ -1,6 +1,6 @@
 <section *ngIf="review">
     <div>
-        <p>Apprentissage n°{{ review.step.step }}</p>
+        <p>Révision n°{{ review.step.step }} sur 10</p>
         <p-progressBar [value]="review.step.step * 10" [showValue]="false" color="{{ review.theme.color1 }}"
             styleClass="m-auto" [style]="{'border-radius':'1rem', 'height':'0.6rem', 'width':'10rem'}"></p-progressBar>
     </div>

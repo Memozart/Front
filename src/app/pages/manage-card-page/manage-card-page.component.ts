@@ -69,8 +69,8 @@ export class ManageCardPageComponent implements OnInit {
       next: (res: any) => {
         this.themes = res.body as Theme[];
       },
-      error: (err) => {
-        console.error(err);
+      error: (err: any) => {
+        this.response.errorF(err, 'Erreur');
       },
     });
     this.store.select(state => state.user?.data).subscribe({
@@ -82,8 +82,8 @@ export class ManageCardPageComponent implements OnInit {
       next: (res: any) => {
         this.cards = res.body.cards as Card[];
       },
-      error: (err) => {
-        console.error(err);
+      error: (err: any) => {
+        this.response.errorF(err, 'Erreur');
       },
     });
   }
@@ -124,7 +124,7 @@ export class ManageCardPageComponent implements OnInit {
         this.closeModal();
         this.response.successF(
           'Mise à jour effectuée',
-          'La carte a bien été mise à jour'
+          'Tadaaaaa ! 😎'
         );
       },
       error: (err) => {
@@ -148,7 +148,7 @@ export class ManageCardPageComponent implements OnInit {
         );
         this.response.successF(
           'Suppression effectuée',
-          'La carte a bien été suprimée'
+          'Bon débarras... 😏'
         );
         this.closeModal();
       },
@@ -156,7 +156,7 @@ export class ManageCardPageComponent implements OnInit {
         console.log(err);
         this.response.errorF(
           err,
-          'Une erreur à eut lieu pendant la suppression de la carte'
+          'Une erreur à eu lieu pendant la suppression de la carte'
         );
         this.closeModal();
       },
@@ -184,6 +184,9 @@ export class ManageCardPageComponent implements OnInit {
           this.theme.color2 +
           ')';
         this.designService.changeCustomBgColor(this.bgLinearGradient);
+      },
+      error: (err: any) => {
+        this.response.errorF(err, 'Erreur');
       },
     });
   }
