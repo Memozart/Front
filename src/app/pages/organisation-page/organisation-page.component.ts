@@ -51,7 +51,7 @@ export class OrganisationPageComponent {
       .post('organisations', this.createOrganisationForm.value)
       .subscribe({
         next: (res: any) => {
-          this.response.successF("Creation OK", "La creation de l'organisation a reussi, veuillez vous déconnecter et vous reconnecter pour voir les changements", 10_000);
+          this.response.successF("Organisation créée avec succès", "Ton organisation est maintenant opérationnelle ! Il te suffit de te reconnecter pour voir les changements. Prêt à commencer l'aventure ? 🚀", 10_000);
           this.createOrganisationForm.reset();
         },
         error: (err: any) => {
