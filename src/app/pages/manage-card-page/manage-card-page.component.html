@@ -39,8 +39,9 @@
 
             <div class="mt-3">
                 <label class="block custom-dropdown-label">Thème*</label>
-                <p-dropdown [options]="themes" [(ngModel)]="selectedTheme" optionLabel="name" optionValue="_id"
-                    formControlName="theme" (onChange)="getSelectedTheme(selectedTheme)"></p-dropdown>
+                <app-custom-dropdown [formGroup]="updateCardFormGroup" [options]="themes" label="name" value="_id"
+                    [selectedValue]="selectedTheme" inputId="theme" (selectionChange)="getSelectedTheme($event)"
+                    inputId="organisation"></app-custom-dropdown>
             </div>
 
             <div class="mt-5">

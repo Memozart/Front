@@ -44,6 +44,7 @@ import { StoreModule } from '@ngrx/store';
 import { metaReducers, ROOT_REDUCER } from './stores';
 import { AvatarModule } from 'primeng/avatar';
 import { OrganisationPageComponent } from './pages/organisation-page/organisation-page.component';
+import { CustomDropdownComponent } from './shared/custom-dropdown/custom-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { OrganisationPageComponent } from './pages/organisation-page/organisatio
     ThemeComponent,
     OrganisationPageComponent,
     CustomInputComponent,
+    CustomDropdownComponent,
   ],
   imports: [
     BrowserModule,
