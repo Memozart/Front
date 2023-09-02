@@ -1,3 +1,4 @@
+textarea,
 ::ng-deep input,
 ::ng-deep input.p-inputtext {
   background: none;
@@ -7,11 +8,25 @@
   padding: 1rem 1.5rem;
   box-shadow: inset 5px 5px 5px var(--dark-shadow), inset -2px -2px 5px var(--light-shadow);
   width: 100%;
+  height: auto !important;
 }
 
+::ng-deep .p-password {
+  width: 100%;
+}
+
+::ng-deep .p-password i {
+  padding-right: 1rem;
+}
+
+::ng-deep .p-float-label textarea ~ label,
 ::ng-deep .p-float-label input ~ label,
 ::ng-deep .p-float-label label {
   left: 1.5rem;
+}
+
+::ng-deep .p-float-label textarea ~ label {
+  top: 2rem;
 }
 
 ::ng-deep .p-inputtext {
@@ -22,13 +37,4 @@
   box-shadow: inset 5px 5px 5px var(--dark-shadow),
     inset -2px -2px 5px var(--light-shadow);
   border-color: none;
-}
-
-.dark-btn:hover {
-  background-color: #1F2D40;
-  box-shadow: inset 4px 4px 4px #0C1119, inset -4px -4px 4px #304562;
-}
-
-span {
-  margin-bottom: 2rem;
 }

@@ -3,9 +3,10 @@
     <form class="col-12 sm:col-8 md:col-6 xl:col-4" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <h1 class="mb-6">Connexion</h1>
 
-      <app-input-text [formGroup]="loginForm" label="Email" inputId="email" type="email"></app-input-text>
+      <app-custom-input [formGroup]="loginForm" label="Email" inputId="email" type="email"></app-custom-input>
 
-      <app-input-text [formGroup]="loginForm" label="Mot de passe" inputId="password" type="password"></app-input-text>
+      <app-custom-input inputType="password" [formGroup]="loginForm" label="Mot de passe"
+        inputId="password"></app-custom-input>
 
       <div class="text-center">
         <button pButton type="submit" label="Connexion" class="text-white p-button-rounded dark-btn"></button>
