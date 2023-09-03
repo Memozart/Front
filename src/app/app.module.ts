@@ -45,6 +45,7 @@ import { metaReducers, ROOT_REDUCER } from './stores';
 import { AvatarModule } from 'primeng/avatar';
 import { OrganisationPageComponent } from './pages/organisation-page/organisation-page.component';
 import { CustomDropdownComponent } from './shared/custom-dropdown/custom-dropdown.component';
+import { CustomButtonComponent } from './shared/custom-button/custom-button.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { CustomDropdownComponent } from './shared/custom-dropdown/custom-dropdow
     OrganisationPageComponent,
     CustomInputComponent,
     CustomDropdownComponent,
+    CustomButtonComponent,
   ],
   imports: [
     BrowserModule,
