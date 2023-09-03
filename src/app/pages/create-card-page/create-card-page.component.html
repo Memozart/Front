@@ -6,9 +6,9 @@
 
         <div class="p-fluid grid justify-content-center mt-2">
             <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
-                <app-custom-dropdown [formGroup]="createCardForm" [options]="themes" label="name" value="_id"
-                    [selectedValue]="selectedTheme" inputId="theme"
-                    (selectionChange)="getSelectedTheme($event)"></app-custom-dropdown>
+                <p-dropdown [options]="themes" [(ngModel)]="selectedTheme" formControlName="theme" optionLabel="name"
+                    optionValue="_id" (onChange)="getSelectedTheme(selectedTheme)">
+                </p-dropdown>
             </div>
         </div>
 
