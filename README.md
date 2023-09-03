@@ -1,5 +1,5 @@
 # Memozart - Partie FrontEnd
-## Présentation du projet:
+## Présentation du projet
 ### L'apprentissage espacé ?
 Basés sur les travaux des chercheurs Edgar Dale et Hermann Ebbinghaus​, ils prouvent à travers la pyramide d'apprentissage que la rétention d'informations diffère en fonction de la méthodologie employée et que la mémorisation sur le long terme dépend de la fréquence de répétition.
 
