@@ -1,5 +1,4 @@
 # Memozart - Partie FrontEnd
-15/07/2023 => migration vers nouveau serveur
 ## Le projet:
 
 ### L'apprentissage espacé ?
