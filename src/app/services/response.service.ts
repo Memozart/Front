@@ -13,7 +13,7 @@ export class ResponseService {
     this.messageService.add({ severity: 'success', summary: title, detail: message, life });
   }
 
-  public errorF(err: any, title: string) {
+  public errorF(err: any, title: string, message: string = err.error.message) {
     if (err.status === 0) {
       this.messageService.add({ severity: 'error', summary: "Connexion nok", detail: "La connexion n'a pas pu être établie" });
       return;
@@ -21,7 +21,7 @@ export class ResponseService {
       this.messageService.add({ severity: 'error', summary: "Déconnexion", detail: "Tu as été déconnecté" });
       this.router.navigate([""]);
     } else {
-      this.messageService.add({ severity: 'error', summary: title, detail: err.error.message });
+      this.messageService.add({ severity: 'error', summary: title, detail: message });
     }
   }
 }

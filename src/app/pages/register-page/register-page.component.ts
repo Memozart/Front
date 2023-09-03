@@ -13,6 +13,7 @@ import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
 export class RegisterPageComponent {
 
   registerForm!: FormGroup;
+  errorMessage!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -60,7 +61,15 @@ export class RegisterPageComponent {
         this.route.navigate(['/login'])
       },
       error: (err: any) => {
-        this.response.errorF(err, "Erreur d/inscription");
+        this.errorMessage = "";
+
+        if (err.error.message.includes('"email" must be a valid email')) this.errorMessage += '• Quelque chose cloche avec l\'email... 🙃\n';
+        if (err.error.message.includes('"confirmPassword" must be [ref:password]')) this.errorMessage += '• Les mots de passe que tu as saisis ne coïncident pas. Assure-toi qu\'ils soient identiques. 🧐\n';
+        if (err.error.message.includes('"password" length must be at least 6 characters long, "confirmPassword" must be [ref:password]')) this.errorMessage += '• Ce mot de passe est tout petit ! Il doit être plus grand, avec au moins 6 caractères. 🤫\n';
+
+        if (this.errorMessage) this.response.errorF(err, 'Erreur lors de l\'inscription', this.errorMessage);
+        else this.response.errorF(err, 'Erreur d\'inscription');
+
       }
     })
   }
