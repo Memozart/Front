@@ -1,11 +1,5 @@
-section {
-  margin-top: 5rem;
-  padding-top: 6rem;
-  text-align: center;
-  position: relative;
-}
-
 ::ng-deep .p-dropdown {
+  width: 100%;
   background: none;
   border: none;
   outline: none;
@@ -20,35 +14,28 @@ section {
   text-align: left;
 }
 
-:host ::ng-deep .p-dropdown:not(.p-disabled):hover {
+::ng-deep .p-dropdown:not(.p-disabled):hover {
     border: none;
 }
 
-:host ::ng-deep .p-dropdown:not(.p-disabled).p-focus {
+::ng-deep .p-dropdown:not(.p-disabled).p-focus {
     box-shadow: inset 5px 5px 5px var(--dark-shadow),
     inset -2px -2px 5px var(--light-shadow);
 }
 
-:host ::ng-deep .p-dropdown-panel {
+::ng-deep .p-dropdown-panel {
     border-radius: 0.5rem;
     margin-top: 0.5rem;
     border: 0;
 }
 
-:host ::ng-deep .p-dropdown-panel .p-dropdown-items {
+::ng-deep .p-dropdown-panel .p-dropdown-items {
     padding: 0;
 }
 
-:host ::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+
+::ng-deep  .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
     background: rgb(74, 101, 138, 0.16);
     border-radius: 0.25rem;
 
-}
-
-:host ::ng-deep .p-button {
-  border: none;
-  box-shadow: 5px 5px 15px var(--dark-shadow),
-    -5px -5px 15px var(--light-shadow);
-  font-weight: bold;
-  padding: 0.75rem 2rem;
 }

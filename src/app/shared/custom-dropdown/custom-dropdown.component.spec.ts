@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InputTextComponent } from './input-text.component';
+import { CustomDropdownComponent } from './custom-dropdown.component';
 
-describe('InputTextComponent', () => {
-  let component: InputTextComponent;
-  let fixture: ComponentFixture<InputTextComponent>;
+describe('CustomDropdownComponent', () => {
+  let component: CustomDropdownComponent;
+  let fixture: ComponentFixture<CustomDropdownComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InputTextComponent ]
+      declarations: [ CustomDropdownComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(InputTextComponent);
+    fixture = TestBed.createComponent(CustomDropdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

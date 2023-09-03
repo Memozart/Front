@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class DesignService {
-  constructor() {}
+  constructor() { }
 
-  public currentOrganisation : any | undefined = "";
+  public currentOrganisation: any | undefined = "";
 
   /**
    * Changement la couleur de fond appelé --custom-bg-color en la couleur en paramètre
@@ -26,12 +26,12 @@ export class DesignService {
   /**
    * Permet à l'utilisateur de passer en thème sombre
    */
-  public applyDarkTheme() {}
+  public applyDarkTheme() { }
 
   /**
    * Permet à l'utilisateur de passer en thème clair
    */
-  public applyWhiteTheme() {}
+  public applyWhiteTheme() { }
 
   /**
    * Permet de changer la couleur des boutons en fonction d'un événement
@@ -42,28 +42,40 @@ export class DesignService {
     option: number,
     hovered: boolean = false
   ) {
-    if (option == 1) {
-      e.currentTarget.style.boxShadow = hovered
-        ? 'inset 3px 3px 4px ' +
+
+    if (e) {
+
+      let target = e.currentTarget;
+      if (e.currentTarget.tagName != 'BUTTON') {
+        target = e.currentTarget.querySelector('button')
+      }
+
+      if (option == 1) {
+
+        target.style.boxShadow = hovered
+          ? 'inset 3px 3px 4px ' +
           theme.darkShadow +
           ', inset -2px -2px 4px ' +
           theme.lightShadow +
           ''
-        : '2px 2px 4px ' +
+          : '2px 2px 4px ' +
           theme.darkShadow +
           ', -1px -1px 4px ' +
           theme.lightShadow +
           '';
-    }
+      }
 
-    if (option == 2) {
-      e.currentTarget.style.boxShadow = hovered
-        ? 'inset 3px 3px 4px ' +
+      if (option == 2) {
+        target.style.boxShadow = hovered
+          ? 'inset 3px 3px 4px ' +
           theme.darkShadow +
           ', inset -2px -2px 4px ' +
           theme.lightShadow +
           ''
-        : '5px 5px 15px var(--dark-shadow), -5px -5px 15px var(--light-shadow)';
+          : '5px 5px 15px var(--dark-shadow), -5px -5px 15px var(--light-shadow)';
+      }
     }
+
+
   }
 }

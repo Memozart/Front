@@ -21,7 +21,7 @@ import { SvgComponent } from './shared/svg/svg.component';
 import { MenuComponent } from './shared/menu/menu.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ThemeComponent } from './shared/theme/theme.component';
-import { InputTextComponent } from './shared/input-text/input-text.component';
+import { CustomInputComponent } from './shared/custom-input/custom-input.component';
 
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
@@ -44,6 +44,8 @@ import { StoreModule } from '@ngrx/store';
 import { metaReducers, ROOT_REDUCER } from './stores';
 import { AvatarModule } from 'primeng/avatar';
 import { OrganisationPageComponent } from './pages/organisation-page/organisation-page.component';
+import { CustomDropdownComponent } from './shared/custom-dropdown/custom-dropdown.component';
+import { CustomButtonComponent } from './shared/custom-button/custom-button.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { OrganisationPageComponent } from './pages/organisation-page/organisatio
     SvgComponent,
     ThemeComponent,
     OrganisationPageComponent,
-    InputTextComponent,
+    CustomInputComponent,
+    CustomDropdownComponent,
+    CustomButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -107,4 +111,4 @@ import { OrganisationPageComponent } from './pages/organisation-page/organisatio
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

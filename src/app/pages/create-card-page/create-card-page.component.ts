@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/services/http.service';
 import { ResponseService } from 'src/app/services/response.service';
-import { Router } from '@angular/router';
 import { Theme } from 'src/app/models/theme';
 import { DesignService } from 'src/app/services/design.service';
 import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
@@ -18,12 +17,10 @@ export class CreateCardPageComponent {
   selectedTheme!: any;
   bgLinearGradient!: string;
   createCardForm!: FormGroup;
-  dateMini = new Date();
 
   constructor(
     private fb: FormBuilder,
     private http: HttpService,
-    private route: Router,
     private response: ResponseService,
     public designService: DesignService,
     private metaService: Meta,
@@ -55,7 +52,7 @@ export class CreateCardPageComponent {
       answer: ['', [Validators.required]],
       help: [''],
       theme: ['', [Validators.required]],
-      datePresentation: [this.dateMini],
+      datePresentation: [new Date()],
     });
 
     this.http.get('themes').subscribe({
@@ -80,6 +77,7 @@ export class CreateCardPageComponent {
       next: (res: any) => {
         this.response.successF('Carte créée avec succès', 'Tu pourras commencer à la réviser à la date que tu as indiqué ! 😇');
         this.createCardForm.reset();
+        this.getSelectedTheme(this.themes[0]?._id);
       },
       error: (err: any) => {
         this.response.errorF(err, 'Erreur');

@@ -65,7 +65,9 @@ export class LoginPageComponent {
         this.store.dispatch(updateUserAction({ user: res.body.user }));
       },
       error: (err: any) => {
-        this.response.errorF(err, 'Erreur lors de la connexion');
+        if (err.status === 500) this.response.errorF(err, 'Erreur lors de la connexion', 'Oops, compte introuvable ! 😟');
+        else if (err.status === 400) this.response.errorF(err, 'Format d\'email incorrect', 'Quelque chose cloche avec l\'email 🙃');
+        else this.response.errorF(err, 'Erreur lors de la connexion');
       },
     });
   }

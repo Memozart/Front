@@ -44,26 +44,18 @@
             </div>
 
             <div class="mt-5">
-                <span class="p-float-label">
-                    <textarea inputId="float-input-question" rows="2" [autoResize]="true" cols="30" pInputTextarea
-                        formControlName="question"></textarea>
-                    <label for="float-input-question">Question*</label>
-                </span>
+                <app-custom-input inputType="textarea" [formGroup]="updateCardFormGroup" label="Question*"
+                    inputId="question"></app-custom-input>
             </div>
 
             <div class="mt-5">
-                <span class="p-float-label">
-                    <textarea inputId="float-input-answer" rows="2" [autoResize]="true" cols="30" pInputTextarea
-                        formControlName="answer"></textarea>
-                    <label for="float-input-answer">Réponse*</label>
-                </span>
+                <app-custom-input inputType="textarea" [formGroup]="updateCardFormGroup" label="Réponse*"
+                    inputId="answer"></app-custom-input>
             </div>
 
             <div class="mt-5">
-                <span class="p-float-label">
-                    <input id="float-input-help" type="text" pInputText formControlName="help">
-                    <label for="float-input-help">Aide*</label>
-                </span>
+                <app-custom-input [formGroup]="updateCardFormGroup" label="Aide" inputId="help"
+                    type="text"></app-custom-input>
             </div>
         </form>
         <ng-template pTemplate="footer">
