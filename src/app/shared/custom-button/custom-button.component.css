@@ -1,0 +1,7 @@
+:host ::ng-deep .p-button {
+  border: none;
+  box-shadow: 5px 5px 15px var(--dark-shadow),
+    -5px -5px 15px var(--light-shadow);
+  font-weight: bold;
+  padding: 0.75rem 2rem;
+}
