@@ -42,7 +42,7 @@
         [draggable]="false" [resizable]="false" [closable]="false" [styleClass]="modalStyle" *ngIf="reviewFeedBack">
         <app-svg icon="{{ reviewFeedBack.success }}" class="feedback_icon"></app-svg>
         <p class="m-0 feedback_text">
-            Cette question te sera reposée dans {{ reviewFeedBack.feedback.dayNextPresentation }} jour(s)
+            Cette question te sera reposée dans {{ reviewFeedBack.feedback.dayNextPresentation }} {{ timeSequence }}
         </p>
         <p *ngIf="!reviewFeedBack.success" class="mt-2 mb-1 fw-bold">La bonne réponse était : {{
             reviewFeedBack.feedback.goodAnswer }}</p>
