@@ -1,0 +1,51 @@
+<section>
+    <h1 class="text-center">Gestion d'une organisation</h1>
+    <div>
+        <h2>Utilisateurs de l'organisation</h2>
+    </div>
+    <div class="users-container">
+        <div class="user-card">
+            <p><span class="user-emoji">😎</span> username</p>
+            <button pButton type="button" icon="pi pi-trash"
+                class="text-white p-button-rounded p-button-raised yellow-btn" (click)="showDialog(false)">
+            </button>
+        </div>
+        <div class="add-user-card">
+            <button pButton type="button" icon="pi pi-plus"
+                class="text-white p-button-rounded p-button-raised yellow-btn btn-xl" (click)="showDialog()">
+            </button>
+        </div>
+    </div>
+
+    <p-dialog class="delete-dialog" [style]="{width: 'fit-content'}" [(visible)]="showdeleteDialog"
+        (onHide)="closeDialog()">
+        <span class="p-confirm-dialog-message ng-tns-c67-1">Es-tu sûr de vouloir supprimer cet utilisateur de ton
+            organisation ?</span>
+        <ng-template pTemplate="footer">
+            <button type="button" pButton class="p-button-rounded cancel-btn text-white"
+                [style]="{ background: 'var(--light-bg-color)' }" icon="pi pi-times" label="Non"
+                (click)="closeDialog()"></button>
+            <button type="button" pButton class="p-button-rounded text-white mr-0 yellow-btn" icon="pi pi-check"
+                label="Oui"></button>
+        </ng-template>
+    </p-dialog>
+
+    <p-dialog class="update-dialog" header="Nouveau collaborateur" [(visible)]="showAddDialog"
+        [style]="{width: 'fit-content'}" (onHide)="closeDialog()">
+        <form [formGroup]="addUserOrganisationFormGroup" (ngSubmit)="addUserOrganisation()" class="mb-4">
+            <div class="mt-5">
+                <app-custom-input [formGroup]="addUserOrganisationFormGroup" label="Identifiant de l'utilisateur"
+                    inputId="userId" type="text"></app-custom-input>
+            </div>
+        </form>
+        <ng-template pTemplate="footer">
+            <button pButton pRipple type="submit" [style]="{ background: 'var(--light-bg-color)' }" icon="pi pi-times"
+                label="Annuler" (click)="closeDialog()"
+                class="p-button-rounded p-button-text cancel-btn text-white"></button>
+            <button pButton pRipple type="submit" label="Ajouter" class="p-button-rounded text-white mr-0 yellow-btn"
+                icon="pi pi-check" (click)="addUserOrganisation()"></button>
+        </ng-template>
+
+    </p-dialog>
+
+</section>

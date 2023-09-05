@@ -46,6 +46,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { OrganisationPageComponent } from './pages/organisation-page/organisation-page.component';
 import { CustomDropdownComponent } from './shared/custom-dropdown/custom-dropdown.component';
 import { CustomButtonComponent } from './shared/custom-button/custom-button.component';
+import { ManageOrganisationPageComponent } from './pages/manage-organisation-page/manage-organisation-page.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { CustomButtonComponent } from './shared/custom-button/custom-button.comp
     CreateCardPageComponent,
     ManageCardPageComponent,
     ReviewCardPageComponent,
+    ManageOrganisationPageComponent,
     MenuComponent,
     FooterComponent,
     CardComponent,
@@ -86,7 +88,6 @@ import { CustomButtonComponent } from './shared/custom-button/custom-button.comp
     DropdownModule,
     CardModule,
     PanelModule,
-    DropdownModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerImmediately',
