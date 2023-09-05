@@ -12,10 +12,11 @@ import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
 export class OrganisationPageComponent {
   createOrganisationForm!: FormGroup;
   typesAccount = [
-    { type: 2, name: 'enterprise' },
-    { type: 3, name: 'prenium' },
-    { type: 4, name: 'gold' },
+    { type: 2, name: 'Micro entreprise' },
+    { type: 3, name: 'Petite entreprise' },
+    { type: 4, name: 'Moyenne entreprise' },
   ];
+  selectedValues: string[] = ['val1', 'val2'];
   constructor(private fb: FormBuilder,
     private response: ResponseService,
     private http: HttpService,
