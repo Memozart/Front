@@ -12,12 +12,12 @@ import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
 export class OrganisationPageComponent {
   createOrganisationForm!: FormGroup;
   typesAccount = [
-    { type: 2, name: 'enterprise' },
-    { type: 3, name: 'prenium' },
-    { type: 4, name: 'gold' },
+    { type: 2, name: 'Micro entreprise' },
+    { type: 3, name: 'Petite entreprise' },
+    { type: 4, name: 'Moyenne entreprise' },
+    { type: 5, name: 'Grande entreprise' },
   ];
   constructor(private fb: FormBuilder,
-    private response: ResponseService,
     private http: HttpService,
     private metaService: Meta,
     private titleService: Title) { }
@@ -36,6 +36,7 @@ export class OrganisationPageComponent {
 
     this.createOrganisationForm = this.fb.group({
       name: ['', [Validators.required]],
+      siren: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
       type: [2, [Validators.required]],
     });
   }
@@ -51,8 +52,7 @@ export class OrganisationPageComponent {
       .post('organisations', this.createOrganisationForm.value)
       .subscribe({
         next: (res: any) => {
-          this.response.successF("Organisation créée avec succès", "Ton organisation est maintenant opérationnelle ! Il te suffit de te reconnecter pour voir les changements. Prêt à commencer l'aventure ? 🚀", 10_000);
-          this.createOrganisationForm.reset();
+          document.location.href = res.body.url;
         },
         error: (err: any) => {
           console.error(err);

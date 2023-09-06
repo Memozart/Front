@@ -46,6 +46,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { OrganisationPageComponent } from './pages/organisation-page/organisation-page.component';
 import { CustomDropdownComponent } from './shared/custom-dropdown/custom-dropdown.component';
 import { CustomButtonComponent } from './shared/custom-button/custom-button.component';
+import { PaymentsComponent } from './pages/payment-page/payments.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { CustomButtonComponent } from './shared/custom-button/custom-button.comp
     CustomInputComponent,
     CustomDropdownComponent,
     CustomButtonComponent,
+    PaymentsComponent,
   ],
   imports: [
     BrowserModule,
