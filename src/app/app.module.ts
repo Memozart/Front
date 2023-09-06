@@ -48,6 +48,10 @@ import { CustomDropdownComponent } from './shared/custom-dropdown/custom-dropdow
 import { CustomButtonComponent } from './shared/custom-button/custom-button.component';
 import { PaymentsComponent } from './pages/payment-page/payments.component';
 
+import { environment } from "../environments/environment";
+import { initializeApp } from "firebase/app";
+initializeApp(environment.firebase);
+
 @NgModule({
   declarations: [
     AppComponent,
