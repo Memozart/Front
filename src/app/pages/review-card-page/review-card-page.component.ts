@@ -5,6 +5,7 @@ import { ResponseService } from 'src/app/services/response.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DesignService } from 'src/app/services/design.service';
 import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
+import { ConfigService } from './../../services/config.service';
 
 @Component({
   selector: 'app-review-card-page',
@@ -22,6 +23,7 @@ export class ReviewCardPageComponent implements OnDestroy {
   feedBackTitle!: string;
   borderLinearGradient!: string;
   bgLinearGradient!: string;
+  timeSequence = this.configService.stepSequence.timeSequence;
 
   constructor(
     private fb: FormBuilder,
@@ -31,7 +33,8 @@ export class ReviewCardPageComponent implements OnDestroy {
     private route: ActivatedRoute,
     protected designService: DesignService,
     private metaService: Meta,
-    private titleService: Title
+    private titleService: Title,
+    private configService : ConfigService
   ) { }
 
   ngOnDestroy() {
