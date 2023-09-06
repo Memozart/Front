@@ -36,6 +36,7 @@ export class MenuComponent {
   ngOnInit() {
     this.store.select(state => state.user?.data).subscribe({
       next: (res: any) => {
+        console.log(res)
         if (!res) {
           this.items = this.MenuNotConnected();
           this.user = undefined;

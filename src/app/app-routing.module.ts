@@ -9,6 +9,7 @@ import { ManageCardPageComponent } from './pages/manage-card-page/manage-card-pa
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { ReviewCardPageComponent } from './pages/review-card-page/review-card-page.component';
 import { OrganisationPageComponent } from './pages/organisation-page/organisation-page.component';
+import { PaymentsComponent } from './pages/payment-page/payments.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent},
@@ -35,6 +36,7 @@ const routes: Routes = [
       },
     ],
   },
+  { path: 'payments/:statut', component: PaymentsComponent, canActivate: [AuthGuard] },
   { path: 'organisation/create', component: OrganisationPageComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' },
 ];
