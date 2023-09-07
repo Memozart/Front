@@ -22,9 +22,13 @@ export class MenuComponent {
   items!: MenuItem[];
   user?: User;
   organisations?: Organisation[];
+  organisation!: Organisation;
   organisationsSelected?: any;
   showOrganisation: boolean = false;
   showConfirm = false;
+  manageableOrganisation: boolean = false;
+  isAdmin: boolean = false;
+
   constructor(
     private router: Router,
     public designService: DesignService,
@@ -34,15 +38,34 @@ export class MenuComponent {
   ) { }
 
   ngOnInit() {
+
     this.store.select(state => state.user?.data).subscribe({
       next: (res: any) => {
+
         if (!res) {
           this.items = this.MenuNotConnected();
           this.user = undefined;
           return;
         }
-        this.items = this.MenuConnected();
+
         this.user = res;
+
+        this.http.get('organisations/' + this.user?.currentOrganisation?._id).subscribe({
+          next: (res: any) => {
+            this.organisation = res.body;
+            this.isAdmin = this.organisation.admin.find(id => id.toString() === this.user?._id) !== undefined;
+
+            if (this.isAdmin && this.organisation.accountTypeId != 1) this.manageableOrganisation = true;
+            else this.manageableOrganisation = false;
+
+            this.items = this.MenuConnected();
+
+          },
+          error: (err: any) => {
+            this.response.errorF(err, 'Erreur');
+          },
+        });
+
       },
       error: (err: any) => {
         console.error(err);
@@ -90,8 +113,15 @@ export class MenuComponent {
         items: [
           {
             label: 'Créer organisation',
-            icon: 'pi pi-fw pi-users',
+            icon: 'pi pi-fw pi-plus',
             routerLink: 'organisation/create',
+          },
+          {
+            label: 'Gérer organisation',
+            icon: 'pi pi-fw pi-users',
+            routerLink: 'organisation/manage',
+            queryParams: { organisation: this.organisation._id },
+            visible: this.manageableOrganisation,
           },
           {
             label: 'Déconnexion',
@@ -129,6 +159,8 @@ export class MenuComponent {
   }
 
   confirmChangeOrganisation() {
+
+
     if (this.organisationsSelected === this.user?.currentOrganisation?._id)
       return;
     this.http.update('users/change-current-organisation', undefined, { organisationId: this.organisationsSelected }).subscribe({

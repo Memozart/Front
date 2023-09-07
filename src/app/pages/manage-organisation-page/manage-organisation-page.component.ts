@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Meta, MetaDefinition, Title } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpService } from 'src/app/services/http.service';
+import { ResponseService } from 'src/app/services/response.service';
 
 @Component({
   selector: 'app-manage-organisation-page',
@@ -11,11 +14,17 @@ export class ManageOrganisationPageComponent {
   showdeleteDialog = false;
   showAddDialog = false;
   addUserOrganisationFormGroup!: FormGroup;
+  organisationId: any;
+  organisation!: any;
 
   constructor(
     private metaService: Meta,
     private titleService: Title,
     private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+    private http: HttpService,
+    private response: ResponseService,
   ) { }
 
   ngOnDestroy() {
@@ -36,11 +45,43 @@ export class ManageOrganisationPageComponent {
     this.metaService.addTag(ogkeywords);
     this.metaService.addTag(ogdesc);
 
+    this.getParamsOrRedirect();
+
     this.addUserOrganisationFormGroup = this.fb.group({
       userId: new FormControl(''),
     });
 
   }
+
+  getParamsOrRedirect() {
+    this.route.queryParams.subscribe((params) => {
+      this.organisationId = params['organisation'];
+    });
+
+    if (!this.organisationId) {
+      this.router.navigate(['./home']);
+    } else {
+      this.getOrganisationById(this.organisationId);
+    }
+  }
+
+  getOrganisationById = (organisationId: any) => {
+    this.http.get('organisations/' + organisationId).subscribe({
+      next: (res: any) => {
+        if (!res.body) {
+          this.router.navigate(['./home']);
+        }
+
+        this.organisation = res.body;
+        console.log(this.organisation);
+
+      },
+      error: (err: any) => {
+        this.response.errorF(err, 'Erreur');
+        this.router.navigate(['./home']);
+      },
+    });
+  };
 
   showDialog(isModalAdd: boolean = true) {
     if (!isModalAdd) {
