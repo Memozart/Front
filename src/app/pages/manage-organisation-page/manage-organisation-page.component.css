@@ -2,12 +2,6 @@
  color: #FFB02E; 
 }
 
-.users-container {
-  background-color: var(--light-shadow);
-  padding: 1rem;
-  border-radius: 2rem;
-}
-
 .user-card, .add-user-card {
   border: 2px #FFB02E;
   border-radius: 8rem;

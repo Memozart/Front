@@ -1,17 +1,17 @@
 <section *ngIf="organisation">
     <h1 class="text-center">Gestion de <span class="yellow-txt">{{ organisation.name }}</span></h1>
-    <div>
-        <h2>Collaborateurs</h2>
-    </div>
-    <div class="grid users-container">
-        <div class="col-12 sm:col-6 md:col-4 lg:col-3 xl:col-2 px-3 py-4" *ngFor="let admin of organisation.admin">
+    <div class="grid">
+        <div class="col-12">
+            <h2>Collaborateurs</h2>
+        </div>
+        <div class="col-12 sm:col-6 md:col-4 lg:col-3 xl:col-2 pb-4" *ngFor="let admin of organisation.admin">
             <div class="user-card admin">
                 <p class="admin-crown">👑</p>
                 <p><span class="user-emoji">😎</span> {{ admin.firstName }}<br><span class="yellow-txt">{{
                         admin.lastName }}</span></p>
             </div>
         </div>
-        <div class="col-12 sm:col-6 md:col-4 lg:col-3 xl:col-2 px-3 py-4" *ngFor="let user of organisation.users">
+        <div class="col-12 sm:col-6 md:col-4 lg:col-3 xl:col-2 pb-4" *ngFor="let user of organisation.users">
             <div class="user-card">
                 <p><span class="user-emoji">😎</span> {{ user.firstName }}<br><span class="yellow-txt">{{ user.lastName
                         }}</span></p>
@@ -21,7 +21,7 @@
                 </button>
             </div>
         </div>
-        <div class="col-12 sm:col-6 md:col-4 lg:col-3 xl:col-2 px-3 py-4">
+        <div class="col-12 sm:col-6 md:col-4 lg:col-3 xl:col-2 pb-4">
             <div class="add-user-card">
                 <button pButton type="button" icon="pi pi-plus"
                     class="text-white p-button-rounded p-button-raised yellow-btn btn-xl" (click)="showDialog(true)">
@@ -47,7 +47,7 @@
         [style]="{width: 'fit-content'}" (onHide)="closeDialog()">
         <form [formGroup]="addUserOrganisationFormGroup" (ngSubmit)="addUserOrganisation()" class="mb-4">
             <div class="mt-5">
-                <app-custom-input [formGroup]="addUserOrganisationFormGroup" label="Identifiant de l'utilisateur"
+                <app-custom-input [formGroup]="addUserOrganisationFormGroup" label="ID de l'utilisateur"
                     inputId="userIdAdded" type="text"></app-custom-input>
             </div>
         </form>

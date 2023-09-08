@@ -1,3 +1,7 @@
+section {
+  min-height: calc(100vh - 228px);
+}
+
 .register-page {
   padding: 5rem 2rem;
 }

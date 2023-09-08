@@ -112,7 +112,7 @@ export class ManageOrganisationPageComponent {
         this.closeDialog();
         this.response.errorF(
           err,
-          'Une erreur a eu lieu pendant la mise à jour de la carte'
+          'ID incorrect', 'Oops, nous n\'avons pas trouvé cet utilisateur... 😟'
         );
       },
     });
