@@ -17,6 +17,7 @@ export class OrganisationPageComponent {
     { type: 4, name: 'Moyenne entreprise' },
     { type: 5, name: 'Grande entreprise' },
   ];
+  selectedValues: string[] = ['val1', 'val2'];
   constructor(private fb: FormBuilder,
     private http: HttpService,
     private metaService: Meta,

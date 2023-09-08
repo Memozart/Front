@@ -46,6 +46,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { OrganisationPageComponent } from './pages/organisation-page/organisation-page.component';
 import { CustomDropdownComponent } from './shared/custom-dropdown/custom-dropdown.component';
 import { CustomButtonComponent } from './shared/custom-button/custom-button.component';
+import { ManageOrganisationPageComponent } from './pages/manage-organisation-page/manage-organisation-page.component';
 import { PaymentsComponent } from './pages/payment-page/payments.component';
 
 import { environment } from "../environments/environment";
@@ -62,6 +63,7 @@ initializeApp(environment.firebase);
     CreateCardPageComponent,
     ManageCardPageComponent,
     ReviewCardPageComponent,
+    ManageOrganisationPageComponent,
     MenuComponent,
     FooterComponent,
     CardComponent,
@@ -92,7 +94,6 @@ initializeApp(environment.firebase);
     DropdownModule,
     CardModule,
     PanelModule,
-    DropdownModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerImmediately',

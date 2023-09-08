@@ -1,3 +1,7 @@
+section {
+  min-height: calc(100vh - 228px);
+}
+
 h1 {
   text-align: center;
   margin: 0;
