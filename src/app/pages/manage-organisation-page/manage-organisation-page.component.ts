@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Meta, MetaDefinition, Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
 import { ResponseService } from 'src/app/services/response.service';
 
@@ -16,13 +16,13 @@ export class ManageOrganisationPageComponent {
   addUserOrganisationFormGroup!: FormGroup;
   organisationId: any;
   organisation!: any;
+  userSelectedId!: string;
 
   constructor(
     private metaService: Meta,
     private titleService: Title,
     private fb: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute,
     private http: HttpService,
     private response: ResponseService,
   ) { }
@@ -45,36 +45,20 @@ export class ManageOrganisationPageComponent {
     this.metaService.addTag(ogkeywords);
     this.metaService.addTag(ogdesc);
 
-    this.getParamsOrRedirect();
+    this.getOrganisationById();
 
     this.addUserOrganisationFormGroup = this.fb.group({
-      userId: new FormControl(''),
+      userIdAdded: ['', [Validators.required]],
     });
 
   }
 
-  getParamsOrRedirect() {
-    this.route.queryParams.subscribe((params) => {
-      this.organisationId = params['organisation'];
-    });
-
-    if (!this.organisationId) {
-      this.router.navigate(['./home']);
-    } else {
-      this.getOrganisationById(this.organisationId);
-    }
-  }
-
-  getOrganisationById = (organisationId: any) => {
-    this.http.get('organisations/' + organisationId).subscribe({
+  getOrganisationById = () => {
+    this.http.get('organisations/users/all').subscribe({
       next: (res: any) => {
-        if (!res.body) {
-          this.router.navigate(['./home']);
-        }
-
+        if (!res.body) this.router.navigate(['./home']);
         this.organisation = res.body;
-        console.log(this.organisation);
-
+        if (this.organisation.accountUserLimit < 2) this.router.navigate(['./home']);
       },
       error: (err: any) => {
         this.response.errorF(err, 'Erreur');
@@ -83,7 +67,10 @@ export class ManageOrganisationPageComponent {
     });
   };
 
-  showDialog(isModalAdd: boolean = true) {
+  showDialog(isModalAdd: boolean, userId: null | string = null) {
+
+    if (userId) this.userSelectedId = userId;
+
     if (!isModalAdd) {
       this.showAddDialog = false;
       this.showdeleteDialog = true;
@@ -106,6 +93,55 @@ export class ManageOrganisationPageComponent {
       return;
     }
 
+    const addUserOrganisationFormGroup = this.addUserOrganisationFormGroup.value;
+
+    this.http.update('organisations/join', this.organisation._id, addUserOrganisationFormGroup).subscribe({
+      next: (res: any) => {
+
+        this.organisation = res.body;
+
+        this.closeDialog();
+        this.addUserOrganisationFormGroup.reset();
+        this.response.successF(
+          'Ajout effectué',
+          'Tadaaaaa ! 😎'
+        );
+      },
+      error: (err) => {
+        console.log(err);
+        this.closeDialog();
+        this.response.errorF(
+          err,
+          'Une erreur a eu lieu pendant la mise à jour de la carte'
+        );
+      },
+    });
+
+  }
+
+  deleteUserOrganisation() {
+    if (!this.userSelectedId) return;
+
+    this.http.update('organisations/leave', this.organisation._id, { 'userIdDeleted': this.userSelectedId }).subscribe({
+      next: (res: any) => {
+
+        this.organisation = res.body;
+
+        this.response.successF(
+          'Suppression effectuée',
+          'Bon débarras... 😏'
+        );
+        this.closeDialog();
+      },
+      error: (err: any) => {
+        console.log(err);
+        this.response.errorF(
+          err,
+          'Une erreur à eu lieu pendant la suppression du collaborateur'
+        );
+        this.closeDialog();
+      },
+    });
   }
 
 

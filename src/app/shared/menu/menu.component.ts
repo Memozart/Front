@@ -52,6 +52,7 @@ export class MenuComponent {
 
         this.http.get('organisations/' + this.user?.currentOrganisation?._id).subscribe({
           next: (res: any) => {
+
             this.organisation = res.body;
             this.isAdmin = this.organisation.admin.find(id => id.toString() === this.user?._id) !== undefined;
 
@@ -120,7 +121,6 @@ export class MenuComponent {
             label: 'Gérer organisation',
             icon: 'pi pi-fw pi-users',
             routerLink: 'organisation/manage',
-            queryParams: { organisation: this.organisation._id },
             visible: this.manageableOrganisation,
           },
           {
