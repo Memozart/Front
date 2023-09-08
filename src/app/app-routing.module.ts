@@ -10,6 +10,7 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { ReviewCardPageComponent } from './pages/review-card-page/review-card-page.component';
 import { OrganisationPageComponent } from './pages/organisation-page/organisation-page.component';
 import { ManageOrganisationPageComponent } from './pages/manage-organisation-page/manage-organisation-page.component';
+import { PaymentsComponent } from './pages/payment-page/payments.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -51,6 +52,7 @@ const routes: Routes = [
       },
     ],
   },
+  { path: 'payments/:statut', component: PaymentsComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' },
 ];
 

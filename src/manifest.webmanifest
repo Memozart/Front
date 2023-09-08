@@ -46,6 +46,9 @@
       "src": "assets/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "gcm_sender_id": "1016943132083"
     }
   ]
 }

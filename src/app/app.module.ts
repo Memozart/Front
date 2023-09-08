@@ -47,6 +47,11 @@ import { OrganisationPageComponent } from './pages/organisation-page/organisatio
 import { CustomDropdownComponent } from './shared/custom-dropdown/custom-dropdown.component';
 import { CustomButtonComponent } from './shared/custom-button/custom-button.component';
 import { ManageOrganisationPageComponent } from './pages/manage-organisation-page/manage-organisation-page.component';
+import { PaymentsComponent } from './pages/payment-page/payments.component';
+
+import { environment } from "../environments/environment";
+import { initializeApp } from "firebase/app";
+initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [
@@ -68,6 +73,7 @@ import { ManageOrganisationPageComponent } from './pages/manage-organisation-pag
     CustomInputComponent,
     CustomDropdownComponent,
     CustomButtonComponent,
+    PaymentsComponent,
   ],
   imports: [
     BrowserModule,

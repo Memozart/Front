@@ -3,14 +3,17 @@ import { User } from "./user";
 
 export interface Organisation {
 	_id: string;
-  name: string;
+  	name: string;
+	havePaid: boolean;
+	siren: string;
+	customerId: string;
 	admin: User[];
 	adminId: User[];
 	cards: Card[];
-  cardId:string;
+  	cardId:string;
 	users: User[];
-  usersId : string[]
-  accountTypeId: number;
+  	usersId : string[]
+  	accountTypeId: number;
 	accountTypeName: string;
 	accountUserLimit: number;
 }
