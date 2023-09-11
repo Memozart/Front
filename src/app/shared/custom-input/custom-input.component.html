@@ -1,0 +1,28 @@
+<span class="p-float-label">
+
+  <ng-container [ngSwitch]="inputType">
+    <input *ngSwitchCase="'input'" [id]="inputId" [type]="type" pInputText [formControl]="getFormControl()" />
+    <textarea *ngSwitchCase="'textarea'" [id]="inputId" rows="2" [autoResize]="true" cols="30" pInputTextarea
+      [formControl]="getFormControl()"></textarea>
+    <p-calendar *ngSwitchCase="'calendar'" [inputId]="inputId" dateFormat="dd/mm/yy" [minDate]="dateMini"
+      [formControl]="getFormControl()"></p-calendar>
+    <p-password *ngSwitchCase="'new-password'" [toggleMask]="true" [formControl]="getFormControl()" [inputId]="inputId"
+      weakLabel="Faible" mediumLabel="Moyen" strongLabel="Fort" promptLabel="Renseigne un mot de passe">
+      <ng-template pTemplate="footer">
+        <p-divider></p-divider>
+        <p class="mt-2">Suggestions</p>
+        <ul class="pl-2 ml-2 mt-0">
+          <li>Au moins une majuscule</li>
+          <li>Au moins une minuscule</li>
+          <li>Au moins un chiffre</li>
+          <li>Minimum 8 caractères</li>
+        </ul>
+      </ng-template>
+    </p-password>
+    <p-password *ngSwitchCase="'password'" [feedback]="false" [formControl]="getFormControl()"
+      [inputId]="inputId"></p-password>
+  </ng-container>
+
+  <label [for]="inputId" class="block font-medium mb-2"
+    [ngClass]="{'blink-error-color': isInvalidInput(formGroup, inputId)}">{{label}}</label>
+</span>

@@ -19,7 +19,9 @@ import { ReviewCardPageComponent } from './pages/review-card-page/review-card-pa
 import { CardComponent } from './shared/card/card.component';
 import { SvgComponent } from './shared/svg/svg.component';
 import { MenuComponent } from './shared/menu/menu.component';
+import { FooterComponent } from './shared/footer/footer.component';
 import { ThemeComponent } from './shared/theme/theme.component';
+import { CustomInputComponent } from './shared/custom-input/custom-input.component';
 
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
@@ -36,13 +38,20 @@ import { DividerModule } from 'primeng/divider';
 import { CardModule } from 'primeng/card';
 import { PanelModule } from 'primeng/panel';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
-import {DropdownModule} from 'primeng/dropdown';
+import { DropdownModule } from 'primeng/dropdown';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { StoreModule } from '@ngrx/store';
 import { metaReducers, ROOT_REDUCER } from './stores';
 import { AvatarModule } from 'primeng/avatar';
 import { OrganisationPageComponent } from './pages/organisation-page/organisation-page.component';
+import { CustomDropdownComponent } from './shared/custom-dropdown/custom-dropdown.component';
+import { CustomButtonComponent } from './shared/custom-button/custom-button.component';
+import { ManageOrganisationPageComponent } from './pages/manage-organisation-page/manage-organisation-page.component';
+import { PaymentsComponent } from './pages/payment-page/payments.component';
 
+import { environment } from "../environments/environment";
+import { initializeApp } from "firebase/app";
+initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [
@@ -54,11 +63,17 @@ import { OrganisationPageComponent } from './pages/organisation-page/organisatio
     CreateCardPageComponent,
     ManageCardPageComponent,
     ReviewCardPageComponent,
+    ManageOrganisationPageComponent,
     MenuComponent,
+    FooterComponent,
     CardComponent,
     SvgComponent,
     ThemeComponent,
     OrganisationPageComponent,
+    CustomInputComponent,
+    CustomDropdownComponent,
+    CustomButtonComponent,
+    PaymentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,7 +94,6 @@ import { OrganisationPageComponent } from './pages/organisation-page/organisatio
     DropdownModule,
     CardModule,
     PanelModule,
-    DropdownModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerImmediately',
@@ -89,9 +103,9 @@ import { OrganisationPageComponent } from './pages/organisation-page/organisatio
     DialogModule,
     ConfirmDialogModule,
     OverlayPanelModule,
-    StoreModule.forRoot(ROOT_REDUCER, {metaReducers}), //reducers et metareducers
+    StoreModule.forRoot(ROOT_REDUCER, { metaReducers }), //reducers et metareducers
     AvatarModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     {
@@ -104,4 +118,4 @@ import { OrganisationPageComponent } from './pages/organisation-page/organisatio
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

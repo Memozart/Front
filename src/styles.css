@@ -2,7 +2,6 @@
 :root {
   --light-bg-color: #304562;
   --dark-bg-color: #1F2D40;
-  --primary-color: #FFD469;
   --light-shadow: #304562;
   --dark-shadow: #17212F;
   --custom-bg-color: #304562;
@@ -10,7 +9,12 @@
 
 @font-face {
   font-family: 'Quicksand';
-  src: url('/assets/Quicksand-VariableFont_wght.ttf');
+  src: url('/assets/fonts/Quicksand-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: 'Caveat';
+  src: url('/assets/fonts/Caveat-VariableFont_wght.ttf');
 }
 
 * {
@@ -25,23 +29,47 @@ html, body {
 
 html {
   background: var(--custom-bg-color) !important;
+  color: white;
+}
+
+h1 {
+  font-size: 40px;
+  margin-top: 0;
 }
 
 section {
   background-color: var(--dark-bg-color);
-  min-height: 82vh;
+  min-height: calc(100vh - 254px);
   border-top-left-radius: 5rem;
   border-top-right-radius: 5rem;
   padding: 2rem 3rem;
 }
 
 .blink-error-color {
-  color: var(--primary-color) !important;
+  color: #ff7e7e !important;
   animation: blinker 1s linear infinite;
 }
 
 @keyframes blinker {
   50% {
-    opacity: 0;
+    opacity: 0.4;
+  }
+}
+
+@media (max-width: 960px) {
+  section {
+    min-height: calc(100vh - 192px);
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 36px;
   }
 }

@@ -6,52 +6,43 @@
 
         <div class="p-fluid grid justify-content-center mt-2">
             <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
-                <p-dropdown [options]="themes" [(ngModel)]="selectedTheme" formControlName="theme"
-                    optionLabel="name" optionValue="_id" (onChange)="getSelectedTheme(selectedTheme)">
+                <p-dropdown [options]="themes" [(ngModel)]="selectedTheme" formControlName="theme" optionLabel="name"
+                    optionValue="_id" (onChange)="getSelectedTheme(selectedTheme)">
                 </p-dropdown>
             </div>
         </div>
 
         <div class="p-fluid grid justify-content-center mt-2">
             <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
-                <span class="p-float-label">
-                    <textarea inputId="question-input" rows="2" [autoResize]="true" cols="30" pInputTextarea
-                        formControlName="question"></textarea>
-                    <label for="question-input">Question*</label>
-                </span>
+                <app-custom-input inputType="textarea" [formGroup]="createCardForm" label="Question*"
+                    inputId="question"></app-custom-input>
             </div>
         </div>
 
         <div class="p-fluid grid justify-content-center mt-2">
             <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
-                <span class="p-float-label">
-                    <textarea inputId="answer-input" rows="2" [autoResize]="true" cols="30" pInputTextarea formControlName="answer"></textarea>
-                    <label for="answer-input">Réponse*</label>
-                </span>
+                <app-custom-input inputType="textarea" [formGroup]="createCardForm" label="Réponse*"
+                    inputId="answer"></app-custom-input>
             </div>
         </div>
 
         <div class="p-fluid grid justify-content-center mt-2">
             <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
-                <span class="p-float-label">
-                    <input id="help-input" type="text" pInputText formControlName="help">
-                    <label for="help-input">Aide</label>
-                </span>
+                <app-custom-input [formGroup]="createCardForm" label="Aide" inputId="help"
+                    type="text"></app-custom-input>
             </div>
         </div>
 
         <div class="p-fluid grid justify-content-center mt-2">
             <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
-                <span class="p-float-label">
-                    <p-calendar id="date-input" inputId="basic" dateFormat="dd/mm/yy" [minDate]="dateMini"
-                        formControlName="datePresentation"></p-calendar>
-                    <label for="date-input">Date première leçon</label>
-                </span>
+                <app-custom-input inputType="calendar" [formGroup]="createCardForm" label="Date première révision"
+                    inputId="datePresentation"></app-custom-input>
             </div>
         </div>
 
-        <button pButton type="submit" label="Créer" class="mt-5 text-white p-button-rounded" [style.background]="bgLinearGradient" (mouseover)="designService.changeBtnStyle($event, theme, 1, true)"
-                (mouseleave)="designService.changeBtnStyle($event, theme, 2)"></button>
+        <button pButton type="submit" label="Créer" class="mt-5 text-white p-button-rounded"
+            [style.background]="bgLinearGradient" (mouseover)="designService.changeBtnStyle($event, theme, 1, true)"
+            (mouseleave)="designService.changeBtnStyle($event, theme, 2)"></button>
 
     </form>
 

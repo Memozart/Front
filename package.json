@@ -1,6 +1,6 @@
 {
   "name": "memozart-front",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -23,6 +23,9 @@
     "@angular/router": "^15.1.0",
     "@angular/service-worker": "^15.1.0",
     "@ngrx/store": "^15.4.0",
+    "crypto-js": "^4.1.1",
+    "firebase": "^10.3.1",
+    "ngx-device-detector": "^5.0.1",
     "primeflex": "^3.3.0",
     "primeicons": "^6.0.1",
     "primeng": "^15.2.0",
@@ -32,8 +35,9 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.1.0",
-    "@angular/cli": "~15.1.0",
+    "@angular/cli": "^15.2.9",
     "@angular/compiler-cli": "^15.1.0",
+    "@types/crypto-js": "^4.1.2",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",

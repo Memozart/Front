@@ -9,9 +9,11 @@ import { ManageCardPageComponent } from './pages/manage-card-page/manage-card-pa
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { ReviewCardPageComponent } from './pages/review-card-page/review-card-page.component';
 import { OrganisationPageComponent } from './pages/organisation-page/organisation-page.component';
+import { ManageOrganisationPageComponent } from './pages/manage-organisation-page/manage-organisation-page.component';
+import { PaymentsComponent } from './pages/payment-page/payments.component';
 
 const routes: Routes = [
-  { path: '', component: LandingPageComponent},
+  { path: '', component: LandingPageComponent },
   { path: 'home', component: HomePageComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterPageComponent },
   { path: 'login', component: LoginPageComponent },
@@ -35,7 +37,22 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'organisation/create', component: OrganisationPageComponent, canActivate: [AuthGuard] },
+  {
+    path: 'organisation',
+    children: [
+      {
+        path: 'create',
+        component: OrganisationPageComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'manage',
+        component: ManageOrganisationPageComponent,
+        canActivate: [AuthGuard],
+      },
+    ],
+  },
+  { path: 'payments/:statut', component: PaymentsComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' },
 ];
 
@@ -43,4 +60,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

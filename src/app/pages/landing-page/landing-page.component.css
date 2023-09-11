@@ -1,12 +1,223 @@
-:host{
+section {
+  text-align: center;
+  padding: 0;
+}
+
+.container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 0 2rem;
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 32px;
+  margin-top: 0;
+  margin-bottom: 3rem;
+}
+
+p {
+  font-size: 20px;
+  line-height: 40px;
+  margin: 0;
+}
+
+.caveat-font {
+  font-family: 'Caveat';
+}
+
+.landing-page .p-button-rounded {
+  font-weight: bold;
+  padding: 1rem 1.5rem;
+  margin-top: 3rem;
+  border: none;
+}
+
+.yellow-btn {
+  background-color: #FFB02E;
+  box-shadow: 5px 5px 15px #0C1119, -5px -5px 15px #304562;
+}
+
+.yellow-btn:hover {
+  background-color: #FFB02E;
+  box-shadow: inset 4px 4px 4px #382400, inset -4px -4px 4px #ffe2af;
+}
+
+.pink-btn {
+  background-color: #FF6DC6;
+  box-shadow: 5px 5px 15px #0C1F39, -5px -5px 15px #4A658A;
+}
+
+.pink-btn:hover {
+  background-color: #FF6DC6;
+  box-shadow: inset 4px 4px 4px #61003C, inset -4px -4px 4px #FBB6E0;
+}
+
+.dark-btn {
+  background-color: #1F2D40;
+  box-shadow: 5px 5px 15px #0C1119, -5px -5px 15px #304562;
+}
+
+.dark-btn:hover {
+  background-color: #1F2D40;
+  box-shadow: inset 4px 4px 4px #0C1119, inset -4px -4px 4px #304562;
+}
+
+.beige-btn {
+  background-color: #FCBB51;
+  box-shadow: 5px 5px 15px #0C1F39, -5px -5px 15px #4A658A;
+  
+}
+
+.beige-btn:hover {
+  background-color: #FCBB51;
+  box-shadow: inset 4px 4px 4px #764F12, inset -4px -4px 4px #FFDFAB;
+}
+
+.banner {
+  background-image: url("/assets/background_pattern.svg");
+  padding: 5rem 2rem;
+  border-bottom: 1px solid var(--light-bg-color);
+}
+
+.banner p {
+  max-width: 900px;
+  margin: auto;
+}
+
+.services, .themes-choices, .concept, .organisations {
+  padding: 5rem 0;
+}
+
+.concept, .organisations {
+  background-color: var(--light-bg-color);
+}
+
+.services p {
+  margin: 0;
+}
+
+.service-card {
+  border: 10px solid #FFB02E; 
+  border-radius: 6rem;
+  padding: 1rem;
+}
+
+.service-keyword {
+  font-size: 40px;
+  color: #FFB02E;
+  font-weight: bold;
+}
+
+.steps {
+  margin-top: 3rem;
+}
+
+.step-card {
+  background-image: url("/assets/step.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 1rem 3rem;
+}
+
+.step-card .day {
+  padding-top: 2rem;
+}
+
+.step-card .day .number {
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.brain-xs { font-size: 20px; }
+.brain-s { font-size: 25px; }
+.brain-m { font-size: 30px; }
+.brain-l { font-size: 35px; }
+.brain-xl { font-size: 40px; }
+.brain-xxl { font-size: 45px; }
+
+.position-relative { position: relative; }
+
+.line-steps {
+    margin: auto;
+    width: 80%;
+    position: absolute;
+    bottom: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2px;
+    background-color: var(--dark-bg-color);
+    border: none;
+}
+
+.theme-card {
   display: flex;
-  flex-direction: column;
-  width: 90vw;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.theme-card p {
+  text-transform: capitalize;
+  padding-left: 0.5rem;
+  margin: auto;
+  font-weight: bold;
+  color: var(--dark-bg-color);
+}
+
+.theme-card .icon-container {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--dark-bg-color);
+  display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
-  padding: 25px;
+  box-shadow: inset 2px 2px 5px #17212F, inset -1px -1px 5px #304562;
 }
-h2{
-  align-self: flex-start;
+
+.icon-container .theme-icon {
+  display: block;
+  width: 30px;
+}
+
+:host ::ng-deep .theme-card .p-element {
+  margin-bottom: 1rem;
+}
+
+:host ::ng-deep .theme-card .p-card-content {
+  display: flex;
+  padding: 0;
+}
+
+.organisations .grid {
+  margin-top: 3rem;
+}
+
+.organisation-card {
+  background-color: var(--dark-bg-color);
+  border-radius: 75px;
+  padding: 2rem;
+}
+
+.organisation-card p {
+  line-height: 30px;
+}
+
+.organisation-card .organisation-emoji {
+  font-size: 50px;
+  margin-bottom: 1.5rem;
+}
+
+.organisation-card .organisation-name {
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.organisation-name .organisation-keyword {
+  font-size: 32px;
+  color: #FFCE7C;
 }

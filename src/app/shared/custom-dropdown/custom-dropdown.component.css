@@ -1,0 +1,41 @@
+::ng-deep .p-dropdown {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 2rem;
+  padding: 0.5rem 1.5rem;
+  box-shadow: inset 5px 5px 5px var(--dark-shadow),
+    inset -2px -2px 5px var(--light-shadow);
+}
+
+::ng-deep .p-dropdown-label,
+::ng-deep .p-dropdown-panel .p-dropdown-items {
+  text-align: left;
+}
+
+::ng-deep .p-dropdown:not(.p-disabled):hover {
+    border: none;
+}
+
+::ng-deep .p-dropdown:not(.p-disabled).p-focus {
+    box-shadow: inset 5px 5px 5px var(--dark-shadow),
+    inset -2px -2px 5px var(--light-shadow);
+}
+
+::ng-deep .p-dropdown-panel {
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    border: 0;
+}
+
+::ng-deep .p-dropdown-panel .p-dropdown-items {
+    padding: 0;
+}
+
+
+::ng-deep  .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    background: rgb(74, 101, 138, 0.16);
+    border-radius: 0.25rem;
+
+}

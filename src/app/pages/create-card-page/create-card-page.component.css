@@ -5,18 +5,6 @@ section {
   position: relative;
 }
 
-textarea,
-input,
-::ng-deep input.p-inputtext {
-  background: none;
-  border: none;
-  outline: none;
-  border-radius: 2rem;
-  padding: 1rem 1.5rem;
-  box-shadow: inset 5px 5px 5px var(--dark-shadow),
-    inset -2px -2px 5px var(--light-shadow);
-}
-
 ::ng-deep .p-dropdown {
   background: none;
   border: none;
@@ -32,37 +20,29 @@ input,
   text-align: left;
 }
 
-.p-float-label textarea ~ label,
-.p-float-label input ~ label,
-.p-float-label label {
-  left: 1.5rem;
+:host ::ng-deep .p-dropdown:not(.p-disabled):hover {
+    border: none;
 }
 
-.p-float-label textarea ~ label {
-  top: 2rem;
-}
-
-.p-float-label input ~ label {
-  top: 1.6rem;
-}
-
-.p-float-label input:focus ~ label,
-.p-float-label input.p-filled ~ label,
-.p-float-label textarea:focus ~ label,
-.p-float-label textarea.p-filled ~ label,
-.p-float-label .p-inputwrapper-focus ~ label,
-.p-float-label .p-inputwrapper-filled ~ label {
-  top: -0.75rem;
-}
-
-::ng-deep .p-inputtext {
-  font-family: 'Quicksand';
-}
-
-.p-inputtext:enabled:focus {
-  box-shadow: inset 5px 5px 5px var(--dark-shadow),
+:host ::ng-deep .p-dropdown:not(.p-disabled).p-focus {
+    box-shadow: inset 5px 5px 5px var(--dark-shadow),
     inset -2px -2px 5px var(--light-shadow);
-  border-color: none;
+}
+
+:host ::ng-deep .p-dropdown-panel {
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    border: 0;
+}
+
+:host ::ng-deep .p-dropdown-panel .p-dropdown-items {
+    padding: 0;
+}
+
+:host ::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    background: rgb(74, 101, 138, 0.16);
+    border-radius: 0.25rem;
+
 }
 
 :host ::ng-deep .p-button {

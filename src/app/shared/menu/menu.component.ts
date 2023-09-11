@@ -22,8 +22,13 @@ export class MenuComponent {
   items!: MenuItem[];
   user?: User;
   organisations?: Organisation[];
+  organisation!: Organisation;
   organisationsSelected?: any;
+  showOrganisation: boolean = false;
   showConfirm = false;
+  manageableOrganisation: boolean = false;
+  isAdmin: boolean = false;
+
   constructor(
     private router: Router,
     public designService: DesignService,
@@ -33,15 +38,35 @@ export class MenuComponent {
   ) { }
 
   ngOnInit() {
+
     this.store.select(state => state.user?.data).subscribe({
       next: (res: any) => {
+
         if (!res) {
           this.items = this.MenuNotConnected();
           this.user = undefined;
           return;
         }
-        this.items = this.MenuConnected();
+
         this.user = res;
+
+        this.http.get('organisations/' + this.user?.currentOrganisation?._id).subscribe({
+          next: (res: any) => {
+
+            this.organisation = res.body;
+            this.isAdmin = this.organisation.admin.find(id => id.toString() === this.user?._id) !== undefined;
+
+            if (this.isAdmin && this.organisation.accountTypeId != 1) this.manageableOrganisation = true;
+            else this.manageableOrganisation = false;
+
+            this.items = this.MenuConnected();
+
+          },
+          error: (err: any) => {
+            this.response.errorF(err, 'Erreur');
+          },
+        });
+
       },
       error: (err: any) => {
         console.error(err);
@@ -60,20 +85,21 @@ export class MenuComponent {
     this.http.get('organisations').subscribe({
       next: (res: any) => {
         this.organisations = res.body;
+        this.showOrganisation = this.organisations!.length > 1 ? true : false;
         this.organisationsSelected = this.user?.currentOrganisation?._id;
       },
-      error: (err) => {
-        console.error('erreur !!',err);
-      }
+      error: (err: any) => {
+        this.response.errorF(err, 'Erreur');
+      },
     })
     return [
       {
-        label: 'Accueil',
+        label: 'Révisions',
         icon: 'pi pi-fw pi-home',
         routerLink: 'home',
       },
       {
-        label: 'Leçons',
+        label: 'Cartes',
         icon: 'pi pi-fw pi-book',
         routerLink: 'card/manage',
       },
@@ -88,8 +114,14 @@ export class MenuComponent {
         items: [
           {
             label: 'Créer organisation',
-            icon: 'pi pi-fw pi-users',
+            icon: 'pi pi-fw pi-plus',
             routerLink: 'organisation/create',
+          },
+          {
+            label: 'Gérer organisation',
+            icon: 'pi pi-fw pi-users',
+            routerLink: 'organisation/manage',
+            visible: this.manageableOrganisation,
           },
           {
             label: 'Déconnexion',
@@ -127,20 +159,21 @@ export class MenuComponent {
   }
 
   confirmChangeOrganisation() {
+
+
     if (this.organisationsSelected === this.user?.currentOrganisation?._id)
       return;
     this.http.update('users/change-current-organisation', undefined, { organisationId: this.organisationsSelected }).subscribe({
       next: (res: any) => {
         this.store.dispatch(updateUserAction({ user: res.body.user }));
-        this.response.successF('OK', "Vous avez changez d'organisation");
+        this.response.successF('Changement d\'organisation opéré', "Prêt à reprendre où tu t'étais arrêté ? 🤨");
         this.showConfirm = false;
         localStorage.setItem('access_token', res.body.accessToken);
         localStorage.setItem('refresh_token', res.body.refreshToken);
         this.router.navigate(['./']);
       },
-      error: (err) => {
-        this.response.successF('Erreur', "Une erreur à eut lieu pendant le changement d'organisation");
-        console.error(err);
+      error: (err: any) => {
+        this.response.errorF('Erreur', "Une erreur a eu lieu pendant le changement d'organisation.");
         this.showConfirm = false;
       },
     })

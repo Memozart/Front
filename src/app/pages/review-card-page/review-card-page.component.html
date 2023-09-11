@@ -1,6 +1,6 @@
 <section *ngIf="review">
     <div>
-        <p>Apprentissage n°{{ review.step.step }}</p>
+        <p>Révision n°{{ review.step.step }} sur 10</p>
         <p-progressBar [value]="review.step.step * 10" [showValue]="false" color="{{ review.theme.color1 }}"
             styleClass="m-auto" [style]="{'border-radius':'1rem', 'height':'0.6rem', 'width':'10rem'}"></p-progressBar>
     </div>
@@ -27,18 +27,22 @@
                 </ng-template>
             </p-overlayPanel>
             <button pButton type="button" (click)="op.toggle($event)" label="?" class="text-white helpButton"
-                [style.background]="bgLinearGradient"></button>
+                [style.background]="bgLinearGradient"
+                (mouseover)="designService.changeBtnStyle($event, review.theme, 1, true)"
+                (mouseleave)="designService.changeBtnStyle($event, review.theme, 2)"></button>
         </div>
 
         <button pButton type="submit" label="Valider réponse" class="mt-5 text-white p-button-rounded"
-            [style.background]="bgLinearGradient"></button>
+            [style.background]="bgLinearGradient"
+            (mouseover)="designService.changeBtnStyle($event, review.theme, 1, true)"
+            (mouseleave)="designService.changeBtnStyle($event, review.theme, 2)"></button>
     </form>
 
     <p-dialog header="{{ feedBackTitle }}" [(visible)]="visible" [modal]="true" [style]="{ width: '40vw' }"
         [draggable]="false" [resizable]="false" [closable]="false" [styleClass]="modalStyle" *ngIf="reviewFeedBack">
         <app-svg icon="{{ reviewFeedBack.success }}" class="feedback_icon"></app-svg>
         <p class="m-0 feedback_text">
-            Cette question te sera reposée dans {{ reviewFeedBack.feedback.dayNextPresentation }} jour(s)
+            Cette question te sera reposée dans {{ reviewFeedBack.feedback.dayNextPresentation }} {{ timeSequence }}
         </p>
         <p *ngIf="!reviewFeedBack.success" class="mt-2 mb-1 fw-bold">La bonne réponse était : {{
             reviewFeedBack.feedback.goodAnswer }}</p>

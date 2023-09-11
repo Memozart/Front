@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResponseService } from 'src/app/services/response.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DesignService } from 'src/app/services/design.service';
+import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
+import { ConfigService } from './../../services/config.service';
 
 @Component({
   selector: 'app-review-card-page',
@@ -21,6 +23,7 @@ export class ReviewCardPageComponent implements OnDestroy {
   feedBackTitle!: string;
   borderLinearGradient!: string;
   bgLinearGradient!: string;
+  timeSequence = this.configService.stepSequence.timeSequence;
 
   constructor(
     private fb: FormBuilder,
@@ -28,13 +31,31 @@ export class ReviewCardPageComponent implements OnDestroy {
     private response: ResponseService,
     private router: Router,
     private route: ActivatedRoute,
-    private designService: DesignService
-  ) {}
+    protected designService: DesignService,
+    private metaService: Meta,
+    private titleService: Title,
+    private configService : ConfigService
+  ) { }
 
   ngOnDestroy() {
+    this.metaService.removeTag("property='og:title'");
+    this.metaService.removeTag("property='og:description'");
+    this.metaService.removeTag("property='og:keywords'");
+
     this.designService.resetCustomBgColor();
   }
   ngOnInit() {
+    const ogtitle: MetaDefinition = { name: 'title', property: 'og:title', content: 'Memozart - Révise et progresse - Optimise ton apprentissage' };
+    const ogkeywords: MetaDefinition = { name: 'keywords', property: 'og:keywords', content: 'Memozart,memozar,memo,art,mémozart,mémomzat,memozzart,cartes,revisons,revision,apprentissage,mémorisation,répétition,apprentissage espacé,home,accueil,entreprise,carte' };
+    const ogdesc: MetaDefinition = {
+      name: 'description', property: 'og:description', content: 'Révise et progresse grâce à l\'efficacité de l\'apprentissage espacé sur Memozart. Utilise notre outil convivial pour affiner tes connaissances et atteindre tes objectifs d\'apprentissage. Découvre une nouvelle façon de maîtriser de nouveaux sujets sur Memozart !'
+    };
+
+    if (ogtitle.content) this.titleService.setTitle(ogtitle.content);
+    this.metaService.addTag(ogtitle);
+    this.metaService.addTag(ogkeywords);
+    this.metaService.addTag(ogdesc);
+
     this.getParamsOrRedirect();
 
     this.reviewForm = this.fb.group({
@@ -50,7 +71,7 @@ export class ReviewCardPageComponent implements OnDestroy {
     });
 
     if (!this.theme_id) {
-      this.router.navigate(['./']);
+      this.router.navigate(['./home']);
     } else {
       this.getReviewByTheme(this.theme_id);
     }
@@ -60,7 +81,7 @@ export class ReviewCardPageComponent implements OnDestroy {
     this.http.get('reviews/' + theme_id).subscribe({
       next: (res: any) => {
         if (!res.body) {
-          this.router.navigate(['./']);
+          this.router.navigate(['./home']);
         }
 
         this.review = res.body.review;
@@ -80,8 +101,9 @@ export class ReviewCardPageComponent implements OnDestroy {
           ')';
         this.designService.changeCustomBgColor(this.bgLinearGradient);
       },
-      error: () => {
-        this.router.navigate(['./']);
+      error: (err: any) => {
+        this.response.errorF(err, 'Erreur');
+        this.router.navigate(['./home']);
       },
     });
   };
