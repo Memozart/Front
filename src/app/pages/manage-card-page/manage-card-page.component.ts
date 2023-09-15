@@ -30,6 +30,8 @@ export class ManageCardPageComponent implements OnInit {
   bgLinearGradient!: string;
   selectedTheme!: string;
   organisationId?: string;
+  errorMessage!: string;
+
   constructor(
     private http: HttpService,
     private fb: FormBuilder,
@@ -128,12 +130,13 @@ export class ManageCardPageComponent implements OnInit {
         );
       },
       error: (err) => {
-        console.log(err);
+        this.errorMessage = "";
+
+        if (err.error.message.includes('Vous n\'êtes pas administrateur de l\'organisation ou la carte n\'existe pas dans l\'organisation')) this.errorMessage += 'Tu dois être admin pour modifier une carte 👶\n';
+        if (this.errorMessage) this.response.errorF(err, 'Erreur', this.errorMessage);
+        else this.response.errorF(err, 'Erreur');
+
         this.closeModal();
-        this.response.errorF(
-          err,
-          'Une erreur a eu lieu pendant la mise à jour de la carte'
-        );
       },
     });
   }
@@ -153,11 +156,13 @@ export class ManageCardPageComponent implements OnInit {
         this.closeModal();
       },
       error: (err) => {
-        console.log(err);
-        this.response.errorF(
-          err,
-          'Une erreur à eu lieu pendant la suppression de la carte'
-        );
+        this.errorMessage = "";
+
+        if (err.error.message.includes('Vous n\'êtes pas administrateur de l\'organisation ou la carte n\'existe pas dans l\'organisation')) this.errorMessage += 'Tu dois être admin pour supprimer une carte 👶\n';
+
+        if (this.errorMessage) this.response.errorF(err, 'Erreur', this.errorMessage);
+        else this.response.errorF(err, 'Erreur');
+
         this.closeModal();
       },
     });

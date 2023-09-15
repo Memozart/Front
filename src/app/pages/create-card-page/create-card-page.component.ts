@@ -17,6 +17,7 @@ export class CreateCardPageComponent {
   selectedTheme!: any;
   bgLinearGradient!: string;
   createCardForm!: FormGroup;
+  errorMessage!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -80,7 +81,12 @@ export class CreateCardPageComponent {
         this.getSelectedTheme(this.themes[0]?._id);
       },
       error: (err: any) => {
-        this.response.errorF(err, 'Erreur');
+        this.errorMessage = "";
+
+        if (err.error.message.includes('You did not add card because you are not an admin of organisation')) this.errorMessage += 'Tu dois être admin pour créer une carte 👶\n';
+
+        if (this.errorMessage) this.response.errorF(err, 'Erreur', this.errorMessage);
+        else this.response.errorF(err, 'Erreur');
       },
     });
   }
