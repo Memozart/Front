@@ -14,7 +14,7 @@
 :host ::ng-deep .p-menubar {
   background-color: transparent;
   justify-content: space-between;
-  padding: 0.5rem 3rem;
+  padding: 1rem 2rem;
   border: 0px;
   flex-wrap: wrap;
 }
@@ -293,7 +293,25 @@
   }
 
   :host ::ng-deep .p-menubar .p-menubar-button {
-    order: 0;
+    order: 2;
+  }
+
+  :host ::ng-deep .p-menubar-start {
+    order: 1;
+  }
+
+  :host ::ng-deep .p-dropdown {
+    padding: 0.3rem 1rem;
+    width: 100%;
+  }
+
+  :host ::ng-deep .p-dropdown span {
+    text-align: left;
+  }
+
+  :host ::ng-deep .p-menubar .p-menubar-end {
+    margin-top: 0;
+    margin-bottom: 1rem;
   }
       
 }

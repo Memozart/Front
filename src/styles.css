@@ -58,7 +58,7 @@ section {
 
 @media (max-width: 960px) {
   section {
-    min-height: calc(100vh - 192px);
+    min-height: calc(100vh - 218px);
   }
 }
 
@@ -72,4 +72,8 @@ section {
   h1 {
     font-size: 36px;
   }
+  section {
+  border-top-left-radius: 3rem;
+  border-top-right-radius: 3rem;
+}
 }
