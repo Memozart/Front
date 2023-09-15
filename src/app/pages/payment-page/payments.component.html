@@ -1,2 +1,9 @@
-<p *ngIf="statut == 'success'">Payment accepté</p>
-<p *ngIf="statut !== 'success'">Payment refusé</p>
+<section class="flex justify-content-center align-items-start">
+    <div class="payment">
+        <h1 class="text-center" *ngIf="statut == 'success'">🥳<br>Paiement accepté</h1>
+        <p *ngIf="statut == 'success'">Tu peux maintenant accéder à ta nouvelle organisation depuis le menu situé en
+            haut à droite de la page !</p>
+        <h1 *ngIf="statut !== 'success'">😬<br>Paiement refusé</h1>
+        <p *ngIf="statut !== 'success'">Quelque chose s'est mal passé... Tu peux réessayer l'opération</p>
+    </div>
+</section>
