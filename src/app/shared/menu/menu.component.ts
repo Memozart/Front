@@ -102,11 +102,13 @@ export class MenuComponent {
         label: 'Cartes',
         icon: 'pi pi-fw pi-book',
         routerLink: 'card/manage',
+        visible: this.isAdmin
       },
       {
         label: 'Ajouter',
         icon: 'pi pi-fw pi-plus',
         routerLink: 'card/create',
+        visible: this.isAdmin
       },
       {
         label: 'Compte',
