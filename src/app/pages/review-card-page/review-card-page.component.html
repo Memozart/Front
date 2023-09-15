@@ -32,8 +32,8 @@
                 (mouseleave)="designService.changeBtnStyle($event, review.theme, 2)"></button>
         </div>
 
-        <button pButton type="submit" label="Valider réponse" class="mt-5 text-white p-button-rounded"
-            [style.background]="bgLinearGradient"
+        <button [disabled]="!reviewForm.get('answer')?.valid" pButton type="submit" label="Valider réponse"
+            class="mt-5 text-white p-button-rounded" [style.background]="bgLinearGradient"
             (mouseover)="designService.changeBtnStyle($event, review.theme, 1, true)"
             (mouseleave)="designService.changeBtnStyle($event, review.theme, 2)"></button>
     </form>

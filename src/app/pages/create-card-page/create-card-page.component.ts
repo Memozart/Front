@@ -48,7 +48,7 @@ export class CreateCardPageComponent {
     this.metaService.addTag(ogdesc);
 
     this.createCardForm = this.fb.group({
-      question: ['', [Validators.required]],
+      question: ['', [Validators.required, Validators.minLength(2)]],
       answer: ['', [Validators.required]],
       help: [''],
       theme: ['', [Validators.required]],

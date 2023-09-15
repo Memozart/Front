@@ -40,8 +40,9 @@
             </div>
         </div>
 
-        <button pButton type="submit" label="Créer" class="mt-5 text-white p-button-rounded"
-            [style.background]="bgLinearGradient" (mouseover)="designService.changeBtnStyle($event, theme, 1, true)"
+        <button [disabled]="!createCardForm.valid" pButton type="submit" label="Créer"
+            class="mt-5 text-white p-button-rounded" [style.background]="bgLinearGradient"
+            (mouseover)="designService.changeBtnStyle($event, theme, 1, true)"
             (mouseleave)="designService.changeBtnStyle($event, theme, 2)"></button>
 
     </form>

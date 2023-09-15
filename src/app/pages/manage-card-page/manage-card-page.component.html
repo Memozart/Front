@@ -62,9 +62,9 @@
             <button pButton pRipple type="submit" [style]="{ background: 'var(--light-bg-color)' }" icon="pi pi-times"
                 label="Annuler" (click)="closeModal()"
                 class="p-button-rounded p-button-text cancel-btn text-white"></button>
-            <button pButton pRipple type="submit" label="Modifier" class="p-button-rounded text-white mr-0"
-                icon="pi pi-check" [style.background]="bgLinearGradient" (click)="updateCard()"
-                (mouseover)="designService.changeBtnStyle($event, theme, 1, true)"
+            <button [disabled]="!updateCardFormGroup.valid" pButton pRipple type="submit" label="Modifier"
+                class="p-button-rounded text-white mr-0" icon="pi pi-check" [style.background]="bgLinearGradient"
+                (click)="updateCard()" (mouseover)="designService.changeBtnStyle($event, theme, 1, true)"
                 (mouseleave)="designService.changeBtnStyle($event, theme, 2)"></button>
         </ng-template>
 
