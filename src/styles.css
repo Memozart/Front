@@ -45,6 +45,10 @@ section {
   padding: 2rem 3rem;
 }
 
+.caveat-font {
+  font-family: 'Caveat';
+}
+
 .blink-error-color {
   color: #ff7e7e !important;
   animation: blinker 1s linear infinite;

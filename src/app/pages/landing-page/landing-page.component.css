@@ -25,10 +25,6 @@ p {
   margin: 0;
 }
 
-.caveat-font {
-  font-family: 'Caveat';
-}
-
 .landing-page .p-button-rounded {
   font-weight: bold;
   padding: 1rem 1.5rem;
@@ -220,4 +216,14 @@ p {
 .organisation-name .organisation-keyword {
   font-size: 32px;
   color: #FFCE7C;
+}
+
+.price {
+  margin-top: 2rem;
+  color: #FFCE7C;
+}
+
+.price span {
+  font-weight: bold;
+  font-size: 32px;
 }
