@@ -1,5 +1,5 @@
 section {
-  min-height: calc(100vh - 228px);
+  min-height: calc(100vh - 244px);
 }
 
 h1 {
@@ -26,4 +26,10 @@ h1 {
 
 :host ::ng-deep .p-float-label {
   margin-bottom: 2rem;
+}
+
+@media (max-width: 960px) {
+  section {
+    min-height: calc(100vh - 192px);
+  }
 }

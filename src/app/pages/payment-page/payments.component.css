@@ -1,0 +1,14 @@
+.payment {
+    border-radius: 3rem;
+    padding: 2rem 3rem;
+    text-align: center;
+}
+
+.payment h1, .payment p {
+    margin: 0;
+}
+
+.payment p {
+    font-size: 20px;
+    line-height: 40px;
+}

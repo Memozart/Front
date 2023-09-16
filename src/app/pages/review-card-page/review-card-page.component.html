@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <div class="my-5">
+        <div class="my-5" *ngIf="review.card.help">
             <p-overlayPanel #op my="middle" at="middle">
                 <ng-template pTemplate="content">
                     <p>{{ review.card.help }}</p>
@@ -32,13 +32,13 @@
                 (mouseleave)="designService.changeBtnStyle($event, review.theme, 2)"></button>
         </div>
 
-        <button pButton type="submit" label="Valider réponse" class="mt-5 text-white p-button-rounded"
-            [style.background]="bgLinearGradient"
+        <button [disabled]="!reviewForm.get('answer')?.valid" pButton type="submit" label="Valider réponse"
+            class="mt-5 text-white p-button-rounded" [style.background]="bgLinearGradient"
             (mouseover)="designService.changeBtnStyle($event, review.theme, 1, true)"
             (mouseleave)="designService.changeBtnStyle($event, review.theme, 2)"></button>
     </form>
 
-    <p-dialog header="{{ feedBackTitle }}" [(visible)]="visible" [modal]="true" [style]="{ width: '40vw' }"
+    <p-dialog header="{{ feedBackTitle }}" [(visible)]="visible" [modal]="true" [style]="{ width: 'fit-content' }"
         [draggable]="false" [resizable]="false" [closable]="false" [styleClass]="modalStyle" *ngIf="reviewFeedBack">
         <app-svg icon="{{ reviewFeedBack.success }}" class="feedback_icon"></app-svg>
         <p class="m-0 feedback_text">

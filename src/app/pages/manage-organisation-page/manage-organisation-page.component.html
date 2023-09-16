@@ -55,8 +55,9 @@
             <button pButton pRipple type="submit" [style]="{ background: 'var(--light-bg-color)' }" icon="pi pi-times"
                 label="Annuler" (click)="closeDialog()"
                 class="p-button-rounded p-button-text cancel-btn text-white"></button>
-            <button pButton pRipple type="submit" label="Ajouter" class="p-button-rounded text-white mr-0 yellow-btn"
-                icon="pi pi-check" (click)="addUserOrganisation()"></button>
+            <button [disabled]="!addUserOrganisationFormGroup.valid" pButton pRipple type="submit" label="Ajouter"
+                class="p-button-rounded text-white mr-0 yellow-btn" icon="pi pi-check"
+                (click)="addUserOrganisation()"></button>
         </ng-template>
 
     </p-dialog>

@@ -18,10 +18,14 @@ export class OrganisationPageComponent {
     { type: 5, name: 'Grande entreprise' },
   ];
   selectedValues: string[] = ['val1', 'val2'];
+  errorMessage!: string;
+
   constructor(private fb: FormBuilder,
     private http: HttpService,
     private metaService: Meta,
-    private titleService: Title) { }
+    private titleService: Title,
+    private response: ResponseService,
+  ) { }
 
   ngOnInit() {
     const ogtitle: MetaDefinition = { name: 'title', property: 'og:title', content: 'Memozart - Crée ton organisation' };
@@ -56,7 +60,12 @@ export class OrganisationPageComponent {
           document.location.href = res.body.url;
         },
         error: (err: any) => {
-          console.error(err);
+          this.errorMessage = "";
+
+          if (err.error.message.includes('Cannot read properties of undefined')) this.errorMessage += 'Le SIREN est incorrect. Merci d\'indiquer celui de ton entreprise 👩‍💼';
+
+          if (this.errorMessage) this.response.errorF(err, 'Erreur', this.errorMessage);
+          else this.response.errorF(err, 'Erreur');
         },
       });
   }

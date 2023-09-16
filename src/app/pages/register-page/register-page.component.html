@@ -19,7 +19,8 @@
         inputId="confirmPassword"></app-custom-input>
 
       <div class="text-center">
-        <button pButton type="submit" label="Je m'inscris" class="text-white p-button-rounded dark-btn"></button>
+        <button [disabled]="!registerForm.valid" pButton type="submit" label="Je m'inscris"
+          class="text-white p-button-rounded dark-btn"></button>
       </div>
     </form>
   </div>
