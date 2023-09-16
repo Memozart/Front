@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <div class="my-5">
+        <div class="my-5" *ngIf="review.card.help">
             <p-overlayPanel #op my="middle" at="middle">
                 <ng-template pTemplate="content">
                     <p>{{ review.card.help }}</p>
