@@ -11,6 +11,8 @@ import { ReviewCardPageComponent } from './pages/review-card-page/review-card-pa
 import { OrganisationPageComponent } from './pages/organisation-page/organisation-page.component';
 import { ManageOrganisationPageComponent } from './pages/manage-organisation-page/manage-organisation-page.component';
 import { PaymentsComponent } from './pages/payment-page/payments.component';
+import { CguPageComponent } from './pages/cgu-page/cgu-page.component';
+import { PolitiqueConfidentialiteComponent } from './pages/politique-confidentialite/politique-confidentialite.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -34,7 +36,7 @@ const routes: Routes = [
         path: 'review',
         component: ReviewCardPageComponent,
         canActivate: [AuthGuard],
-      },
+      }
     ],
   },
   {
@@ -53,6 +55,14 @@ const routes: Routes = [
     ],
   },
   { path: 'payments/:statut', component: PaymentsComponent, canActivate: [AuthGuard] },
+  {
+    path: 'cgu',
+    component: CguPageComponent
+  },
+  {
+    path: 'policy',
+    component: PolitiqueConfidentialiteComponent
+  },
   { path: '**', redirectTo: '' },
 ];
 

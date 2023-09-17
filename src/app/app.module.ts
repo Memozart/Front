@@ -51,6 +51,10 @@ import { PaymentsComponent } from './pages/payment-page/payments.component';
 
 import { environment } from "../environments/environment";
 import { initializeApp } from "firebase/app";
+import { CguPageComponent } from './pages/cgu-page/cgu-page.component';
+import { CookieDialogComponent } from './shared/cookie-dialog/cookie-dialog.component';
+import { CheckboxModule } from 'primeng/checkbox';
+import { PolitiqueConfidentialiteComponent } from './pages/politique-confidentialite/politique-confidentialite.component';
 initializeApp(environment.firebase);
 
 @NgModule({
@@ -74,6 +78,9 @@ initializeApp(environment.firebase);
     CustomDropdownComponent,
     CustomButtonComponent,
     PaymentsComponent,
+    CguPageComponent,
+    CookieDialogComponent,
+    PolitiqueConfidentialiteComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,6 +101,7 @@ initializeApp(environment.firebase);
     DropdownModule,
     CardModule,
     PanelModule,
+    CheckboxModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerImmediately',
