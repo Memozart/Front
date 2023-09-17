@@ -1,0 +1,16 @@
+<p-dialog header="🍪🍪 Les cookies parlons en ! 🍪🍪" [position]="'left'" [(visible)]="showCookieDialog">
+  <div class="para-cookie">
+    <p>
+      Chez nous, même si nous en raffolons et qu'ils sortent tout chauds du four, les cookies sont introuvables !
+    </p>
+    <img [src]="bucketLandingPage + 'cookie.gif'" alt="image d'un cookie">
+  </div>
+  <div class="para-cookie">
+    <div>
+      <p-checkbox [(ngModel)]="dontPrintCookieDialog" (change)="changeShowWindowCookie()" [binary]="true" inputId="showCookieWindow"></p-checkbox>
+      <label for="showCookieWindow">Ne plus afficher</label>
+    </div>
+    
+    <p-button label="FERMER" (click)="showCookieDialog = false" styleClass="p-button-danger p-button-text"></p-button>
+  </div>
+</p-dialog>

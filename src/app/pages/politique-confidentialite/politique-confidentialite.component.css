@@ -1,0 +1,25 @@
+div {
+  margin: 0cm;
+  font-size: 1rem;
+  font-family: "Calibri", sans-serif;
+}
+
+p{
+  font-size: 1.5rem;
+}
+
+h1 {
+  margin-top: 75px;
+  line-height: 130%;
+  page-break-after: avoid;
+  font-size:2rem;
+}
+
+div.WordSection1 {
+  padding: 50px;
+  text-align: justify;
+}
+
+.SpellE{
+  font-weight: bold;
+}

@@ -1,0 +1,45 @@
+div {
+  margin: 0cm;
+  font-size: 1rem;
+  font-family: "Calibri", sans-serif;
+}
+p{
+  font-size: 1.5rem;
+}
+
+h1 {
+  margin: 0cm;
+  line-height: 130%;
+  page-break-after: avoid;
+  font-size:2rem;
+}
+
+h2 {
+  margin: 0cm;
+  line-height: 130%;
+  page-break-after: avoid;
+  font-size: 12.0pt;
+  font-family: "Arial", sans-serif;
+}
+
+h3 {
+  margin: 0cm;
+  line-height: 130%;
+  page-break-after: avoid;
+  font-size: 10.0pt;
+  font-family: "Arial", sans-serif;
+  color: #051259;
+}
+
+h4 {
+  margin: 0cm;
+  line-height: 130%;
+  font-size: 10.0pt;
+  font-family: "Arial", sans-serif;
+  color: #051259;
+}
+
+div.WordSection1 {
+  padding: 50px;
+  text-align: justify;
+}
