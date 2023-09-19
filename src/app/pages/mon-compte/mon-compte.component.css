@@ -1,0 +1,28 @@
+
+:host ::ng-deep p-button{
+  display: flex !important;
+  justify-content: flex-end !important;
+  width: fit-content;
+}
+
+:host ::ng-deep .p-dialog-footer{
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+:host ::ng-deep .p-dialog {
+  width: 50vw !important;
+}
+
+
+.btn-row{
+  display: flex;
+  justify-content: end;
+}
+
+@media (max-width: 762px ) {
+  :host ::ng-deep .p-dialog  {
+    width: 90vw !important;
+  }
+}

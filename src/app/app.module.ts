@@ -55,6 +55,7 @@ import { CguPageComponent } from './pages/cgu-page/cgu-page.component';
 import { CookieDialogComponent } from './shared/cookie-dialog/cookie-dialog.component';
 import { CheckboxModule } from 'primeng/checkbox';
 import { PolitiqueConfidentialiteComponent } from './pages/politique-confidentialite/politique-confidentialite.component';
+import { MonCompteComponent } from './pages/mon-compte/mon-compte.component';
 initializeApp(environment.firebase);
 
 @NgModule({
@@ -81,6 +82,7 @@ initializeApp(environment.firebase);
     CguPageComponent,
     CookieDialogComponent,
     PolitiqueConfidentialiteComponent,
+    MonCompteComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,7 +96,6 @@ initializeApp(environment.firebase);
     HttpClientModule,
     ReactiveFormsModule,
     ToastModule,
-    DividerModule,
     CalendarModule,
     AutoCompleteModule,
     BrowserAnimationsModule,

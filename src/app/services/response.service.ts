@@ -13,15 +13,15 @@ export class ResponseService {
     this.messageService.add({ severity: 'success', summary: title, detail: message, life });
   }
 
-  public errorF(err: any, title: string, message: string = err.error.message) {
+  public errorF(err: any, title: string, message: string = err.error.message, life = 5000) {
     if (err.status === 0) {
-      this.messageService.add({ severity: 'error', summary: "Connexion nok", detail: "La connexion n'a pas pu être établie" });
+      this.messageService.add({ severity: 'error', summary: "Connexion nok", detail: "La connexion n'a pas pu être établie", life });
       return;
     } else if (err.status === 401) {
-      this.messageService.add({ severity: 'error', summary: "Déconnexion", detail: "Tu as été déconnecté" });
+      this.messageService.add({ severity: 'error', summary: "Déconnexion", detail: "Tu as été déconnecté", life });
       this.router.navigate([""]);
     } else {
-      this.messageService.add({ severity: 'error', summary: title, detail: message });
+      this.messageService.add({ severity: 'error', summary: title, detail: message , life});
     }
   }
 }
