@@ -13,6 +13,7 @@ import { ManageOrganisationPageComponent } from './pages/manage-organisation-pag
 import { PaymentsComponent } from './pages/payment-page/payments.component';
 import { CguPageComponent } from './pages/cgu-page/cgu-page.component';
 import { PolitiqueConfidentialiteComponent } from './pages/politique-confidentialite/politique-confidentialite.component';
+import { MonCompteComponent } from './pages/mon-compte/mon-compte.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -62,6 +63,10 @@ const routes: Routes = [
   {
     path: 'policy',
     component: PolitiqueConfidentialiteComponent
+  },
+  {
+    path: 'account',
+    component:  MonCompteComponent
   },
   { path: '**', redirectTo: '' },
 ];

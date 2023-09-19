@@ -1,0 +1,52 @@
+
+:host ::ng-deep p-button{
+  display: flex !important;
+  justify-content: flex-end !important;
+  width: fit-content;
+}
+
+:host ::ng-deep .p-button {
+  font-weight: bold;
+  padding: 1rem 1.5rem;
+  color: white;
+  border: none;
+  box-shadow: 5px 5px 15px #0C1119, -5px -5px 15px #304562;
+}
+
+:host ::ng-deep .red-btn {
+  background-color: #FF2E2E;
+}
+
+:host ::ng-deep .red-btn:hover {
+  color: white;
+  background-color: #FF2E2E;
+  box-shadow: inset 4px 4px 4px #770000, inset -4px -4px 4px #FFAFAF;
+}
+
+:host ::ng-deep .p-dialog .cancel-btn:enabled:hover {
+  color: white;
+  box-shadow: inset 5px 5px 5px #1A2E4A,
+    inset -2px -2px 5px #586F91;
+}
+
+:host ::ng-deep .p-dialog-footer{
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+:host ::ng-deep .p-dialog {
+  width: 50vw !important;
+}
+
+
+.btn-row{
+  display: flex;
+  justify-content: end;
+}
+
+@media (max-width: 762px ) {
+  :host ::ng-deep .p-dialog  {
+    width: 90vw !important;
+  }
+}

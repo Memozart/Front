@@ -1,0 +1,38 @@
+<div>
+
+  <section>
+    <h2>SUPPRESSION DE COMPTE</h2>
+    <p>Nous tenons à te remercier pour ton temps passé avec nous et espérons que ton expérience a été positive. Si
+      tu as des questions ou des préoccupations, n'hésite pas à nous contacter. Nous sommes là pour t'aider.</p>
+    <p>Merci de noter que la suppression de ton compte signifie également la perte définitive de tous tes contenus,
+      historiques de révision et de transactions. Assure-toi de sauvegarder toutes les informations importantes avant de
+      continuer.</p>
+    <p>⚠️ Tu ne pourras pas supprimer ton compte si tu es le seul administrateur d'une ou plusieurs organisation(s)
+      contenant des collaborateurs.</p>
+    <div class="btn-row">
+      <p-button label="SUPPRIMER MON COMPTE" styleClass="p-button p-button-rounded red-btn"
+        (click)="visible = true"></p-button>
+    </div>
+  </section>
+</div>
+
+<p-dialog #cd [visible]="visible" class="dialog-size" [closable]="false">
+
+  <ng-template pTemplate="header">
+    <h3>🔥 SUPPRESSION DU COMPTE 🔥</h3>
+  </ng-template>
+
+  <div>
+    <p>Es-tu sûr de vouloir supprimer ton compte ? Cette action sera irréversible. <br>Tu seras deconnecté de ton
+      compte. De plus, ton organisation personnelle, tes liens avec les autres organisations, tes révisions ainsi que
+      toutes tes
+      données personnelles seront supprimés.</p>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <p-button [style]="{ background: 'var(--light-bg-color)' }" icon="pi pi-times" label="NON"
+      styleClass="p-button-rounded p-button-text cancel-btn text-white" (click)="visible = false"></p-button>
+    <p-button icon="pi pi-check" label="OUI" styleClass="p-button p-button-rounded red-btn"
+      (click)="deleteAccount()"></p-button>
+  </ng-template>
+</p-dialog>
