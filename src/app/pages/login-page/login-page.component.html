@@ -9,7 +9,8 @@
         inputId="password"></app-custom-input>
 
       <div class="text-center">
-        <button pButton type="submit" label="Connexion" class="text-white p-button-rounded dark-btn"></button>
+        <button [disabled]="!loginForm.valid" pButton type="submit" label="Connexion"
+          class="text-white p-button-rounded dark-btn"></button>
       </div>
     </form>
   </div>

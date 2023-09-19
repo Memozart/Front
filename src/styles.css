@@ -39,10 +39,14 @@ h1 {
 
 section {
   background-color: var(--dark-bg-color);
-  min-height: calc(100vh - 254px);
+  min-height: calc(100vh - 270px);
   border-top-left-radius: 5rem;
   border-top-right-radius: 5rem;
   padding: 2rem 3rem;
+}
+
+.caveat-font {
+  font-family: 'Caveat';
 }
 
 .blink-error-color {
@@ -58,7 +62,7 @@ section {
 
 @media (max-width: 960px) {
   section {
-    min-height: calc(100vh - 192px);
+    min-height: calc(100vh - 218px);
   }
 }
 
@@ -71,5 +75,9 @@ section {
 @media (max-width: 576px) {
   h1 {
     font-size: 36px;
+  }
+  section {
+    border-top-left-radius: 3rem;
+    border-top-right-radius: 3rem;
   }
 }

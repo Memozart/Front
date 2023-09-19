@@ -5,3 +5,7 @@
   background-color:var(--dark-bg-color);
   text-align: center;
 }
+
+a {
+  color: white;
+}

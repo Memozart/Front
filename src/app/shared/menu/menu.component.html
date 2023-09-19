@@ -6,7 +6,7 @@
     </ng-template>
 
     <ng-template pTemplate="end">
-        <p-dropdown *ngIf="organisations && user?.firstName && user?.currentOrganisation && showOrganisation"
+        <p-dropdown *ngIf="organisations && user?.firstName && user?.currentOrganisation"
             [(ngModel)]="organisationsSelected" [options]="organisations!" (onChange)="showConfirm =true"
             optionLabel="name" optionValue="_id"></p-dropdown>
     </ng-template>

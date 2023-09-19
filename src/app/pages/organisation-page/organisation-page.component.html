@@ -1,25 +1,18 @@
-<section>
-  <h1 class="text-center">Création d'une organisation</h1>
-  <form [formGroup]="createOrganisationForm" (ngSubmit)="onSubmit()">
-    <div class="p-fluid grid justify-content-center mt-2">
-      <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
-        <app-custom-input [formGroup]="createOrganisationForm" label="Nom" inputId="name"
-          type="text"></app-custom-input>
-      </div>
-    </div>
-    <div class="p-fluid grid justify-content-center mt-2">
-      <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
-        <app-custom-input [formGroup]="createOrganisationForm" label="Siren" inputId="siren"
-          type="text"></app-custom-input>
-      </div>
-    </div>
-    <!-- <div class="p-fluid grid justify-content-center mt-2">
+<section class="flex align-items-center">
+  <div class="grid justify-content-center w-full">
+    <form class="col-12 sm:col-8 md:col-6 xl:col-4" [formGroup]="createOrganisationForm" (ngSubmit)="onSubmit()">
+      <h1 class="text-center mb-6">Ton organisation</h1>
+      <app-custom-input [formGroup]="createOrganisationForm" label="Nom" inputId="name" type="text"></app-custom-input>
+      <app-custom-input [formGroup]="createOrganisationForm" label="SIREN de ton entreprise" inputId="siren"
+        type="text"></app-custom-input>
+      <!-- <div class="p-fluid grid justify-content-center mt-2">
       <div class="field col-12 sm:col-8 lg:col-6 xl:col-4">
         <p-dropdown [options]="typesAccount" formControlName="type" optionLabel="name" optionValue="type">
         </p-dropdown>
       </div>
     </div> -->
-    <button [disabled]="!createOrganisationForm.valid" pButton type="submit" label="Créer"
-      class="mt-5 text-white p-button-rounded"></button>
-  </form>
+      <button [disabled]="!createOrganisationForm.valid" pButton type="submit" label="Créer"
+        class="mt-5 text-white p-button-rounded"></button>
+    </form>
+  </div>
 </section>

@@ -27,7 +27,8 @@ section {
 }
 
 :host ::ng-deep .p-button:hover {
-  background-color:  var(--custom-bg-color);
+  background-color: #1F2D40;
+  box-shadow: inset 4px 4px 4px #0C1119, inset -4px -4px 4px #304562;
 }
 
 :host ::ng-deep .p-dropdown:not(.p-disabled):hover {
@@ -53,4 +54,8 @@ section {
     background: rgb(74, 101, 138, 0.16);
     border-radius: 0.25rem;
 
+}
+
+:host ::ng-deep .p-float-label {
+    margin-bottom: 2rem;
 }

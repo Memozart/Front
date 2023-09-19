@@ -65,7 +65,8 @@ export class RegisterPageComponent {
 
         if (err.error.message.includes('"email" must be a valid email')) this.errorMessage += '• Quelque chose cloche avec l\'email... 🙃\n';
         if (err.error.message.includes('"confirmPassword" must be [ref:password]')) this.errorMessage += '• Les mots de passe que tu as saisis ne coïncident pas. Assure-toi qu\'ils soient identiques. 🧐\n';
-        if (err.error.message.includes('"password" length must be at least 6 characters long, "confirmPassword" must be [ref:password]')) this.errorMessage += '• Ce mot de passe est tout petit ! Il doit être plus grand, avec au moins 6 caractères. 🤫\n';
+        if (err.error.message.includes('"password" length must be at least 6 characters long')) this.errorMessage += '• Ce mot de passe est tout petit ! Il doit être plus grand, avec au moins 6 caractères. 🤫\n';
+        if (err.error.message.includes('E11000 duplicate key error collection: dev.users index: email_1')) this.errorMessage += '• Cette adresse email est déjà prise. 🧐\n';
 
         if (this.errorMessage) this.response.errorF(err, 'Erreur lors de l\'inscription', this.errorMessage);
         else this.response.errorF(err, 'Erreur d\'inscription');

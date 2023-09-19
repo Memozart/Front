@@ -9,6 +9,7 @@ import { Store } from '@ngrx/store';
 import { User } from 'src/app/models/user';
 import { Organisation } from 'src/app/models/organisation';
 import { ResponseService } from 'src/app/services/response.service';
+import { ConfigService } from 'src/app/services/config.service';
 
 @Component({
   selector: 'app-menu',
@@ -35,6 +36,7 @@ export class MenuComponent {
     public store: Store<AppState>,
     private http: HttpService,
     private response: ResponseService,
+    private configService : ConfigService
   ) { }
 
   ngOnInit() {
@@ -102,11 +104,13 @@ export class MenuComponent {
         label: 'Cartes',
         icon: 'pi pi-fw pi-book',
         routerLink: 'card/manage',
+        visible: this.isAdmin
       },
       {
         label: 'Ajouter',
         icon: 'pi pi-fw pi-plus',
         routerLink: 'card/create',
+        visible: this.isAdmin
       },
       {
         label: 'Compte',
@@ -124,12 +128,15 @@ export class MenuComponent {
             visible: this.manageableOrganisation,
           },
           {
+            label: 'Mon compte',
+            icon: 'pi pi-cog',
+            routerLink: 'account',
+          },
+          {
             label: 'Déconnexion',
             icon: 'pi pi-fw pi-power-off',
             command: () => {
-              localStorage.clear();
-              this.store.dispatch(signOutAction());
-              this.router.navigate(['login']);
+              this.configService.logoutBehavior();
             },
           },
         ],
